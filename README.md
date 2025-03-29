@@ -2,7 +2,6 @@
 GAM with PRSS and REML in scRNA-seq prostate cancer and benign cases dataset
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PRSS_REML_Project)
-![GitHub repo size](https://img.shields.io/github/repo-size/kahkengwong/GAM_PRSS_REML_Project)
 ![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PRSS_REML_Project)
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PRSS_REML_Project)
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PRSS_REML_Project)
