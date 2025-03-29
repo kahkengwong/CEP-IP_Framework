@@ -1,6 +1,6 @@
-##################################################
+###########################################################
 # Part 3.2: GAM-PRSS-REML Analysis and Results Export
-##################################################
+###########################################################
 # Analyze all gene sets for a given sample
 analyze_multiple_gene_sets <- function(integrated_obj, original_obj, cluster_ids, gene_sets, sample) {
     set.seed(123 + which(c(pca_samples, non_ca_samples) == sample)) 
