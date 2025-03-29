@@ -20,7 +20,7 @@ The scripts are designed to be run sequentially, following the workflow of the m
 - Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$.
 - Ensuring interpretability by validating and visualizing the modeling process.
 
-Key findings include robust modeling of _TRPM4_ expression with validated $k$ and $\lambda$ parameters, and detailed interpretations of the mechanisms of GAM, PRSS and REML. 
+Key findings include robust modeling of _TRPM4_ expression with validated $k$ and $\lambda$ parameters, alongside detailed interpretations of GAM, PRSS, and REML mechanisms. A manuscript is in preparation for submission to a Q1 journal, with example results to be shared here upon acceptance.
 
 ---
 
@@ -52,6 +52,17 @@ The scripts should be used in the following sequence, corresponding to the flow 
 | 7  | `Part-3.5-TPRS-Visualization-and-GAM-Components.r` | 1134       | `visualize_tprs_improved()`, `plot_cumulative_components_revised()`, `plot_gam_with_examples()`, `visualize_phi1_emergence()`, `predict()`, `gam()`, `ggplot()` | TPRS basis functions plot, weighted basis functions plot, GAM components plot, variance contribution plots, cumulative variance plot, cumulative smooth components plot, GAM components with examples plot |
 | 8  | `Part-3.6-Validation-of-k-and-Lambda-Selection.r` | 1929       | `analyze_prss_for_k_values()`, `analyze_eigenvalues_for_lambdas()`, `run_kfold_cv_analysis_for_k()`, `run_kfold_cv_analysis_improved()`, `calculate_prss()`, `extract_eigenvalues()`, `perform_kfold_cv_for_k()` | PRSS versus k plot, eigenvalue bar plots, eigenvalue distribution plots, additional eigenvalue comparison plots, CV k versus RMSE and deviance plots, PRSS versus CV k comparison plot, CV lambda versus RMSE and deviance plots |
 | 9  | `Part-3.7-Gamma-Consequences-on-GAM-Fitting.r`  | 472        | `visualize_gam_gammas_free()`, `evaluate_gamma_boxplot()`, `gam()`, `predict()`, `ggplot()`, `pivot_longer()` | GAM full fits plot, difference from gamma = 1 plot, selected lambda values bar plot, selected lambda values data, CV RMSE boxplot, CV summary statistics, CV RMSE raw data |
+
+## Dependencies
+This project requires the following R packages:
+- **Seurat**: scRNA-seq preprocessing and clustering.
+- **mgcv**: Generalized additive modeling with PRSS and REML.
+- **purrr**, **dplyr**, **tidyr**, **ggplot2**: Data manipulation and visualization of results.
+- **Matrix**, **SparseArray**: Sparse matrix handling.
+- **openxlsx**, **writexl**: Excel file I/O.
+- **parallel**, **pbapply**: Parallel processing.
+
+Additional libraries (e.g., `circlize`, `ComplexHeatmap`, `monocle3`, `viper`) are used for specific analyses and visualizations. See script headers in `Part-1-scRNAseq-Preprocessing-and-UMAP-Clusters.r` for full list of packages used.
 
 ---
 
