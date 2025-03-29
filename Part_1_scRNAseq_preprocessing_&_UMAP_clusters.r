@@ -1,6 +1,6 @@
-###############################################
-# >>> Dataset GSE185344 scRNA-seq analysis <<<
-###############################################
+######################################
+# >>> scRNA-seq Dataset Analysis <<<
+######################################
 #############################################################
 # Part 1: scRNA-seq Dataset Pre-processing and UMAP Clusters
 #############################################################
@@ -49,8 +49,8 @@ library(rmarkdown)
 # =========================================
 # 1. scRNA-seq Dataset Pre-processing
 # =========================================
-# Load data, GSE185344 prostate cancer scRNA-seq dataset
-loaded_df <- readRDS("C:/...directory.../GSE185344_PH_scRNA.final.rds")
+# Load scRNA-seq dataset
+loaded_df <- readRDS("C:/...directory.../scRNA.final.rds")
 
 # Extract Seurat object, the core data structure
 seurat_obj <- loaded_df$obj
