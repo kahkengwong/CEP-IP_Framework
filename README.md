@@ -24,6 +24,8 @@ The scripts are designed to be run sequentially, following the workflow of the m
 
 Key findings include robust modeling of _TRPM4_ expression with validated $k$, $\lambda$, and $\gamma$ parameters, alongside detailed interpretations of GAM, PRSS, and REML mechanisms. A manuscript is in preparation for submission to a Q1 journal (target month of submission: April 2025), with example results to be shared here upon acceptance.
 
+This project investigates GAM’s touted interpretability using scRNA-seq’s continous expression profiles, navigating the limits of its interpretability like mgcv’s intricate lambda optimization process (e.g., unexposed gradients, Hessians, and transformed REML formula) and absence of built-in k-fold CV for validation. By unpacking these—including retrieving and decoding mgcv’s source code—a foundation is established to tackle less transparent methods such as deep learning, focusing on interpretability.
+
 ---
 
 # scRNA-seq Analysis and GAM-PRSS-REML Modeling Scripts
