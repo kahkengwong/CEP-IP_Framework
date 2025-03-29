@@ -1,6 +1,6 @@
-##################################################
+######################################################
 # Part 3.3: REML Extraction and Convergence Analysis
-##################################################
+######################################################
 # Extract detailed REML information from a GAM model
 extract_reml_info <- function(model) {
     if (is.null(model)) {
