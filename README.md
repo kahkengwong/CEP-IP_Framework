@@ -19,7 +19,7 @@ The codes are designed not only to achieve the modeling but also to emphasize th
 The scripts are designed to be run sequentially, following the workflow of the main project/manuscript. Key goals include:
 - Preprocessing and clustering scRNA-seq data using UMAP.
 - Analyzing gene expressions (e.g., *TRPM4* and *KLK4*) and their associations with the relevant gene sets.
-- Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, and optimizing parameters $k$, $\lambda$, and $\gamma$ (the $\gamma$ parameter is manually set and it affects $\lambda$, validated qualitatively via visualizations and quantitatively by 10-fold cross-validation).
+- Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, and optimizing parameters $k$, $\lambda$, and $\gamma$ (the $\gamma$ parameter is manually set and it affects $\lambda$, validated qualitatively via visualizations and quantitatively by 10-fold CV).
 - Ensuring interpretability by validating and visualizing the modeling process.
 
 Key findings include robust modeling of _TRPM4_ expression with validated $k$, $\lambda$, and $\gamma$ parameters, alongside detailed interpretations of GAM, PRSS, and REML mechanisms. A manuscript is in preparation for submission to a Q1 journal, with example results to be shared here upon acceptance.
@@ -39,8 +39,8 @@ The scripts should be used in the following sequence, corresponding to the flow 
 | 5    | `Part-3.3-REML-Extraction-and-Convergence.r`    | Extracts and analyzes detailed optimization data from REML processes for **interpretability**. Recalculates REML components manually to verify `mgcv`-computed scores. |
 | 6    | `Part-3.4-GAM-PRSS-REML-Plots-and-EDF-Analysis.r` | Generates visual plots to analyze GAM modeling of gene expression. Tracks PRSS and REML optimization to understand how $k$ and $\lambda$ are selected, emphasizing **interpretability**. |
 | 7    | `Part-3.5-TPRS-Visualization-and-GAM-Components.r` | Visualizes TPRS and GAM components for **interpretability**. Explains spline basis construction around knots, penalization by $\lambda$, weighting by coefficients, and how regularized splines combine to form the full GAM fit. |
-| 8    | `Part-3.6-Validation-of-k-and-Lambda-Selection.r` | Validates the selection of $k$ and $\lambda$ using the nested REML approach. Refits models with independent $k$ or $\lambda$ values (without wrapping REML in PRSS, as in the `analyze_sample` function) and performs 10-fold cross-validation (RMSE and RSS) to ensure reproducibility. |
-| 9    | `Part-3.7-Gamma-Consequences-on-GAM-Fitting.r`  | Assesses the impact of different $\gamma$ values on GAM fitting. Compares models with varying $\gamma$ to a reference model (default $\gamma$) using 10-fold cross-validation (RMSE). |
+| 8    | `Part-3.6-Validation-of-k-and-Lambda-Selection.r` | Validates the selection of $k$ and $\lambda$ using the nested REML approach. Refits models with independent $k$ or $\lambda$ values (without wrapping REML in PRSS, as in the `analyze_sample` function) and performs 10-fold CV (RMSE and RSS) to ensure reproducibility. |
+| 9    | `Part-3.7-Gamma-Consequences-on-GAM-Fitting.r`  | Assesses the impact of different $\gamma$ values on GAM fitting. Compares models with varying $\gamma$ to a reference model (default $\gamma$) using 10-fold CV (RMSE). |
 
 ## Additional Details of the Scripts
 | No | Script File                                      | Code Lines | Main Functions                                                                                          | Main Outputs                                                                                                                    |
