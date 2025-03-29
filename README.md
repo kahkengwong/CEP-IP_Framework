@@ -16,7 +16,7 @@ Comprehensive analysis of an scRNA-seq dataset of prostate cancer (PCa) and beni
 
 This project investigates GAM’s touted interpretability using scRNA-seq’s continuous expression profiles, navigating the limits of its interpretability like mgcv’s intricate lambda optimization process (e.g., unexposed gradients, Hessians, and transformed REML formula) and absence of built-in k-fold CV for validation. By unpacking these—including retrieving and decoding mgcv’s source code—a foundation is established to tackle the limits of algorithm interpretability.
 
-The scripts include extraction and visualization of PRSS and REML components, and validating parameters (*k*, $\lambda$, $\gamma$) through manual recalculation, 10-fold CV, and visualizations. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, refined by the author.* Key goals include:
+The scripts include extraction and visualization of PRSS and REML components, and validating parameters (*k*, $\lambda$, $\gamma$) through manual recalculation, 10-fold CV, and visualizations. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, and refined by the author.* Key goals include:
 - Preprocessing and clustering scRNA-seq data with UMAP.
 - Analyzing gene expressions (e.g., *TRPM4*, *KLK4*) and their gene set associations.
 - Modeling *TRPM4* with GAMs, optimizing *k*, $\lambda$, and $\gamma$ (manually set, affecting $\lambda$, and validated qualitatively and quantitatively).
