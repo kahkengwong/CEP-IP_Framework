@@ -1,6 +1,7 @@
 # GAM_PRSS_REML_Project
 GAM with PRSS and REML in scRNA-seq prostate cancer and benign cases dataset; Detailed GAM-PRSS-REML tracking for interpretability.
 
+![Project Status](https://img.shields.io/badge/status-active-brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PRSS_REML_Project)
 ![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PRSS_REML_Project)
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PRSS_REML_Project)
@@ -18,6 +19,8 @@ The scripts are designed to be run sequentially, following the workflow of the m
 - Analyzing gene expressions (e.g., *TRPM4* and *KLK4*) and their associations with the relevant gene sets.
 - Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$.
 - Ensuring interpretability by validating and visualizing the modeling process.
+
+Key findings include robust modeling of _TRPM4_ expression with validated $k$ and $\lambda$ parameters, and detailed interpretations of the mechanisms of GAM, PRSS and REML. 
 
 ---
 
