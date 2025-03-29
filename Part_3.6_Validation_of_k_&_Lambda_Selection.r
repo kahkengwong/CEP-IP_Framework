@@ -2,9 +2,9 @@
 # Part 3.6: Validation of Selected k (by PRSS) and Lambda (by REML) Values
 ############################################################################
 
-# ====================================================
+# ============================================================================
 # 1. Validation #1 for k Selection: Refitting with Different k Values
-# ====================================================
+# ============================================================================
 # Calculates PRSS components including residual sum of squares and penalty terms.
 calculate_prss <- function(model, data) {
     # Extracts the smooth component from the model for penalty calculation.
@@ -168,9 +168,9 @@ prss_results <- analyze_prss_for_k_values(original_data, k_values)
 print(prss_results$plot)
 
 
-# =================================================================
+# =================================================================================
 # 2. Validation #1 for Lambda Selection: Refitting with Different Lambda Values
-# =================================================================
+# =================================================================================
 # Extracts eigenvalues and related metrics from GAM model components across lambda values.
 extract_eigenvalues <- function(best_model, lambda_values) {
     # Initializes a data frame to store eigenvalue metrics for each lambda.
@@ -777,9 +777,9 @@ lambda_values <- c(0.264006588, 0.332627458, 0.419084336, 0.528013177, 0.6, 0.75
 eigen_results <- analyze_eigenvalues_for_lambdas(best_model, lambda_values)
 
 
-# ===============================================================================
+# ===========================================================================================
 # 3. Validation #2 for k Selection: 10-Fold Cross-Validation for PRSS's k Selection
-# ===============================================================================
+# ===========================================================================================
 # Performs k-fold cross-validation to evaluate different k values for PRSS.
 perform_kfold_cv_for_k <- function(original_data, k_values, k_folds = 10, seed = 123) {
     # Sets a seed for reproducible fold generation.
@@ -1374,9 +1374,9 @@ if (!is.null(cv_analysis_for_k) && !is.null(cv_analysis_for_k$optimal_k_cv) && !
 cat("4. FINAL RECOMMENDED BASIS DIMENSION (k):", recommended_k, "\n")
 
 
-# ================================================================================
+# ============================================================================================
 # 4. Validation #2 for Lambda Selection: 10-Fold Cross-Validation for REML's Lambda Selection
-# ================================================================================
+# ============================================================================================
 # Performs enhanced k-fold cross-validation with detailed fold metrics for lambda selection.
 perform_kfold_cv_improved <- function(best_model, lambda_values, k_folds = 10, seed = 123) {
     # Sets a seed for reproducibility of fold assignments.
