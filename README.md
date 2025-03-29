@@ -1,7 +1,6 @@
 # GAM_PRSS_REML_Project
 GAM with PRSS and REML in scRNA-seq PCa dataset
 
-# PDAC ML Paper Repository
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PRSS_REML_Project)
 ![GitHub repo size](https://img.shields.io/github/repo-size/kahkengwong/GAM_PRSS_REML_Project)
 ![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PRSS_REML_Project)
