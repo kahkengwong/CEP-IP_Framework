@@ -1,6 +1,6 @@
-###############################################################
+######################################################################
 # Part 3.7: Consequences of Different Gamma Values on GAM Fitting
-###############################################################
+######################################################################
 # Specifies the dataset for analysis from the PCA results.
 dataframe_name <- pca_results[["HYW_4701_Tumor"]][["Ribo"]]$gam_data
 
