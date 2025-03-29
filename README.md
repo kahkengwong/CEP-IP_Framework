@@ -12,7 +12,9 @@ Author: Kah Keng Wong
 ---
 
 ## Overview
-Comprehensive analysis of an scRNA-seq dataset of prostate cancer and benign prostate samples using the Seurat package, with subsequent modeling utilizing a generalized additive model (GAM) through the mgcv package. The GAM is implemented via thin-plate regression splines (TPRS) for smoothing, which are regularized by the penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). The codes are designed not only to achieve the modeling but also to emphasize the **interpretability** of the modeling process through detailed extraction of components that constitute PRSS and REML, as well as validation of the parameters selected by PRSS ($k$) and REML ($\lambda$) through manual recalculation, 10-fold cross-validation, and visualization of relevant plots. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, and refined by the author.*
+Comprehensive analysis of an scRNA-seq dataset of prostate cancer and benign prostate samples using the Seurat package, with subsequent modeling utilizing a generalized additive model (GAM) through the mgcv package. The GAM is implemented via thin-plate regression splines (TPRS) for smoothing, which are regularized by the penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
+
+The codes are designed not only to achieve the modeling but also to emphasize the **interpretability** of the modeling process through detailed extraction of components that constitute PRSS and REML, as well as validation of the parameters selected by PRSS ($k$) and REML ($\lambda$) through manual recalculation, 10-fold cross-validation, and visualization of relevant plots. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, and refined by the author.*
 
 The scripts are designed to be run sequentially, following the workflow of the main project/manuscript. Key goals include:
 - Preprocessing and clustering scRNA-seq data using UMAP.
