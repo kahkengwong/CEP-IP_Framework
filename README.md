@@ -17,7 +17,7 @@ Comprehensive analysis of an scRNA-seq dataset of prostate cancer and benign pro
 The scripts are designed to be run sequentially, following the workflow of the main project/manuscript. Key goals include:
 - Preprocessing and clustering scRNA-seq data using UMAP.
 - Analyzing gene expressions (e.g., *TRPM4* and *KLK4*) and their associations with the relevant gene sets.
-- Modeling of TRPM4 with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$.
+- Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$.
 - Ensuring interpretability by validating and visualizing the modeling process.
 
 ---
