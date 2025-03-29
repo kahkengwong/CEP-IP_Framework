@@ -12,7 +12,7 @@ Author: Kah Keng Wong
 ---
 
 ## Overview
-Comprehensive analysis of an scRNA-seq dataset of prostate cancer and benign prostate samples using the Seurat package, with subsequent modeling utilizing a generalized additive model (GAM) through the mgcv package. The GAM is implemented via thin-plate regression splines (TPRS) for smoothing, which are regularized by the penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
+Comprehensive analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the Seurat package, with subsequent modeling utilizing a generalized additive model (GAM) through the mgcv package. The GAM is implemented via thin-plate regression splines (TPRS) for smoothing, which are regularized by the penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
 
 The codes are designed not only to achieve the modeling but also to emphasize the **interpretability** of the modeling process through detailed extraction of components that constitute PRSS and REML, as well as validation of the parameters selected by PRSS (the basis dimension $k$) and REML (the smoothing parameter $\lambda$) through manual recalculation, 10-fold cross-validation (CV), and visualization of relevant plots. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, and refined by the author.*
 
@@ -32,8 +32,8 @@ The scripts should be used in the following sequence, corresponding to the flow 
 ## Descriptions of the Scripts
 | No | Script File                                      | Description                                                                                     |
 |------|--------------------------------------------------|-------------------------------------------------------------------------------------------------|
-| 1    | `Part-1-scRNAseq-Preprocessing-and-UMAP-Clusters.r` | Preprocesses scRNA-seq data (prostate cancer and benign samples). Includes QC steps: removing low-quality cells, regressing out cell cycle phase effects, and correcting batch effects. Performs UMAP clustering to identify cell populations. |
-| 2    | `Part-2-UMAP-Heatmap-and-SK-Matrix.r`           | Visualizes *TRPM4* and *KLK4* expression across UMAP clusters in prostate cancer and benign samples. Computes Spearman’s and Kendall’s correlation matrices and generates a heatmap to compare *TRPM4* against other relevant gene sets. |
+| 1    | `Part-1-scRNAseq-Preprocessing-and-UMAP-Clusters.r` | Preprocesses scRNA-seq data (PCa and non-Ca samples). Includes QC steps: removing low-quality cells, regressing out cell cycle phase effects, and correcting batch effects. Performs UMAP clustering to identify cell populations. |
+| 2    | `Part-2-UMAP-Heatmap-and-SK-Matrix.r`           | Visualizes *TRPM4* and *KLK4* expression across UMAP clusters in PCa and non-Ca samples. Computes Spearman’s and Kendall’s correlation matrices and generates a heatmap to compare *TRPM4* against other relevant gene sets. |
 | 3    | `Part-3.1-GAM-PRSS-REML-Setup.r`                | Sets up the Generalized Additive Model (GAM) with Restricted Maximum Likelihood (REML) and assesses model convergence. |
 | 4    | `Part-3.2-GAM-PRSS-REML-Analysis.r`             | Performs GAM analysis, extracts best-fitting models, and summarizes key statistics, including PRSS and REML convergence. |
 | 5    | `Part-3.3-REML-Extraction-and-Convergence.r`    | Extracts and analyzes detailed optimization data from REML processes for **interpretability**. Recalculates REML components manually to verify `mgcv`-computed scores. |
