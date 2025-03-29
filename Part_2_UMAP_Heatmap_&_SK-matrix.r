@@ -1,3 +1,7 @@
+#################################################
+# Part 2: UMAP, Heatmap and Spearman-Kendall matrix
+#################################################
+
 # =========================================
 # 1. TRPM4 UMAP plot
 # =========================================
@@ -35,9 +39,9 @@ for (marker in markers) {
 }
 
 
-# ==========================================================================
+# ======================================================
 # 2. Spearman's r and Kendall's tau Matrix between Different Clusters
-# ==========================================================================
+# ======================================================
 # Get average expression for clusters
 get_cluster_averages <- function(seurat_obj, clusters) {
     Idents(seurat_obj) <- "seurat_clusters"
@@ -97,9 +101,9 @@ write.csv(cor_matrix_spearman, "cluster_correlation_matrix_spearman.csv")
 write.csv(cor_matrix_kendall, "cluster_correlation_matrix_kendall.csv")
 
 
-# ==================================================================================================
+# ==============================================================================
 # 3. Spearman's r and Kendall's tau for TRPM4 in PCa Combined Clusters and Adjacent BP/Non-ca
-# ==================================================================================================
+# ==============================================================================
 # Calculate correlations of TRPM4 vs all genes
 calculate_correlations <- function(integrated_obj, original_obj, cluster_ids, gene_of_interest, output_file) {
     cluster_cells <- WhichCells(integrated_obj, idents = cluster_ids)  # Select cluster cells (integrated)
@@ -127,9 +131,9 @@ output_file_non_cancerous <- "TRPM4_Correlations_BPNonCa.xlsx"
 calculate_correlations(non_cancerous_results$seurat_obj, non_cancerous_seurat, 3, "TRPM4", output_file_non_cancerous)
 
 
-# ===================================================
+# =========================================
 # 4. Heatmap of TRPM4 vs Ribosomal and AR Genes
-# ===================================================
+# =========================================
 # Subset data (specific clusters for heatmap)
 heatmap_prostate_subset <- subset(prostate_results$seurat_obj, idents = c(6, 9, 11, 14, 19, 16))
 heatmap_noncancer_subset <- subset(non_cancerous_results$seurat_obj, idents = 3)
