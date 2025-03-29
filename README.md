@@ -19,7 +19,7 @@ The codes are designed not only to achieve the modeling but also to emphasize th
 The scripts are designed to be run sequentially, following the workflow of the main project/manuscript. Key goals include:
 - Preprocessing and clustering scRNA-seq data using UMAP.
 - Analyzing gene expressions (e.g., *TRPM4* and *KLK4*) and their associations with the relevant gene sets.
-- Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$ (manually set and the $\gamma$ parameter affects $\lambda$; the $\gamma$ is validated qualitatively through visualizations and quantitatively by 10-fold cross-validation).
+- Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$ (manually set and the $\gamma$ parameter affects $\lambda$; the $\gamma$ parameter is validated qualitatively through visualizations and quantitatively by 10-fold cross-validation).
 - Ensuring interpretability by validating and visualizing the modeling process.
 
 Key findings include robust modeling of _TRPM4_ expression with validated $k$, $\lambda$ and $\gamma$ parameters, alongside detailed interpretations of GAM, PRSS, and REML mechanisms. A manuscript is in preparation for submission to a Q1 journal, with example results to be shared here upon acceptance.
