@@ -1915,7 +1915,7 @@ cat("4. FINAL RECOMMENDED LAMBDA:", recommended_lambda, "\n")
 # HYW_5742_Tumor PCa AR (best k=10): 1.296793131, 2.306060523, 4.100819947, 7.292403676, 12.96793131
 # HYW_5755_Tumor PCa AR (best k=6): 1166.630911, 1621.028394, 2252.411649, 3129.715838, 4348.726056, 6042.535261, 8396.07552, 11666.30911
 
-# Notes: lambda values with one decimal points were synthetically added post-GAM fitting to assess if these higher lamda values return with more optimal results.
+# Notes: lambda values with one decimal points were synthetically added post-GAM fitting to assess if these higher lamda values may return with more optimal results.
 
 # -------------------------------------------------------------------------------------------
 # Specifies SVG dimensions for figures
