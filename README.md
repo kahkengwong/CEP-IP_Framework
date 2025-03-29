@@ -12,19 +12,17 @@ Author: Kah Keng Wong
 ---
 
 ## Overview
-Comprehensive analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the Seurat package, with subsequent modeling utilizing a generalized additive model (GAM) through the mgcv package. The GAM is implemented via thin-plate regression splines (TPRS) for smoothing, which are regularized by the penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
+Comprehensive analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. The GAM is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
 
-The codes are designed not only to achieve the modeling but also to emphasize the **interpretability** of the modeling process through detailed extraction of components that constitute PRSS and REML, as well as validation of the parameters selected by PRSS (the basis dimension $k$) and REML (the smoothing parameter $\lambda$) through manual recalculation, 10-fold cross-validation (CV), and visualization of relevant plots. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, and refined by the author.*
+This project investigates GAM’s touted interpretability using scRNA-seq’s continuous expression profiles, navigating the limits of its interpretability like mgcv’s intricate lambda optimization process (e.g., unexposed gradients, Hessians, and transformed REML formula) and absence of built-in k-fold CV for validation. By unpacking these—including retrieving and decoding mgcv’s source code—a foundation is established to tackle the limits of algorithm interpretability.
 
-The scripts are designed to be run sequentially, following the workflow of the main project/manuscript. Key goals include:
-- Preprocessing and clustering scRNA-seq data using UMAP.
-- Analyzing gene expressions (e.g., *TRPM4* and *KLK4*) and their associations with the relevant gene sets.
-- Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, and optimizing parameters $k$, $\lambda$, and $\gamma$ (the $\gamma$ parameter is manually set and it affects $\lambda$, validated qualitatively via visualizations and quantitatively by 10-fold CV).
-- Ensuring interpretability by validating and visualizing the modeling process.
+The scripts emphasize interpretability, extracting PRSS and REML components, validating parameters (*k*, $\lambda$, $\gamma$) through manual recalculation, 10-fold CV, and visualizations. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, refined by the author.* Key goals include:
+- Preprocessing and clustering scRNA-seq data with UMAP.
+- Analyzing gene expressions (e.g., *TRPM4*, *KLK4*) and their gene set associations.
+- Modeling *TRPM4* with GAMs, optimizing *k*, $\lambda$, and $\gamma$ (manually set, affecting $\lambda$, and validated qualitatively and quantitatively).
+- Ensuring interpretability through validation and visualization.
 
-Key findings include robust modeling of _TRPM4_ expression with validated $k$, $\lambda$, and $\gamma$ parameters, alongside detailed interpretations of GAM, PRSS, and REML mechanisms. A manuscript is in preparation for submission to a Q1 journal (target month of submission: April 2025), with example results to be shared here upon acceptance.
-
-This project investigates GAM’s touted interpretability using scRNA-seq’s continous expression profiles, navigating the limits of its interpretability like mgcv’s intricate lambda optimization process (e.g., unexposed gradients, Hessians, and transformed REML formula) and absence of built-in k-fold CV for validation. By unpacking these—including retrieving and decoding mgcv’s source code—a foundation is established to tackle less transparent methods such as deep learning, focusing on interpretability.
+Key findings include robust *TRPM4* modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights. A manuscript is in preparation for a Q1 journal (target: April 2025), with results shared here upon acceptance.
 
 ---
 
