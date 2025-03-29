@@ -22,7 +22,7 @@ The scripts are designed to be run sequentially, following the workflow of the m
 - Modeling of _TRPM4_ with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$.
 - Ensuring interpretability by validating and visualizing the modeling process.
 
-Key findings include robust modeling of _TRPM4_ expression with validated $k$ and $\lambda$ parameters, alongside detailed interpretations of GAM, PRSS, and REML mechanisms. A manuscript is in preparation for submission to a Q1 journal, with example results to be shared here upon acceptance.
+Key findings include robust modeling of _TRPM4_ expression with validated $k$, $\lambda$ and $\gamma$ parameters, alongside detailed interpretations of GAM, PRSS, and REML mechanisms. A manuscript is in preparation for submission to a Q1 journal, with example results to be shared here upon acceptance.
 
 ---
 
