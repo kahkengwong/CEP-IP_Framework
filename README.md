@@ -12,7 +12,19 @@ Author: Kah Keng Wong
 
 ---
 
-## ML Scripts
+## Overview
+Comprehensive analysis of an scRNA-seq dataset of prostate cancer and benign prostate samples using the Seurat package, with subsequent modeling utilizing a generalized additive model (GAM) through the mgcv package. The GAM is implemented via thin-plate regression splines (TPRS) for smoothing, which are regularized by the penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). The codes are designed not only to achieve the modeling but also to emphasize the **interpretability** of the modeling process through detailed extraction of components that constitute PRSS and REML, as well as validation of the parameters selected by PRSS ($k) and REML ($\lambda$) through manual recalculation, 10-fold cross-validation, and visualization of relevant plots.
+
+The scripts are designed to be run sequentially, following the workflow of the main project/manuscript. Key goals include:
+- Preprocessing and clustering scRNA-seq data using UMAP.
+- Analyzing gene expressions (e.g., *TRPM4* and *KLK4*) and their associations with the relevant gene sets.
+- Modeling of TRPM4 with the relevant gene sets by GAMs with PRSS and REML, optimizing parameters like $k$, $\lambda$, and $\gamma$.
+- Ensuring interpretability by validating and visualizing the modeling process.
+
+---
+
+## scRNA-seq Analysis and GAM-PRSS-REML Modeling Scripts
+The scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
 
 | Step | Script File                                      | Description                                                                                     |
 |------|--------------------------------------------------|-------------------------------------------------------------------------------------------------|
@@ -26,27 +38,15 @@ Author: Kah Keng Wong
 | 8    | `Part-3.6-Validation-of-k-and-Lambda-Selection.r` | Validates the selection of $k$ and $\lambda$ using the nested REML approach. Refits models with independent $k$ or $\lambda$ values (without wrapping REML in PRSS, as in the `analyze_sample` function) and performs 10-fold cross-validation (RMSE and RSS) to ensure reproducibility. |
 | 9    | `Part-3.7-Gamma-Consequences-on-GAM-Fitting.r`  | Assesses the impact of different $\gamma$ values on GAM fitting. Compares models with varying $\gamma$ to a reference model (default $\gamma$) using 10-fold cross-validation (RMSE). |
 
+---
 
+## License
+This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE) file in this repository.
 
+---
 
-Scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
-1. `Part_1_scRNAseq_preprocessing_&_UMAP_clusters.r` - Scripts to conduct scRNA-seq dataset preprocessing (prostate cancer and benign samples; QC steps such as removing of low-quality cells, regressing out cell cycle phases effects, batch effects correction) and UMAP clustering.
-   
-2. `Part_2_UMAP_Heatmap_&_SK-matrix.r` - scRNA-seq analysis by visualizing _TRPM4_ and _KLK4_ across different clusters in prostate cancer and benign samples; Calculates Sperman's and Kendall's correlation matrices; Generates heatmap to compare _TRPM4_ vs other relevant gene sets.
-   
-3. `Part_3.1_GAM_PRSS_REML_Setup.r` - Setup for generalized additive model (GAM) and restricted maximum likelihood (REML), and to assess model convergence.
-   
-4. `Part_3.2_GAM_PRSS_REML_Analysis.r` - GAM analysis codes, and to extract best-fitting models and the summary of the key statistics including PRSS and REML convergence.
-   
-5. `Part_3.3_REML_Extraction_&_Convergence.r` - Extracts and analyzes detailed optimization data REML processes with the aim for **interpretability**. This is achieved by extracting the values of each component of REML formula, and to manually recalculate the relevant scores, ensuring that they tally with mgcv-computed scores.
-    
-6. `Part_3.4_GAM-PRSS-REML_Plots_&_EDF_Analysis.r` - Visual plots to analyze GAM modeling of gene expression in prostate cancer and benign samples. To track optimization processes i.e., PRSS and REML, with the main aim for **interpretability** by tracking how each PRSS and REML reaches their selected $k$ and $\lambda$ values, respectively.
-    
-7. `Part_3.5_TPRS_Visualization_and_GAM_Components.r` - Visualization of TPRS and GAM components. This is also aimed at **interpretability** by understanding how each spline basis is initially constructed surrounding the knots, and how each spline is penalized by $\lambda$ and weighted by their coefficient, and how each of these regularized splines are combined to produce the smooth terms that ultimately combine with linear terms to produce the full GAM fit.
-    
-8. `Part_3.6_Validation_of_k_&_Lambda_Selection.r` - Validates the selection of key parameters ($k$ and $\lambda$) by the nested REML approach. Validation is conducted by refitting using $k$ or $\lambda$ values independently (without wrapping REML within PRSS as conducted in `analyze_sample` function), and also by 10-fold cross-validation (RMSE and RSS), ensuring the initial approach adopted by `analyze_sample` function is reproducible. 
-
-9. `Part_3.7_Gamma_Consequences_on_GAM_Fitting.r` - This block of codes aims to assess how different $\gamma$ values affect the fit of GAMs. The GAM fitting is conducted using different $\gamma$ values, compares them to the reference model that adopts the default $\gamma$ value, and to evaluate their performance via 10-fold cross-validation (RMSE). 
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.
 
 ---
 
