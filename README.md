@@ -81,6 +81,6 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 ---
 
 ## Contact
-For further information or questions, please email [kahkeng@usm.my](mailto:kahkeng@usm.my)
+For further information or questions, please email [kahkeng@usm.my](mailto:kahkeng@usm.my) or [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
 
 ---
