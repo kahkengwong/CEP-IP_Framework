@@ -12,7 +12,7 @@ Author: Kah Keng Wong
 ---
 
 ## Overview
-Comprehensive analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. The GAM is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
+Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. The GAM is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
 
 This project investigates GAM’s touted interpretability using scRNA-seq’s continuous expression profiles, navigating the limits of its interpretability like mgcv’s intricate lambda optimization process (e.g., unexposed gradients, Hessians, and transformed REML formula) and absence of built-in k-fold CV for validation. By unpacking these—including retrieving and decoding mgcv’s source code—a foundation is established to tackle the limits of the algorithm's interpretability, and with insights transferable to unraveling less interpretable models like neural networks with splines or additive structures.
 
@@ -22,7 +22,7 @@ The scripts include extraction and visualization of PRSS and REML components, an
 - Modeling *TRPM4* with GAMs, optimizing *k*, $\lambda$, and $\gamma$ (manually set, affecting $\lambda$, and validated qualitatively and quantitatively).
 - Ensuring interpretability through validation and visualization.
 
-Key findings include robust *TRPM4* modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights. A manuscript is in preparation for a Q1 journal (target: April 2025), with results shared here upon acceptance.
+Key findings include *TRPM4* modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights. A manuscript is in preparation for a Q1 journal (target: April 2025), with results shared here upon acceptance.
 
 ---
 
