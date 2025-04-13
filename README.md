@@ -1,5 +1,5 @@
 # GAM_PRSS_REML_Project
-GAM with PRSS and REML in scRNA-seq PCa dataset; GAM-PRSS-REML tracking for interpretability.
+GAM, PRSS & REML in scRNA-seq dataset; Tracking for interpretability.
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
 
