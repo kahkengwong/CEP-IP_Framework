@@ -1,5 +1,5 @@
 # GAM_PRSS_REML_Project
-GAM, PRSS & REML in scRNA-seq dataset; Tracking for interpretability.
+GAM, PRSS, and REML in scRNA-seq prostate cancer and benign cases dataset; GAM, PRSS, and REML tracking for interpretability.
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
 
