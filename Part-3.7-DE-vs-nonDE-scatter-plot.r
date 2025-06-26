@@ -8,10 +8,10 @@ library(tibble)
 create_sample_scatter_plot <- function(current_sample) {
   cat("\nCreating scatter plot for sample:", current_sample, "\n")
   
-  # Get PCa cells using the correct method (reuse your existing code)
-  pca_clusters <- c(6, 9, 11, 14, 19)  # PCa cluster IDs
+  # Get PCa cells
+  pca_clusters <- c(6, 9, 11, 14, 19) 
   
-  # Correctly identify cluster cells and sample cells
+  # Identify cluster cells and sample cells
   cluster_cells <- WhichCells(prostate_results$seurat_obj, idents = pca_clusters)
   sample_cells <- WhichCells(prostate_results$seurat_obj, 
                              cells = grep(current_sample, colnames(prostate_results$seurat_obj), value = TRUE))
@@ -84,8 +84,8 @@ create_sample_scatter_plot <- function(current_sample) {
   # Sort the data frame by the draw order
   plot_data <- plot_data[order(plot_data$draw_order), ]
   
-  # Get the GAM model from your existing analysis
-  gam_model <- sample_gam_model  # This should be your existing GAM model from the analysis
+  # Get the GAM model from existing analysis
+  gam_model <- sample_gam_model
   
   # Create prediction data for the GAM line
   pred_data <- data.frame(TRPM4 = seq(min(plot_data$TRPM4), max(plot_data$TRPM4), length.out = 1000))
@@ -102,17 +102,17 @@ create_sample_scatter_plot <- function(current_sample) {
     geom_point(data = plot_data, 
                aes(x = TRPM4, y = Expression, color = Group),
                size = 1.8, alpha = 0.3) +
-    # Add the GAM line with black color
+    # Add the GAM line
     geom_line(data = pred_data,
               aes(x = TRPM4, y = fit),
               color = "#FFCC99",  # Orange
               size = 1.2) +
-    # Add confidence interval ribbon with black color
+    # Add confidence interval ribbon
     geom_ribbon(data = pred_data,
                 aes(x = TRPM4, 
                     ymin = fit - 1.96 * se.fit, 
                     ymax = fit + 1.96 * se.fit),
-                fill = "#FFCC99",  # Black color with transparency
+                fill = "#FFCC99", 
                 alpha = 0.2) +
     # Set colors for the groups
     scale_color_manual(values = c("Dev explained" = "#4B0082",  # Purple
@@ -122,7 +122,7 @@ create_sample_scatter_plot <- function(current_sample) {
     theme(
       panel.grid.major = element_line(color = "#EEEEEE"),
       panel.grid.minor = element_line(color = "#F5F5F5"),
-      legend.position = "none",  # Remove legend as requested
+      legend.position = "none", 
       plot.title = element_text(size = 11, face = "bold", hjust = 0.5),
       plot.subtitle = element_text(size = 10, hjust = 0.5),
       axis.title = element_text(size = 9),
@@ -131,7 +131,7 @@ create_sample_scatter_plot <- function(current_sample) {
       panel.border = element_rect(color = "black", fill = NA, size = 0.5),
       axis.line = element_blank()
     ) +
-    # Set title and axis labels with sample name and dev explained percentage
+    # Set title and axis labels with sample name and dev_explained percentage
     labs(
       title = paste("TRPM4 vs Ribo Expression (", current_sample, ")", sep = ""),
       subtitle = paste("Dev explained: ", dev_explained_percentage, "%", sep = ""),
