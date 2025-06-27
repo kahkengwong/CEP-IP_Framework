@@ -1,5 +1,5 @@
 ##################################################
-# Part 3.1: GAM-PRSS-REML Setup 
+# Part 3.2: GAM-PRSS-REML Setup 
 ##################################################
 set.seed(123)  # Set a global seed for reproducibility
 
