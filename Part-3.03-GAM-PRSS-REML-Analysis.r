@@ -1,5 +1,5 @@
 ###########################################################
-# Part 3.3: GAM-PRSS-REML Analysis and Results Export
+# Part 3.03: GAM-PRSS-REML Analysis and Results Export
 ###########################################################
 # Analyze all gene sets for a given sample
 analyze_multiple_gene_sets <- function(integrated_obj, original_obj, cluster_ids, gene_sets, sample) {
