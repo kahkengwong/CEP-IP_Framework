@@ -1,6 +1,6 @@
-########################################
-# Building TPRS's Phi Visualization
-########################################
+################################################
+# Part 3.8: Building TPRS's Phi Visualization
+################################################
 # Define sample to be investigated
 sample_data <- pca_results[["HYW_4881_Tumor"]][["Ribo"]]$gam_data
 
