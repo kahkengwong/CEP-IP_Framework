@@ -1,6 +1,7 @@
-#########################################################################################################################################
-# Part 3.10: Bidirectional Expansion for Inflection Detection (BEID) with asymmetric expansion and stabilized localized density weighting
-#########################################################################################################################################
+########################################################################
+# Part 3.10: Bidirectional Expansion for Inflection Detection (BEID) 
+# with asymmetric expansion and stabilized localized density weighting
+########################################################################
 # BEID function
 relative_concentration_inflection <- function(current_sample) {
     cat("\n=== Relative Concentration Inflection Analysis for", current_sample, "===\n")
