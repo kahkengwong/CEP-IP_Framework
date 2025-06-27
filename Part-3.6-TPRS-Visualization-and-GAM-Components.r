@@ -1,5 +1,5 @@
 #############################################################
-# Part 3.5: TPRS Visualization and GAM Components Analysis
+# Part 3.6: TPRS Visualization and GAM Components Analysis
 ##############################################################
 
 # =========================================
