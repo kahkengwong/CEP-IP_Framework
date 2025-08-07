@@ -1,6 +1,6 @@
-###############################################################################
+####################################################################################################
 # Part 3.13: Monocle3 Trajectory Visualization for DE and non-DE Cells, and Quantitative Analysis
-###############################################################################
+####################################################################################################
 # Load libraries
 library(monocle3)
 library(Seurat)
@@ -277,9 +277,9 @@ for (sample_name in tumor_samples) {
 cat("\nCompleted generating Monocle3 trajectory plots for all samples.\n")
 
 
-#############################################################
-# Quantitative Analysis of DE or non-DE Cell Type in Monocle3 Trajectories 
-#############################################################
+#######################################################################################
+# Quantitative Analysis of Pre-IP and Post-IP DE Cells in Monocle3 Trajectories 
+#######################################################################################
 # Load additional required libraries
 library(ggridges)
 library(openxlsx)
@@ -691,5 +691,6 @@ process_all_samples_clustering <- function(all_trajectories, output_file = "mono
 # Run the clustering analysis for all samples
 cat("\n\nStarting clustering analysis for all samples...\n")
 clustering_analysis_results <- process_all_samples_clustering(all_trajectories)
+
 
 cat("\nClustering analysis completed!\n")
