@@ -1,9 +1,9 @@
 #############################################################
-# Part 3.05: GAM-PRSS-REML Plots and EDF Analysis
+# Part 3.05: GAM-REML-PRSS Plots and EDF Analysis
 ##############################################################
 
 # =========================================
-# 1. PRSS and REML Iterations Plots 
+# 1. REML and PRSS Iterations Plots 
 # =========================================
 # Load required libraries for visualization and data processing
 library(ggplot2)
@@ -102,7 +102,7 @@ reml_optimization_visualization <- function(data, prss_iteration, sample_id = NU
     return(p)
 }
 
-# Generate all PRSS and REML visualizations for PCa and non-Ca data
+# Generate all REML and PRSS visualizations for PCa and non-Ca data
 generate_visualizations <- function(pca_file, nonca_file, output_prefix = "gam_optimization") {
     # Prepare data for PCa and non-Ca samples
     pca_data <- prepare_data(pca_file)
@@ -176,7 +176,7 @@ generate_visualizations <- function(pca_file, nonca_file, output_prefix = "gam_o
         print(prss_line)
         print(reml_plot)
         
-        # Combine PRSS and REML plots for display
+        # Combine REML and PRSS plots for display
         grid.arrange(
             prss_line, 
             reml_plot,
@@ -239,7 +239,7 @@ generate_visualizations <- function(pca_file, nonca_file, output_prefix = "gam_o
         print(prss_line)
         print(reml_plot)
         
-        # Combine PRSS and REML plots for display
+        # Combine REML and PRSS plots for display
         grid.arrange(
             prss_line, 
             reml_plot,
@@ -302,13 +302,13 @@ generate_and_save_visualizations <- function(pca_file, nonca_file, output_dir = 
         # Save REML plot
         save_plot_to_files(plot_group$reml_plot, reml_base_filename)
         
-        # Save combined PRSS and REML plot as PDF
+        # Save combined REML and PRSS plot as PDF
         pdf(paste0(combined_base_filename, ".pdf"), width = 8, height = 10)
         grid.arrange(plot_group$prss_plot, plot_group$reml_plot, ncol = 1)
         dev.off()
         cat("Saved combined plot to PDF:", paste0(combined_base_filename, ".pdf"), "\n")
         
-        # Save combined PRSS and REML plot as JPG
+        # Save combined REML and PRSS plot as JPG
         jpeg(paste0(combined_base_filename, ".jpg"), width = 8 * 100, height = 10 * 100, res = 300, quality = 90)
         grid.arrange(plot_group$prss_plot, plot_group$reml_plot, ncol = 1)
         dev.off()
@@ -331,13 +331,13 @@ generate_and_save_visualizations <- function(pca_file, nonca_file, output_dir = 
         # Save REML plot
         save_plot_to_files(plot_group$reml_plot, reml_base_filename)
         
-        # Save combined PRSS and REML plot as PDF
+        # Save combined REML and PRSS plot as PDF
         pdf(paste0(combined_base_filename, ".pdf"), width = 8, height = 10)
         grid.arrange(plot_group$prss_plot, plot_group$reml_plot, ncol = 1)
         dev.off()
         cat("Saved combined plot to PDF:", paste0(combined_base_filename, ".pdf"), "\n")
         
-        # Save combined PRSS and REML plot as JPG
+        # Save combined REML and PRSS plot as JPG
         jpeg(paste0(combined_base_filename, ".jpg"), width = 8 * 100, height = 10 * 100, res = 300, quality = 90)
         grid.arrange(plot_group$prss_plot, plot_group$reml_plot, ncol = 1)
         dev.off()
@@ -422,7 +422,7 @@ plot_lambda_values <- function(lambda_file, output_dir = "output_plots") {
     return(all_plots)
 }
 
-# Note export dimensions for PRSS and REML plots in SVG format
+# Note export dimensions for REML and PRSS plots in SVG format
 # Export PRSS plot as SVG at dimension 385 (width) x 310 (height)
 # Export REML plot as SVG at dimension 365 (width) x 310 (height)
 
@@ -871,3 +871,4 @@ cat("Average basis functions:", mean(non_ca_detailed$Total_Basis_Functions, na.r
 cat("Average non-zero basis functions:", mean(non_ca_detailed$Nonzero_Basis_Functions, na.rm=TRUE), "\n")
 cat("Percentage of significantly non-linear relationships:", 
     sum(non_ca_detailed$Is_Significantly_Nonlinear, na.rm=TRUE) / nrow(non_ca_detailed) * 100, "%\n")
+
