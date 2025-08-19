@@ -13,19 +13,7 @@ validate_gene_set_simple <- function(sample_name, gene_set_name, genes, analysis
     cat("\n", rep("=", 80), "\n")
     
     # Extract expression data based on analysis type
-    if(analysis_type == "IBP") {
-        # Extract cluster 16 cells from PCa samples using prostate objects
-        sample_cells <- WhichCells(prostate_results$seurat_obj, 
-                                   cells = grep(sample_name, colnames(prostate_results$seurat_obj), value = TRUE))
-        # Filter for cluster 16 cells
-        cluster_info <- prostate_results$seurat_obj@meta.data[sample_cells, "seurat_clusters"]
-        cluster_16_cells <- sample_cells[cluster_info == 16]
-        analysis_cells <- cluster_16_cells
-        
-        # Use prostate_ca_seurat for gene expression data
-        seurat_obj <- prostate_ca_seurat
-        
-    } else if(analysis_type == "BP") {
+    if(analysis_type == "BP") {
         # Extract cluster 3 cells from NonCa samples using non_cancerous objects
         sample_cells <- WhichCells(non_cancerous_results$seurat_obj, 
                                    cells = grep(sample_name, colnames(non_cancerous_results$seurat_obj), value = TRUE))
@@ -149,7 +137,7 @@ validate_gene_set_simple <- function(sample_name, gene_set_name, genes, analysis
 # Function to run validation across all samples and gene sets
 validate_all_samples_simple <- function() {
     cat("\n", rep("=", 100), "\n")
-    cat("RUNNING GENE SET RELIABILITY ANALYSIS ACROSS TUMORS, IBP, AND BP")
+    cat("RUNNING GENE SET RELIABILITY ANALYSIS FOR RIBO AND AR")
     cat("\n", rep("=", 100), "\n")
     
     # Define sample groups
@@ -157,28 +145,19 @@ validate_all_samples_simple <- function() {
                        "HYW_4881_Tumor", "HYW_5386_Tumor", "HYW_5742_Tumor", 
                        "HYW_5755_Tumor")
     
-    pca_samples <- c("HYW_4701_Tumor", "HYW_4847_Tumor", "HYW_4880_Tumor", 
-                     "HYW_4881_Tumor", "HYW_5386_Tumor", "HYW_5742_Tumor", 
-                     "HYW_5755_Tumor")
-    
     non_ca_samples <- c("HYW_4701_Benign", "HYW_4847_Benign", "HYW_4880_Benign", 
                         "HYW_4881_Benign", "HYW_5386_Benign", "HYW_5742_Benign", 
                         "HYW_5755_Benign")
     
-    # Define gene sets
+    # Define gene sets - Only Ribo and AR
     gene_sets <- list(
         Ribo = c("RPL10", "RPL27", "RPL28", "RPS2", "RPS8", "RPS12", "RPS26"),
-        AR = c("KLK4", "KLK2", "KLK3", "PDLIM5", "ABHD2", "ALDH1A3", "SORD"),
-        PI3K_AKT = c("PIK3CA", "AKT1", "PTEN", "MTOR", "TSC2", "FOXO3", "GSK3B"),
-        mTOR = c("MTOR", "RPTOR", "RICTOR", "MLST8", "AKT1S1", "DEPTOR", "PRR5"),
-        GSK3B = c("GSK3B", "CTNNB1", "AXIN1", "CSNK1A1", "APC", "FZD1", "LRP6"),
-        NFKB = c("NFKB1", "RELA", "TNFAIP3", "NFKBIA", "IKBKB", "TRAF6", "NFKB2"),
-        WNT = c("CTNNB1", "APC", "AXIN1", "GSK3B", "LEF1", "TCF7", "FZD1")
+        AR = c("KLK4", "KLK2", "KLK3", "PDLIM5", "ABHD2", "ALDH1A3", "SORD")
     )
     
     all_validation_results <- list()
     
-    # 1. Run analysis for tumor samples (original analysis)
+    # 1. Run analysis for tumor samples
     cat("\n=== ANALYZING TUMOR SAMPLES ===\n")
     for(gene_set_name in names(gene_sets)) {
         for(sample_name in tumor_samples) {
@@ -195,24 +174,7 @@ validate_all_samples_simple <- function() {
         }
     }
     
-    # 2. Run analysis for IBP (cluster 16 in PCa samples)
-    cat("\n=== ANALYZING IBP (CLUSTER 16 IN PCA SAMPLES) ===\n")
-    for(gene_set_name in names(gene_sets)) {
-        for(sample_name in pca_samples) {
-            tryCatch({
-                validation_result <- validate_gene_set_simple(sample_name, gene_set_name, gene_sets[[gene_set_name]], "IBP")
-                if(!is.null(validation_result)) {
-                    result_key <- paste("IBP", gene_set_name, sample_name, sep = "_")
-                    all_validation_results[[result_key]] <- validation_result
-                    cat("Completed IBP validation for:", gene_set_name, "-", sample_name, "\n")
-                }
-            }, error = function(e) {
-                cat("Error in IBP validation for", gene_set_name, "-", sample_name, ":", conditionMessage(e), "\n")
-            })
-        }
-    }
-    
-    # 3. Run analysis for BP (cluster 3 in NonCa samples)
+    # 2. Run analysis for BP (cluster 3 in NonCa samples)
     cat("\n=== ANALYZING BP (CLUSTER 3 IN NONCA SAMPLES) ===\n")
     for(gene_set_name in names(gene_sets)) {
         for(sample_name in non_ca_samples) {
@@ -353,15 +315,12 @@ validate_all_samples_simple <- function() {
     
     sample_overview <- data.frame(
         Analysis_Type = c(rep("Tumor", length(tumor_samples)), 
-                          rep("IBP", length(pca_samples)), 
-                          rep("BP", length(non_ca_samples))),
-        Sample = c(tumor_samples, pca_samples, non_ca_samples),
+                         rep("BP", length(non_ca_samples))),
+        Sample = c(tumor_samples, non_ca_samples),
         Description = c(rep("Tumor samples (all cells)", length(tumor_samples)),
-                        rep("PCa samples - Cluster 16 (IBP)", length(pca_samples)),
-                        rep("NonCa samples - Cluster 3 (BP)", length(non_ca_samples))),
+                       rep("NonCa samples - Cluster 3 (BP)", length(non_ca_samples))),
         Seurat_Object_Used = c(rep("prostate_ca_seurat", length(tumor_samples)),
-                               rep("prostate_ca_seurat", length(pca_samples)),
-                               rep("non_cancerous_seurat", length(non_ca_samples))),
+                              rep("non_cancerous_seurat", length(non_ca_samples))),
         stringsAsFactors = FALSE
     )
     
@@ -375,14 +334,14 @@ validate_all_samples_simple <- function() {
     setColWidths(wb, "Sample_Overview", cols = 1:ncol(sample_overview), widths = c(15, 20, 40, 25))
     
     # Save Excel file
-    excel_filename <- "Gene_Set_Reliability_Analysis_Complete.xlsx"
+    excel_filename <- "Gene_Set_Reliability_Analysis_Ribo_AR.xlsx"
     saveWorkbook(wb, excel_filename, overwrite = TRUE)
     cat("\nAll results exported to:", excel_filename, "\n")
     
     cat("\nExcel file contains 5 sheets:\n")
-    cat("1. Summary: Main results table with all analysis types\n")
+    cat("1. Summary: Main results table for Tumor and BP analysis types\n")
     cat("2. Descriptive_Stats: Gene-level descriptive statistics\n") 
-    cat("3. Gene_Set_Overview: List of genes in each set\n")
+    cat("3. Gene_Set_Overview: List of genes in Ribo and AR sets\n")
     cat("4. Analysis_Summary: Summary statistics by analysis type and gene set\n")
     cat("5. Sample_Overview: Description of analysis types, samples, and Seurat objects used\n")
     
@@ -395,7 +354,6 @@ validate_all_samples_simple <- function() {
     
     cat("\nTotal analyses performed:", nrow(summary_df), "\n")
     cat("  Tumor analyses:", sum(summary_df$Analysis_Type == "Tumor"), "\n")
-    cat("  IBP analyses:", sum(summary_df$Analysis_Type == "IBP"), "\n")
     cat("  BP analyses:", sum(summary_df$Analysis_Type == "BP"), "\n")
     
     return(list(
@@ -414,11 +372,12 @@ if(!require(dplyr)) {
 }
 
 # Usage instructions
-cat("\nComprehensive gene set reliability analysis code is ready!")
-cat("\nAnalyzes: Tumor samples, IBP (cluster 16 in PCa), BP (cluster 3 in NonCa)")
+cat("\nGene set reliability analysis for Ribo and AR is ready!")
+cat("\nAnalyzes: Tumor samples and BP (cluster 3 in NonCa samples)")
 cat("\nUse: validation_results <- validate_all_samples_simple()")
 cat("\n\nConsolidated Score = Average of (Cronbach's α + McDonald's ω + KMO)")
 
 # Run complete analysis
 validation_results <- validate_all_samples_simple()
+
 
