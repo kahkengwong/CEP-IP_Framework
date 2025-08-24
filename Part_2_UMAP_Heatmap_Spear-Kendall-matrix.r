@@ -176,7 +176,7 @@ expression_matrix_scaled <- t(apply(expression_matrix_log, 1, scale_to_zscore))
 
 # Prepare heatmap annotations (cluster labels with counts)
 n_groups <- length(levels(heatmap_grouping))
-group_colors <- viridis(n_groups, option = "magma"); names(group_colors) <- levels(heatmap_grouping)
+group_colors <- viridis(n_groups, option = "mako"); names(group_colors) <- levels(heatmap_grouping)
 cell_counts <- table(heatmap_grouping); cell_percentages <- round(prop.table(cell_counts) * 100, 1)
 group_labels <- paste0(names(cell_counts), "\n", cell_counts, "\n(", cell_percentages, "%)")
 column_annotation <- HeatmapAnnotation(Cluster = anno_block(gp = gpar(fill = group_colors), labels = group_labels,
@@ -195,3 +195,4 @@ pdf("TRPM4_heatmap.pdf", width = 12, height = 8)
 draw(heatmap)
 dev.off()
 draw(heatmap)
+
