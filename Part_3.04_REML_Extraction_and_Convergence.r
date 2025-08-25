@@ -333,7 +333,6 @@ extract_reml_components_simple <- function(model) {
     if (is.null(model)) {
         return(list(
             final_reml_score = NA_real_,
-            manual_reml_adjusted = NA_real_,
             scale = NA_real_,
             rss = NA_real_,
             edf = NA_real_,
@@ -350,9 +349,6 @@ extract_reml_components_simple <- function(model) {
         n <- nrow(model$model)
         edf <- sum(model$edf)
         rss <- sum(model$residuals^2)
-        
-        # Since we've constructed it to match exactly, adjusted equals the original
-        manual_reml_adjusted <- final_reml_score
         
         # Get model information
         lambda_str <- if (!is.null(model$sp)) {
@@ -376,7 +372,6 @@ extract_reml_components_simple <- function(model) {
         # Return all components
         list(
             final_reml_score = final_reml_score,
-            manual_reml_adjusted = manual_reml_adjusted,
             scale = scale,
             rss = rss,
             edf = edf,
@@ -388,7 +383,6 @@ extract_reml_components_simple <- function(model) {
         cat("Error in extract_reml_components_simple:", conditionMessage(e), "\n")
         list(
             final_reml_score = NA_real_,
-            manual_reml_adjusted = NA_real_,
             scale = NA_real_,
             rss = NA_real_,
             edf = NA_real_,
@@ -409,7 +403,6 @@ process_reml_components_simple <- function(results_list, group_name) {
         Final_REML_Score = numeric(),
         Scale = numeric(),
         RSS = numeric(),
-        Manual_REML_Adjusted = numeric(),
         EDF = numeric(),
         Lambda = character(),
         Gamma = numeric(),
@@ -448,7 +441,6 @@ process_reml_components_simple <- function(results_list, group_name) {
                 Final_REML_Score = reml_components$final_reml_score,
                 Scale = reml_components$scale,
                 RSS = reml_components$rss,
-                Manual_REML_Adjusted = reml_components$manual_reml_adjusted,
                 EDF = reml_components$edf,
                 Lambda = reml_components$lambda,
                 Gamma = reml_components$gamma,
@@ -464,115 +456,6 @@ process_reml_components_simple <- function(results_list, group_name) {
     return(result_df)
 }
 
-# Function to analyze discrepancies between adjusted manual and final REML scores
-analyze_reml_discrepancies <- function(reml_df) {
-    if (nrow(reml_df) == 0) {
-        return(reml_df)  # Return empty dataframe if no data
-    }
-    
-    # Calculate percentage differences (with safeguards)
-    reml_df$Adjusted_Percent_Diff <- ifelse(
-        !is.na(reml_df$Manual_REML_Adjusted) & !is.na(reml_df$Final_REML_Score),
-        100 * abs(reml_df$Manual_REML_Adjusted - reml_df$Final_REML_Score) / 
-            ifelse(abs(reml_df$Final_REML_Score) > 1e-10, abs(reml_df$Final_REML_Score), 1),
-        NA_real_
-    )
-    
-    # Create a summary analysis (safely)
-    analysis_df <- data.frame(
-        Sample = "Analysis",
-        Group = "Summary",
-        Gene_Set = "Discrepancy Analysis",
-        Final_REML_Score = mean(reml_df$Final_REML_Score, na.rm=TRUE),
-        Scale = mean(reml_df$Scale, na.rm=TRUE),
-        RSS = mean(reml_df$RSS, na.rm=TRUE),
-        Manual_REML_Adjusted = mean(reml_df$Manual_REML_Adjusted, na.rm=TRUE),
-        EDF = mean(reml_df$EDF, na.rm=TRUE),
-        Lambda = NA_character_,
-        Gamma = mean(reml_df$Gamma, na.rm=TRUE),
-        Model_Formula = NA_character_,
-        Adjusted_Percent_Diff = mean(reml_df$Adjusted_Percent_Diff, na.rm=TRUE)
-    )
-    
-    # Only proceed if we have valid data for the analysis
-    if (sum(!is.na(reml_df$Adjusted_Percent_Diff)) > 0) {
-        # Find models with min and max differences (safely)
-        min_idx <- which.min(reml_df$Adjusted_Percent_Diff)
-        max_idx <- which.max(reml_df$Adjusted_Percent_Diff)
-        
-        # Add rows for min/max/median differences
-        min_diff <- data.frame(
-            Sample = "Analysis",
-            Group = "Min Difference",
-            Gene_Set = if (length(min_idx) > 0) as.character(reml_df$Gene_Set[min_idx[1]]) else "None",
-            Final_REML_Score = NA_real_,
-            Scale = NA_real_,
-            RSS = NA_real_,
-            Manual_REML_Adjusted = NA_real_,
-            EDF = NA_real_,
-            Lambda = NA_character_,
-            Gamma = NA_real_,
-            Model_Formula = NA_character_,
-            Adjusted_Percent_Diff = if (length(min_idx) > 0) reml_df$Adjusted_Percent_Diff[min_idx[1]] else NA_real_
-        )
-        
-        max_diff <- data.frame(
-            Sample = "Analysis",
-            Group = "Max Difference",
-            Gene_Set = if (length(max_idx) > 0) as.character(reml_df$Gene_Set[max_idx[1]]) else "None",
-            Final_REML_Score = NA_real_,
-            Scale = NA_real_,
-            RSS = NA_real_,
-            Manual_REML_Adjusted = NA_real_,
-            EDF = NA_real_,
-            Lambda = NA_character_,
-            Gamma = NA_real_,
-            Model_Formula = NA_character_,
-            Adjusted_Percent_Diff = NA_real_
-        )
-        
-        median_diff <- data.frame(
-            Sample = "Analysis",
-            Group = "Median Difference",
-            Gene_Set = "All Models",
-            Final_REML_Score = NA_real_,
-            Scale = NA_real_,
-            RSS = NA_real_,
-            Manual_REML_Adjusted = NA_real_,
-            EDF = NA_real_,
-            Lambda = NA_character_,
-            Gamma = NA_real_,
-            Model_Formula = NA_character_,
-            Adjusted_Percent_Diff = median(reml_df$Adjusted_Percent_Diff, na.rm=TRUE)
-        )
-        
-        # Add explanation of differences
-        explanation <- data.frame(
-            Sample = "Analysis",
-            Group = "Explanation",
-            Gene_Set = paste(
-                "Using simplified REML calculation that",
-                "avoids matrix errors."
-            ),
-            Final_REML_Score = NA_real_,
-            Scale = NA_real_,
-            RSS = NA_real_,
-            Manual_REML_Adjusted = NA_real_,
-            EDF = NA_real_,
-            Lambda = NA_character_,
-            Gamma = NA_real_,
-            Model_Formula = NA_character_,
-            Adjusted_Percent_Diff = NA_real_
-        )
-        
-        # Combine with the original data
-        return(rbind(reml_df, analysis_df, min_diff, max_diff, median_diff, explanation))
-    } else {
-        # Just add the analysis row if we don't have valid percent differences
-        return(rbind(reml_df, analysis_df))
-    }
-}
-
 # Process REML components for PCa and Non-Ca models using simplified approach
 cat("Processing REML components for PCa models (simplified method)...\n")
 pca_reml_components <- process_reml_components_simple(pca_results, "PCa")
@@ -586,9 +469,6 @@ cat("Non-Ca components processing complete.\n")
 all_reml_components <- rbind(pca_reml_components, non_ca_reml_components)
 cat("Combined components data dimensions:", dim(all_reml_components), "\n")
 
-# Add analysis of discrepancies
-all_reml_components <- analyze_reml_discrepancies(all_reml_components)
-
 # Add a row explaining the formula
 formula_explanation <- data.frame(
     Sample = "Formula",
@@ -597,12 +477,10 @@ formula_explanation <- data.frame(
     Final_REML_Score = NA_real_,
     Scale = NA_real_,
     RSS = NA_real_,
-    Manual_REML_Adjusted = NA_real_,
     EDF = NA_real_,
     Lambda = NA_character_,
     Gamma = NA_real_,
     Model_Formula = NA_character_,
-    Adjusted_Percent_Diff = NA_real_,
     stringsAsFactors = FALSE
 )
 
@@ -610,11 +488,9 @@ formula_explanation <- data.frame(
 formula_explanation$Final_REML_Score <- "From model"
 formula_explanation$Scale <- "Scale parameter"
 formula_explanation$RSS <- "Sum of squared residuals"
-formula_explanation$Manual_REML_Adjusted <- "Proportionally adjusted manual"
 formula_explanation$EDF <- "Effective DF"
 formula_explanation$Lambda <- "Smoothing parameter"
 formula_explanation$Gamma <- "Gamma parameter"
-formula_explanation$Adjusted_Percent_Diff <- "% diff after adjustment"
 
 # Add a formula row
 formula_row <- formula_explanation
@@ -630,11 +506,6 @@ note_row$Gene_Set <- paste(
     "The simplified approach shown here avoids matrix calculation errors",
     "in the original implementation."
 )
-
-# Make sure we have all these columns
-if (!"Adjusted_Percent_Diff" %in% colnames(all_reml_components)) {
-    all_reml_components$Adjusted_Percent_Diff <- NA_real_
-}
 
 # Combine with explanations
 all_reml_components <- rbind(all_reml_components, formula_explanation, formula_row, note_row)
@@ -1050,9 +921,9 @@ add_optimization_explanation <- function(details_df) {
   # Column descriptions
   col_descriptions <- list(
     iteration = "Sequential number of the REML optimization step",
-    lambda_value = "Primary smoothing parameter (Î») for smooth terms",
+    lambda_value = "Primary smoothing parameter (ÃŽÂ») for smooth terms",
     lambda_value2 = "Secondary smoothing parameter for parametric terms",
-    gradient = "Gradient of REML score with respect to log(Î»)",
+    gradient = "Gradient of REML score with respect to log(ÃŽÂ»)",
     hessian = "Second derivative matrix of REML score",
     reml_score = "REML score at each iteration (lower is better)",
     lambda_note = "Notes about lambda value source or calculation",
@@ -1072,9 +943,9 @@ add_optimization_explanation <- function(details_df) {
   
   # Technical notes
   tech_notes <- list(
-    optimization = "REML optimization minimizes the REML score by adjusting the smoothing parameters (Î»)",
-    lambda = "Î» values typically start small (undersmoothed) and increase during optimization",
-    lambda2 = "For models with multiple penalties, the second Î» often controls parametric terms",
+    optimization = "REML optimization minimizes the REML score by adjusting the smoothing parameters (ÃŽÂ»)",
+    lambda = "ÃŽÂ» values typically start small (undersmoothed) and increase during optimization",
+    lambda2 = "For models with multiple penalties, the second ÃŽÂ» often controls parametric terms",
     gradient = "Small gradient values indicate approach to optimum (convergence)",
     hessian = "Hessian matrix shows optimization curvature; computed primarily at the final step",
     convergence = "Convergence is achieved when gradient approaches zero and REML score stabilizes",
@@ -1457,4 +1328,3 @@ all_convergence <- rbind(pca_convergence, non_ca_convergence)
 # Export the convergence details
 write_xlsx(list(Convergence_Details = all_convergence), 
            path = "Ribo_AR_Convergence_Details_g1.5-all-lin.xlsx")
-
