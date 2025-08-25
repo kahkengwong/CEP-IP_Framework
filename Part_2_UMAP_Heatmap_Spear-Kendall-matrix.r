@@ -5,8 +5,8 @@
 # =========================================
 # 1. TRPM4 UMAP plot
 # =========================================
-# Load the RData
-load("Dt2_scRNAseq_workspace_vRibo_v2.RData")
+# Load the RData available from HuggingFace: https://huggingface.co/datasets/kahkengwong/GAM_REML_PRSS_Project/tree/main
+load("GSE185344_Seurat_processed.RData") # Filesize 9.516 GB
 
 # Plot UMAP with log2 gene expression to visualize gene levels
 plot_umap_gene_expression <- function(seurat_obj, gene, dataset_label, assay = "RNA") {
@@ -195,4 +195,5 @@ pdf("TRPM4_heatmap.pdf", width = 12, height = 8)
 draw(heatmap)
 dev.off()
 draw(heatmap)
+
 
