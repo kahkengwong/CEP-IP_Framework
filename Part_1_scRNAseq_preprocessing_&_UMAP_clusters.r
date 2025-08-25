@@ -287,7 +287,6 @@ prostate_results <- downstream_analyses(prostate_ca_seurat_integrated, "TRPM4", 
 non_cancerous_results <- downstream_analyses(non_cancerous_seurat_integrated, "TRPM4", "non_cancerous", dims = 15)
 
 # Save workspace (~10GB, full analysis state)
-save.image(file = "Dt2_scRNAseq_workspace_vRibo_v2.RData")
+save.image(file = "GSE185344_Seurat_processed.RData")
 
-# For subsequent analysis, load the saved file with: load("Dt2_scRNAseq_workspace_vRibo_v2.RData")
-
+# For subsequent analysis, download the RData (filesize 9.516 GB) from HuggingFace: https://huggingface.co/datasets/kahkengwong/GAM_REML_PRSS_Project/tree/main
