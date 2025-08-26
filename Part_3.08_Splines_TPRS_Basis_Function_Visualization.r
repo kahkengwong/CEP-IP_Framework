@@ -164,4 +164,3 @@ print(results$data_distribution)
 print(results$knot_placement)
 print(results$radial_basis)
 print(results$splines_formation)
-
