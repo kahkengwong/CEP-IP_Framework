@@ -1152,15 +1152,15 @@ extract_convergence_details <- function(model) {
     # Determine what triggered convergence
     criterion <- "Unknown"
     if (!is.na(iterations) && !is.null(model$control$maxit) && iterations >= model$control$maxit) {
-      criterion <- "Maximum iterations reached"
+      criterion <- "Maximum number of iterations reached"
     } else if (!is.na(gradient_norm) && gradient_norm < 1e-5) {
-      criterion <- "Gradient norm below threshold"
+      criterion <- "Gradient-based convergence"
     } else if (!is.na(final_rel_change) && final_rel_change < 1e-6) {
-      criterion <- "Relative score change below threshold"
+      criterion <- "Score-based convergence"
     } else if (!is.na(outer_conv) && outer_conv == 0) {
       criterion <- "Outer optimizer reported convergence"
     } else if (isTRUE(converged)) {
-      criterion <- "Model reports convergence, specific criterion unknown"
+      criterion <- "Fallback convergence"
     }
     
     # Get final REML score
@@ -1328,3 +1328,4 @@ all_convergence <- rbind(pca_convergence, non_ca_convergence)
 # Export the convergence details
 write_xlsx(list(Convergence_Details = all_convergence), 
            path = "Ribo_AR_Convergence_Details_g1.5-all-lin.xlsx")
+
