@@ -757,7 +757,6 @@ export_prss_data <- function(results, filename) {
     reml_explanations <- data.frame(
         Topic = c(
             "REML Iterations", 
-            "REML Convergence", 
             "Convergence Analysis", 
             "Score Interpretation",
             "Optimization Process",
@@ -770,7 +769,6 @@ export_prss_data <- function(results, filename) {
         ),
         Explanation = c(
             "Each PRSS iteration involves fitting a GAM model using REML. This sheet shows how many REML iterations were needed within each PRSS iteration.", 
-            "REML optimization should show decreasing REML scores until convergence. Monotonic decrease indicates proper optimization behavior.",
             "The Convergence Analysis sheet shows detailed metrics for each PRSS iteration, including whether REML scores decreased monotonically and the percent reduction in REML score.",
             "Lower REML scores are better. The final REML score represents the optimized model fit with penalization.",
             "The number of REML iterations needed indicates optimization difficulty. More iterations may suggest complex relationships or ill-conditioned optimization problems.",
@@ -828,44 +826,6 @@ non_ca_best_models <- lapply(non_ca_results, function(x) x$detailed_result$best_
 
 cat("Analysis complete. Updated results exported to Excel files.\n")
 
-# Add PRSS convergence column to exported data
-add_prss_convergence <- function(file_path) {
-    # Read PRSS_Data sheet from Excel file
-    prss_data <- read_excel(file_path, sheet = "PRSS_Data")
-    
-    # Split data by Sample and Gene_Set for convergence analysis
-    groups <- split(prss_data, list(prss_data$Sample, prss_data$Gene_Set))
-    
-    # Initialize convergence column with default value
-    prss_data$Converged <- "NO"
-    
-    # Check convergence for each group
-    for(group_name in names(groups)) {
-        group <- groups[[group_name]]
-        iterations <- sort(unique(group$Iteration))
-        
-        # Get PRSS values for each iteration
-        prss_values <- sapply(iterations, function(i) {
-            group$PRSS[group$Iteration == i]
-        })
-        
-        # Check if converged using last 10 iterations
-        if(length(iterations) >= 20) {
-            # Calculate relative change in last 10 iterations
-            last_prss <- prss_values[(length(prss_values)-9):length(prss_values)]
-            relative_changes <- abs(diff(last_prss)) / abs(last_prss[-length(last_prss)])
-            
-            # Mark as converged if all changes are below 0.1%
-            if(all(relative_changes < 0.001, na.rm = TRUE)) {
-                idx <- prss_data$Sample == group$Sample[1] & prss_data$Gene_Set == group$Gene_Set[1]
-                prss_data$Converged[idx] <- "YES"
-            }
-        }
-    }
-    
-    return(prss_data)
-}
-
 # Add REML convergence columns including Is_Best_Model to summary
 add_reml_convergence_columns <- function(file_path) {
     # Check if REML_Summary sheet exists in file
@@ -876,7 +836,6 @@ add_reml_convergence_columns <- function(file_path) {
     reml_summary <- read_excel(file_path, sheet = "REML_Summary")
     
     # Add new columns with default values
-    reml_summary$REML_Converged <- "NO"
     reml_summary$REML_Monotonic <- "NO"
     
     # Add k and lambda columns with default NA
@@ -894,17 +853,6 @@ add_reml_convergence_columns <- function(file_path) {
     
     # Process each row in REML summary
     for(i in 1:nrow(reml_summary)) {
-        # Check REML convergence based on iteration count and reduction
-        if(!is.na(reml_summary$REML_Iteration_Count[i]) && 
-           !is.na(reml_summary$REML_Percent_Reduction[i])) {
-            
-            # Mark as converged if reduction > 5% and iterations >= 3
-            if(reml_summary$REML_Percent_Reduction[i] > 5 && 
-               reml_summary$REML_Iteration_Count[i] >= 3) {
-                reml_summary$REML_Converged[i] <- "YES"
-            }
-        }
-        
         # Extract k, lambda, and best model flag from REML iterations
         if(has_reml_iterations) {
             subset_iterations <- reml_iterations %>%
@@ -988,12 +936,6 @@ process_file <- function(file_path) {
     all_sheets <- excel_sheets(file_path)
     sheets_list <- list()
     
-    # Process PRSS_Data sheet if present
-    if("PRSS_Data" %in% all_sheets) {
-        cat("Adding convergence column to PRSS_Data...\n")
-        sheets_list[["PRSS_Data"]] <- add_prss_convergence(file_path)
-    }
-    
     # Process REML_Summary sheet with additional columns
     if("REML_Summary" %in% all_sheets) {
         cat("Adding convergence columns, k, lambda values, and Is_Best_Model column to REML_Summary...\n")
@@ -1021,5 +963,3 @@ process_file(pca_file)
 process_file(nonca_file)
 
 cat("All files have been updated with Is_Best_Model column in the REML_Summary sheets.\n")
-
-
