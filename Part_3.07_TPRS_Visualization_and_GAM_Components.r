@@ -1,5 +1,5 @@
 #############################################################
-# Part 3.06: TPRS Visualization and GAM Components Analysis
+# Part 3.07: TPRS Visualization and GAM Components Analysis
 ##############################################################
 
 # =========================================
@@ -1107,3 +1107,4 @@ print(results$data_distribution)
 print(results$knot_placement)
 print(results$radial_basis)
 print(results$splines_formation)
+
