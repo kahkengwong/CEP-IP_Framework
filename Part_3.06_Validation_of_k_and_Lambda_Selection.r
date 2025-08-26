@@ -1,5 +1,5 @@
 ############################################################################
-# Part 3.07: Validation of Selected k (by PRSS) and Lambda (by REML) Values
+# Part 3.06: Validation of Selected k (by PRSS) and Lambda (by REML) Values
 ############################################################################
 
 # ============================================================================
@@ -1927,3 +1927,4 @@ cat("4. FINAL RECOMMENDED LAMBDA:", recommended_lambda, "\n")
 # Fig_CV_Lambda-vs-Deviance 552 x 344
 # Fig_CV_k-vs-RMSE 540 x 344
 # Fig_CV_k-vs-Deviance 535 x 344
+
