@@ -1,6 +1,6 @@
 #############################################################
 # Part 3.07: TPRS Visualization and GAM Components Analysis
-##############################################################
+#############################################################
 
 # =========================================
 # 1. TPRS Visualization
@@ -86,43 +86,6 @@ visualize_tprs_improved <- function(data, k = 10, lambda = 0.52801317696145,
     # Specifies a darker gray color for knot lines in plots.
     knot_color <- "#333333"
     
-    # Plots all TPRS basis functions with knot locations.
-    p1 <- ggplot() +
-        geom_vline(xintercept = knots, linetype = "dashed", color = knot_color, alpha = 0.8) +
-        geom_line(data = pivot_longer(basis_data, cols = starts_with("phi_"), 
-                                      names_to = "basis_function", values_to = "value"),
-                  aes(x = TRPM4, y = value, color = basis_function, group = basis_function), 
-                  size = 1) +
-        scale_color_manual(values = setNames(basis_colors, paste0("phi_", 1:n_basis)),
-                           labels = paste0("φ", 1:n_basis)) +
-        labs(title = paste("All TPRS Basis Functions for", sample_id, "-", gene_set),
-             subtitle = paste("k =", k, ", λ =", lambda, ", γ =", gamma, "with", length(knots), "knots"),
-             x = "TRPM4 Expression (log2)", 
-             y = "Basis Function Value") +
-        theme_minimal() +
-        theme(legend.position = "right",
-              legend.title = element_blank(),
-              plot.title = element_text(face = "bold"))
-    
-    # Visualizes weighted basis functions with knot lines.
-    p2 <- ggplot() +
-        geom_vline(xintercept = knots, linetype = "dashed", color = knot_color, alpha = 0.8) +
-        geom_line(data = pivot_longer(basis_data, cols = starts_with("weighted_phi_"), 
-                                      names_to = "basis_function", values_to = "value"),
-                  aes(x = TRPM4, y = value, color = gsub("weighted_phi_", "phi_", basis_function), 
-                      group = basis_function), 
-                  size = 1) +
-        scale_color_manual(values = setNames(basis_colors, paste0("phi_", 1:n_basis)),
-                           labels = paste0("φ", 1:n_basis)) +
-        labs(title = paste("Weighted Basis Functions for", sample_id, "-", gene_set),
-             subtitle = "Each basis function multiplied by its coefficient",
-             x = "TRPM4 Expression (log2)", 
-             y = "Weighted Value") +
-        theme_minimal() +
-        theme(legend.position = "right",
-              legend.title = element_blank(),
-              plot.title = element_text(face = "bold"))
-    
     # Prepares unscaled basis function data for individual plotting.
     basis_long <- pivot_longer(basis_data[, c("TRPM4", paste0("phi_", 1:n_basis))], 
                                cols = -TRPM4, 
@@ -133,12 +96,12 @@ visualize_tprs_improved <- function(data, k = 10, lambda = 0.52801317696145,
     basis_long$basis_num <- as.numeric(gsub("phi_", "", basis_long$basis_function))
     
     # Creates a grid of individual unscaled basis function plots.
-    p_basis_grid_unscaled <- ggplot(basis_long, aes(x = TRPM4, y = value)) +
+    p_basis_grid <- ggplot(basis_long, aes(x = TRPM4, y = value)) +
         geom_line(aes(color = basis_function), size = 1) +
         scale_color_manual(values = setNames(basis_colors[1:n_basis], paste0("phi_", 1:n_basis)),
                            labels = paste0("φ", 1:n_basis)) +
         facet_wrap(~ basis_num, ncol = 4) +
-        labs(title = "Individual TPRS Basis Functions (Unscaled)",
+        labs(title = "Individual TPRS Basis Functions",
              x = "TRPM4 Expression (log2)",
              y = "Value") +
         theme_minimal() +
@@ -156,12 +119,12 @@ visualize_tprs_improved <- function(data, k = 10, lambda = 0.52801317696145,
     weighted_basis_long$basis_num <- as.numeric(gsub("weighted_phi_", "", weighted_basis_long$basis_function))
     
     # Creates a grid of individual unscaled weighted basis function plots.
-    p_weighted_basis_grid_unscaled <- ggplot(weighted_basis_long, aes(x = TRPM4, y = value)) +
+    p_weighted_basis_grid <- ggplot(weighted_basis_long, aes(x = TRPM4, y = value)) +
         geom_line(aes(color = factor(basis_num)), size = 1) +
         scale_color_manual(values = basis_colors[1:n_basis],
                            labels = paste0("φ", 1:n_basis)) +
         facet_wrap(~ basis_num, ncol = 4) +
-        labs(title = "Weighted Individual TPRS Basis Functions (Unscaled)",
+        labs(title = "Weighted Individual TPRS Basis Functions",
              subtitle = "Each basis function multiplied by its coefficient",
              x = "TRPM4 Expression (log2)",
              y = "Weighted Value") +
@@ -169,34 +132,6 @@ visualize_tprs_improved <- function(data, k = 10, lambda = 0.52801317696145,
         theme(legend.position = "none",
               plot.title = element_text(face = "bold"),
               strip.text = element_text(size = 12, face = "bold", color = "navy"))
-    
-    # Plots GAM components including data points and knot lines.
-    p3 <- ggplot() +
-        geom_point(data = data, aes(x = TRPM4, y = Expression), 
-                   alpha = 0.15, color = "gray50", size = 2) +
-        geom_vline(xintercept = knots, linetype = "dashed", color = knot_color, alpha = 0.5) +
-        geom_line(data = basis_data, aes(x = TRPM4, y = smooth_only, 
-                                         color = "Smooth Only"), 
-                  size = 1) +
-        geom_line(data = basis_data, aes(x = TRPM4, y = intercept_plus_linear, 
-                                         color = "I+L"), 
-                  size = 1) +
-        geom_line(data = basis_data, aes(x = TRPM4, y = full_fit, color = "Full Fit"), 
-                  size = 1.2) +
-        geom_hline(yintercept = intercept, linetype = "dotted", color = "black") +
-        annotate("text", x = min(basis_data$TRPM4), y = intercept * 1.02, 
-                 label = paste("Intercept =", round(intercept, 2)), hjust = 0) +
-        scale_color_manual(values = c("Full Fit" = "#9467BD", 
-                                      "I+L" = "#FF7F0E", 
-                                      "Smooth Only" = "#2CA02C")) +
-        labs(title = paste("GAM Components for", sample_id, "-", gene_set),
-             subtitle = "Showing individual components and how they add to form the full fit",
-             x = "TRPM4 Expression (log2)", 
-             y = "Expression Value") +
-        theme_minimal() +
-        theme(legend.position = "right",
-              legend.title = element_blank(),
-              plot.title = element_text(face = "bold"))
     
     # Initializes a list to store basis function contributions.
     basis_contributions <- list()
@@ -252,23 +187,6 @@ visualize_tprs_improved <- function(data, k = 10, lambda = 0.52801317696145,
     # Reorders by original index for consistent plotting.
     basis_importance <- basis_importance[order(basis_importance$original_index), ]
     
-    # Visualizes variance contribution of basis functions to the smooth component.
-    p4a_variance <- ggplot(basis_importance) +
-        geom_col(aes(x = original_index, y = variance_percentage, fill = basis_function), alpha = 0.8) +
-        geom_text(aes(x = original_index, y = variance_percentage, 
-                      label = sprintf("%.1f%%", variance_percentage)),
-                  vjust = -0.5, size = 3.5) +
-        geom_text(aes(x = original_index, y = 0, 
-                      label = basis_function),
-                  vjust = 1.5, size = 3, fontface = "bold") +
-        scale_fill_manual(values = direct_color_mapping) +
-        labs(title = "Variance Contribution of Basis Functions to Smooth Only",
-             x = "Basis Function Index (φ1-φ8)", 
-             y = "Variance Contribution (%)") +
-        theme_minimal() +
-        theme(plot.title = element_text(face = "bold"),
-              legend.position = "none")
-    
     # Displays coefficient magnitudes of basis functions.
     p4a_coef <- ggplot(basis_importance) +
         geom_col(aes(x = original_index, y = coef_magnitude, fill = basis_function), alpha = 0.8) +
@@ -285,42 +203,6 @@ visualize_tprs_improved <- function(data, k = 10, lambda = 0.52801317696145,
              subtitle = "Absolute coefficient values from GAM fit",
              x = "Basis Function Index (φ1-φ8)", 
              y = "Absolute Coefficient Value") +
-        theme_minimal() +
-        theme(plot.title = element_text(face = "bold"),
-              legend.position = "none")
-    
-    # Shows pure L2 norm importance of basis functions.
-    p4a_pure_l2 <- ggplot(basis_importance) +
-        geom_col(aes(x = original_index, y = l2_norm, fill = basis_function), alpha = 0.8) +
-        geom_text(aes(x = original_index, y = l2_norm, 
-                      label = sprintf("%.3f", l2_norm)),
-                  vjust = -0.5, size = 3.5) +
-        geom_text(aes(x = original_index, y = 0, 
-                      label = basis_function),
-                  vjust = 1.5, size = 3, fontface = "bold") +
-        scale_fill_manual(values = direct_color_mapping) +
-        labs(title = "Pure L2 Norm Importance",
-             subtitle = "Measures intrinsic 'energy' of each basis function (no coefficient influence)",
-             x = "Basis Function Index (φ1-φ8)", 
-             y = "L2 Norm (scaled)") +
-        theme_minimal() +
-        theme(plot.title = element_text(face = "bold"),
-              legend.position = "none")
-    
-    # Illustrates weighted L2 norm importance combining coefficient and energy.
-    p4a_wl2 <- ggplot(basis_importance) +
-        geom_col(aes(x = original_index, y = weighted_l2, fill = basis_function), alpha = 0.8) +
-        geom_text(aes(x = original_index, y = weighted_l2, 
-                      label = sprintf("%.3f", weighted_l2)),
-                  vjust = -0.5, size = 3.5) +
-        geom_text(aes(x = original_index, y = 0, 
-                      label = basis_function),
-                  vjust = 1.5, size = 3, fontface = "bold") +
-        scale_fill_manual(values = direct_color_mapping) +
-        labs(title = "Weighted L2 Norm Importance",
-             subtitle = "Combines coefficient magnitude with function 'energy'",
-             x = "Basis Function Index (φ1-φ8)", 
-             y = "Weighted L2 Norm (scaled)") +
         theme_minimal() +
         theme(plot.title = element_text(face = "bold"),
               legend.position = "none")
@@ -393,35 +275,17 @@ visualize_tprs_improved <- function(data, k = 10, lambda = 0.52801317696145,
               axis.text.x = element_text(angle = 45, hjust = 1))
     
     # Combines variance contribution plots into a single page.
-    p_importance_page1 <- p4a_variance / p_full_var_contribution +
-        plot_layout(heights = c(1, 1)) +
-        plot_annotation(theme = theme(plot.title = element_text(face = "bold"))
-        )
-    
-    # Combines L2 norm-based importance plots into a second page.
-    p_importance_page2 <- p4a_pure_l2 / p4a_wl2 +
-        plot_layout(heights = c(1, 1)) +
-        plot_annotation(
-            title = "Basis Function Importance: Function Energy Measures",
-            subtitle = "L2 norm-based importance measures",
-            theme = theme(plot.title = element_text(face = "bold"))
-        )
+    p_importance_page1 <- p_full_var_contribution +
+        plot_annotation(theme = theme(plot.title = element_text(face = "bold")))
     
     # Returns a list containing all plots and associated data for further analysis.
     return(list(
-        basis_functions_plot = p1,
-        weighted_basis_plot = p2,
-        individual_basis_plots_unscaled = p_basis_grid_unscaled,
-        weighted_individual_basis_plots_unscaled = p_weighted_basis_grid_unscaled,
-        components_plot = p3,
-        variance_contribution_plot = p4a_variance,
+        individual_basis_plots = p_basis_grid,
+        weighted_individual_basis_plots = p_weighted_basis_grid,
         coefficient_importance_plot = p4a_coef,
-        pure_l2_plot = p4a_pure_l2,
-        weighted_l2_plot = p4a_wl2,
         full_variance_contribution_plot = p_full_var_contribution,
         cumulative_variance_plot = p4b,
         importance_page1 = p_importance_page1,
-        importance_page2 = p_importance_page2,
         importance_data = basis_importance,
         knots = knots,
         coefficients = list(
@@ -455,15 +319,6 @@ tprs_viz <- visualize_tprs_improved(
     )
 )
 
-# Displays all generated plots sequentially.
-print(tprs_viz$basis_functions_plot)
-print(tprs_viz$weighted_basis_plot)
-print(tprs_viz$individual_basis_plots_unscaled)
-print(tprs_viz$weighted_individual_basis_plots_unscaled)
-print(tprs_viz$components_plot)
-print(tprs_viz$importance_page1)
-print(tprs_viz$importance_page2)
-
 # Outputs the model formula constructed from coefficients.
 cat("\nModel formula:\n")
 cat(paste0("f(x) = ", tprs_viz$coefficients$intercept, 
@@ -476,7 +331,6 @@ for (i in 1:length(tprs_viz$coefficients$smooth_coefs)) {
         cat(paste0(" - ", abs(coef_value), "*φ", i, "(x)"))
     }
 }
-
 
 # =========================================
 # 2. Phi1-8 cumulative plot
@@ -639,9 +493,6 @@ p_revised <- plot_cumulative_components_revised(
     show_variance_label = FALSE
 )
 
-# Displays the cumulative components plot.
-print(p_revised$plot)
-
 # Outputs variance percentages for each cumulative component.
 cat("\nVariance explained by each cumulative component:\n")
 component_names <- c("φ1+φ8", "φ1+φ8+φ2", "φ1+φ8+φ2+φ3", "φ1+φ8+φ2+φ3+φ6", 
@@ -653,7 +504,6 @@ for (i in 1:length(p_revised$variance_explained)) {
 # Prints variance text for potential later addition to the plot.
 cat("\nVariance text for adding to the plot later:\n")
 cat(p_revised$variance_text)
-
 
 # =============================================================
 # 3. Visualization of GAM components using concrete examples from the data
@@ -746,46 +596,6 @@ plot_gam_with_examples <- function(data, k = 10, lambda = 0.52801317696145,
               legend.title = element_blank(),
               plot.title = element_text(face = "bold"))
     
-    # Initializes a list to store breakdown plots for each example.
-    example_breakdowns <- list()
-    
-    for (i in 1:nrow(example_data)) {
-        # Extracts values for the current example point.
-        example_x <- example_data$TRPM4[i]
-        example_y <- example_data$Expression[i]
-        example_full <- example_data$full_model[i]
-        example_linear <- example_data$intercept_plus_linear[i]
-        example_smooth <- example_data$smooth_only[i]
-        
-        # Prepares data for a waterfall chart of component contributions.
-        breakdown_data <- data.frame(
-            Component = factor(c("Intercept", "Linear Term", "Smooth Component", "Full Model"),
-                               levels = c("Intercept", "Linear Term", "Smooth Component", "Full Model")),
-            Value = c(intercept, linear_term * example_x, example_smooth, example_full),
-            Cumulative = c(intercept, 
-                           intercept + linear_term * example_x, 
-                           intercept + linear_term * example_x + example_smooth,
-                           example_full)
-        )
-        
-        # Creates a breakdown plot for the current example.
-        p_breakdown <- ggplot(breakdown_data, aes(x = Component, y = Value, fill = Component)) +
-            geom_col() +
-            geom_text(aes(label = sprintf("%.2f", Value)), vjust = ifelse(breakdown_data$Value >= 0, -0.5, 1.5)) +
-            scale_fill_manual(values = c("Intercept" = "#999999", 
-                                         "Linear Term" = "#FF7F0E", 
-                                         "Smooth Component" = "#2CA02C",
-                                         "Full Model" = "#9467BD")) +
-            geom_hline(yintercept = 0, linetype = "solid", color = "black") +
-            labs(title = paste("Example", i, "Breakdown"),
-                 subtitle = paste("TRPM4 =", round(example_x, 2), ", Actual Expression =", round(example_y, 2)),
-                 x = "", y = "Contribution to Prediction") +
-            theme_minimal() +
-            theme(legend.position = "none")
-        
-        example_breakdowns[[i]] <- p_breakdown
-    }
-    
     # Prepares data for a dot plot of component values across examples.
     component_dot_data <- data.frame(
         Example = rep(paste("Example", 1:3), each = 3),
@@ -816,46 +626,6 @@ plot_gam_with_examples <- function(data, k = 10, lambda = 0.52801317696145,
         theme_minimal() +
         theme(legend.position = "none",
               axis.text.x = element_text(angle = 45, hjust = 1))
-    
-    # Initializes a data frame for component flow visualization.
-    example_flow_data <- data.frame()
-    
-    for (i in 1:nrow(example_data)) {
-        example_label <- paste("Example", i)
-        
-        # Prepares data for flow from intercept to intercept plus linear.
-        flow1 <- data.frame(
-            Example = example_label,
-            x = c("Intercept", "Plus Linear"),
-            y = c(intercept, example_data$intercept_plus_linear[i]),
-            Component = "Flow 1"
-        )
-        
-        # Prepares data for flow from intercept plus linear to full model.
-        flow2 <- data.frame(
-            Example = example_label,
-            x = c("Plus Linear", "Full Model"),
-            y = c(example_data$intercept_plus_linear[i], example_data$full_model[i]),
-            Component = "Flow 2"
-        )
-        
-        # Combines flow data into the main data frame.
-        example_flow_data <- rbind(example_flow_data, flow1, flow2)
-    }
-    
-    # Creates a flow plot showing component contributions across examples.
-    p_flow <- ggplot(example_flow_data, aes(x = x, y = y, color = Component, group = interaction(Example, Component))) +
-        geom_line(aes(linetype = Component), size = 1) +
-        geom_point(size = 3) +
-        geom_text(aes(label = sprintf("%.2f", y)), vjust = -1, size = 3) +
-        scale_color_manual(values = c("Flow 1" = "#FF7F0E", "Flow 2" = "#2CA02C")) +
-        scale_linetype_manual(values = c("Flow 1" = "solid", "Flow 2" = "dashed")) +
-        facet_wrap(~Example, ncol = 3) +
-        labs(title = "Component Flow for Each Example",
-             subtitle = "Showing how the value changes as components are added",
-             x = "", y = "Value") +
-        theme_minimal() +
-        theme(legend.position = "none")
     
     # Constructs a detailed textual explanation of example contributions.
     explanation_text <- paste(
@@ -902,9 +672,7 @@ plot_gam_with_examples <- function(data, k = 10, lambda = 0.52801317696145,
     # Returns all plots, data, and explanations for further use.
     return(list(
         main_plot = p1,
-        breakdowns = example_breakdowns,
         dot_plot = p_dots,
-        flow_plot = p_flow,
         example_data = example_data,
         explanation = explanation_text,
         summary_table = summary_table
@@ -919,26 +687,6 @@ examples_viz <- plot_gam_with_examples(
     gamma = 1.5,
     predefined_coefficients = list(intercept = 5.154747802, linear_term = 0.240575063, smooth_coefs = c(-1.279918562, -0.654654700, 0.406200567, 0.305860784, 0.258917042, 0.268765202, 0.246497970, -0.800828120))
 )
-
-# Displays the main GAM components plot with examples.
-print(examples_viz$main_plot)
-
-# Shows breakdown plots for each example point.
-print(examples_viz$breakdowns[[1]])
-print(examples_viz$breakdowns[[2]])
-print(examples_viz$breakdowns[[3]])
-
-# Displays the dot plot of component values.
-print(examples_viz$dot_plot)
-
-# Shows the flow plot of component contributions.
-print(examples_viz$flow_plot)
-
-# Outputs the textual explanation of example contributions.
-cat(examples_viz$explanation)
-
-# Prints the summary table of component values.
-print(examples_viz$summary_table)
 
 
 # =====================================
@@ -993,35 +741,34 @@ visualize_tprs_construction <- function(sample_data, k = 10) {
     # Scale density to fit nicely on the plot
     density_df$density_scaled <- scales::rescale(density_df$density, to = range(sample_data$Expression))
     
-    # Plot 1: Data Distribution Analysis
+    # Plot: Data Distribution Analysis
     p1 <- ggplot() +
         geom_point(data = sample_data, aes(x = TRPM4, y = Expression), 
                    alpha = 0.3, color = "gray50") +
         geom_line(data = density_df, aes(x = TRPM4, y = density_scaled), 
                   color = "#FFCC99", size = 1.2, alpha = 0.95) +
-        labs(title = "1. Data Distribution Analysis",
+        labs(title = "Data Distribution Analysis",
              subtitle = "mgcv assesses data range and distribution patterns",
              x = "TRPM4 Expression (log2)", 
              y = "Expression\n(Red line: Data density)") +
         theme_minimal() +
         theme(plot.title = element_text(face = "bold"))
     
-    # Plot 2: Knot Placement Strategy
+    # Plot: Knot Placement Strategy
     p2 <- ggplot() +
         geom_point(data = sample_data, aes(x = TRPM4, y = Expression), 
                    alpha = 0.3, color = "gray50") +
         geom_vline(xintercept = knots, linetype = "dashed", color = "gray30", alpha = 0.5) +
         geom_point(data = data.frame(TRPM4 = knots, Expression = rep(mean(sample_data$Expression), length(knots))),
                    aes(x = TRPM4, y = Expression), color = "#F25B5B", size = 3, shape = 18, alpha = 0.75) +
-        labs(title = "2. Knot Placement Strategy",
+        labs(title = "Knot Placement Strategy",
              subtitle = "mgcv places knots based on data distribution (quantiles/space-filling)",
              x = "TRPM4 Expression (log2)", 
              y = "Expression") +
         theme_minimal() +
         theme(plot.title = element_text(face = "bold"))
     
-    # Plot 3: TPRS Radial Basis Construction
-    # Create actual thin plate spline radial basis functions
+    # Plot: TPRS Radial Basis Construction
     radial_basis_data <- data.frame()
     for (i in 1:min(8, length(knots))) {
         # TPRS radial basis function: |x - knot|^3 for univariate case
@@ -1047,7 +794,7 @@ visualize_tprs_construction <- function(sample_data, k = 10) {
                   size = 1) +
         geom_vline(xintercept = knots, linetype = "dashed", color = "gray30", alpha = 0.5) +
         scale_color_manual(values = phi_colors) +
-        labs(title = "3. TPRS Radial Basis Construction",
+        labs(title = "TPRS Radial Basis Construction",
              subtitle = "mgcv constructs |x-knot|³ radial basis functions",
              x = "TRPM4 Expression (log2)", 
              y = "Radial Basis Value") +
@@ -1055,7 +802,7 @@ visualize_tprs_construction <- function(sample_data, k = 10) {
         theme(plot.title = element_text(face = "bold"),
               legend.position = "none")
     
-    # Plot 4: Splines Formation (keep original accurate plot)
+    # Plot: Splines Formation
     transition_data_100_final <- data.frame()
     for (i in 1:min(8, length(knots))) {
         curve_x <- x_seq
@@ -1074,7 +821,7 @@ visualize_tprs_construction <- function(sample_data, k = 10) {
                   size = 1) +
         geom_vline(xintercept = knots, linetype = "dashed", color = "gray30", alpha = 0.5) +
         scale_color_manual(values = phi_colors) +
-        labs(title = "4. Splines Formation",
+        labs(title = "Splines Formation",
              subtitle = "Based on k, data distribution and data density at knots",
              x = "TRPM4 Expression (log2)", 
              y = "Basis Function Value") +
@@ -1107,4 +854,17 @@ print(results$data_distribution)
 print(results$knot_placement)
 print(results$radial_basis)
 print(results$splines_formation)
-
+# Displays remaining generated plots.
+print(tprs_viz$individual_basis_plots)
+print(tprs_viz$weighted_individual_basis_plots)
+print(tprs_viz$importance_page1)
+# Displays the cumulative components plot.
+print(p_revised$plot)
+# Displays the main GAM components plot with examples.
+print(examples_viz$main_plot)
+# Displays the dot plot of component values.
+print(examples_viz$dot_plot)
+# Outputs the textual explanation of example contributions.
+cat(examples_viz$explanation)
+# Prints the summary table of component values.
+print(examples_viz$summary_table)
