@@ -1,5 +1,5 @@
 ######################################################
-# Part 3.04: REML Extraction and Convergence Analysis
+# Part 3.05: REML Extraction and Convergence Analysis
 ######################################################
 # Function to extract detailed REML information
 extract_reml_info <- function(model) {
@@ -1328,4 +1328,5 @@ all_convergence <- rbind(pca_convergence, non_ca_convergence)
 # Export the convergence details
 write_xlsx(list(Convergence_Details = all_convergence), 
            path = "Ribo_AR_Convergence_Details_g1.5-all-lin.xlsx")
+
 
