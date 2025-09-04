@@ -1,5 +1,5 @@
 ##################################################
-# Part 3.02: GAM-REML-PRSS Setup 
+# Part 3.03: GAM-REML-PRSS Setup 
 ##################################################
 set.seed(123)  # Set a global seed for reproducibility
 
@@ -1111,6 +1111,7 @@ calculate_reml_convergence_stats <- function(convergence_df) {
     cat("Produced", nrow(result_df), "rows of convergence statistics summary\n")
     return(result_df)
 }
+
 
 
 
