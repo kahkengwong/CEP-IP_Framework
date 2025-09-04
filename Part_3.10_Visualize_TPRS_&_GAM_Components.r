@@ -1,5 +1,5 @@
 #############################################################
-# Part 3.09: Visualization of TPRS and GAM Components 
+# Part 3.10: Visualization of TPRS and GAM Components 
 #############################################################
 
 # =========================================
@@ -868,6 +868,7 @@ print(examples_viz$dot_plot)
 cat(examples_viz$explanation)
 # Prints the summary table of component values.
 print(examples_viz$summary_table)
+
 
 
 
