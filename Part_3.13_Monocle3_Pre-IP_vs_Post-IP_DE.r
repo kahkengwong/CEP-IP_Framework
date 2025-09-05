@@ -1,5 +1,5 @@
 ####################################################################################################
-# Part 3.14: Monocle3 Trajectory Visualization for TDE and non-TDE Cells, and Quantitative Analysis
+# Part 3.13: Monocle3 Trajectory Visualization for TDE and non-TDE Cells, and Quantitative Analysis
 ####################################################################################################
 # Load libraries
 library(monocle3)
@@ -694,4 +694,5 @@ clustering_analysis_results <- process_all_samples_clustering(all_trajectories)
 
 
 cat("\nClustering analysis completed!\n")
+
 
