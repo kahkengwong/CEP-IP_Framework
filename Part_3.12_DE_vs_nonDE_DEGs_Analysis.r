@@ -1,5 +1,5 @@
 ######################################################################################################
-# Part 3.13: DEGs of DE vs non-DE in pre-IP or post-IP (for subsequent GO analysis using ToppGene)
+# Part 3.12: DEGs of DE vs non-DE in pre-IP or post-IP (for subsequent GO analysis using ToppGene)
 ######################################################################################################
 library(future) # For parallel processing (plan, multisession)
 library(future.apply) # For future_lapply function
@@ -305,4 +305,5 @@ for (sample_name in tumor_samples) {
         }
     }
 }
+
 
