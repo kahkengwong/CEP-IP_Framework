@@ -1,5 +1,5 @@
 # ====================================================================
-# 3.09 Dev_explained (purple) vs non_dev_explained (gray) Scatter Plot
+# Part 3.10: TDE (purple) vs non-TDE (gray) Scatter Plot
 # ====================================================================
 library(dplyr)
 library(tibble)
@@ -173,3 +173,4 @@ for (sample_name in tumor_samples) {
 }
 
 cat("\nCompleted generating scatter plots for all samples.\n")
+
