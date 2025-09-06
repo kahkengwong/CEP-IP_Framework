@@ -1,6 +1,6 @@
 # =============================================================================
-# Part 3.09: Monte-Carlo Cross-Validation (CV) Analysis of DER Classification
-# Part I: DER Classification Monte-Carlo CV Analysis with Random Negative Control Classification 
+# Part 3.09: Monte-Carlo Cross-Validation (CV) Analysis of DDE Classification
+# Part I: DDE Classification Monte-Carlo CV Analysis with Random Negative Control Classification 
 # =============================================================================
 # Cross-validation function for deviance cells
 validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iterations = 20) {
@@ -391,11 +391,11 @@ all_random_validation_results <- list()
 all_statistical_tests <- list()
 all_random_statistical_tests <- list()
 
-# Validate DER and random control classifications for all tumor samples
+# Validate DDE and random control classifications for all tumor samples
 for (sample_name in all_tumor_samples) {
     if (exists("pca_results") && !is.null(pca_results[[sample_name]][["Ribo"]])) {
         cat("\n", rep("=", 60), "\n")
-        # Run DER validation
+        # Run DDE validation
         validation_result <- validate_deviance_cells(sample_name, train_prop = 0.7, n_iterations = 20)
         
         if (!is.null(validation_result)) {
@@ -461,9 +461,9 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
     cat("OVERALL VALIDATION SUMMARY WITH STATISTICAL TESTING\n")
     cat(rep("=", 60), "\n")
     
-    # Display results for DER classification
+    # Display results for DDE classification
     if (nrow(combined_tests) > 0) {
-        cat("\n--- DER Classification Results ---\n")
+        cat("\n--- DDE Classification Results ---\n")
         print(combined_tests[, c("patient_id", "mean_rmse_diff", "test_method", "test_pvalue", "fdr_corrected_pvalue", "effect_size")])
     }
     
@@ -473,7 +473,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
         print(combined_random_tests[, c("patient_id", "mean_rmse_diff", "test_method", "test_pvalue", "fdr_corrected_pvalue", "effect_size")])
     }
     
-    # Summarize statistics for DER validation
+    # Summarize statistics for DDE validation
     if (nrow(combined_tests) > 0) {
         cat("\n--- Overall Summary (EP) ---\n")
         cat("Number of samples tested:", nrow(combined_tests), "\n")
@@ -497,7 +497,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
     
     # Create visualization for validation results
     if (length(all_validation_results) > 0 || length(all_random_validation_results) > 0) {
-        # Combine DER validation results
+        # Combine DDE validation results
         combined_all <- do.call(rbind, all_validation_results)
         if (!is.null(combined_all)) {
             combined_all$patient_id <- sample_to_patient[combined_all$sample]
@@ -509,7 +509,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             combined_random_all$patient_id <- sample_to_patient[combined_random_all$sample]
         }
         
-        # Prepare data for DER boxplot
+        # Prepare data for DDE boxplot
         validation_plot_data <- data.frame()
         for (sample_name in names(all_validation_results)) {
             patient_id <- sample_to_patient[sample_name]
@@ -551,7 +551,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             }
         }
         
-        # Add significance annotations for DER results
+        # Add significance annotations for DDE results
         if (nrow(combined_tests) > 0) {
             sig_values <- ifelse(combined_tests$fdr_corrected_pvalue < 0.001, "***",
                                  ifelse(combined_tests$fdr_corrected_pvalue < 0.01, "**",
@@ -569,7 +569,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             random_sig_values <- character(0)
         }
         
-        # Perform overall statistical test for DER results
+        # Perform overall statistical test for DDE results
         if (!is.null(combined_all) && nrow(combined_all) > 0) {
             all_rmse_diffs <- combined_all$rmse_difference[!is.na(combined_all$rmse_difference)]
             overall_normality <- shapiro.test(all_rmse_diffs)
@@ -607,7 +607,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             cat("Overall test p-value:", format.pval(overall_random_test$p.value, digits = 3), "\n")
         }
         
-        # Create boxplot for DER classification
+        # Create boxplot for DDE classification
         if (nrow(validation_plot_data) > 0) {
             validation_plot_data$Group <- factor(validation_plot_data$Group, levels = c("Non-TDE", "DEC"))
             
@@ -683,7 +683,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             print(p1_random)
         }
         
-        # Create effect size plot for DER results
+        # Create effect size plot for DDE results
         if (nrow(combined_tests) > 0) {
             p2 <- ggplot(combined_tests, aes(x = reorder(patient_id, effect_size), y = effect_size, fill = fdr_corrected_pvalue < 0.01)) +
                 geom_col(alpha = 0.8) +
@@ -717,7 +717,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
         library(openxlsx)
         wb <- createWorkbook()
         
-        # Export DER sample results
+        # Export DDE sample results
         for (sample_name in names(all_validation_results)) {
             patient_id <- sample_to_patient[sample_name]
             sample_data_with_id <- all_validation_results[[sample_name]]
@@ -735,7 +735,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             writeData(wb, paste0(patient_id, "_Random"), sample_data_with_id)
         }
         
-        # Export DER statistical test results
+        # Export DDE statistical test results
         if (nrow(combined_tests) > 0) {
             addWorksheet(wb, "Statistical_Tests_TRPM4")
             writeData(wb, "Statistical_Tests_TRPM4", combined_tests)
@@ -747,7 +747,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             writeData(wb, "Statistical_Tests_Random", combined_random_tests)
         }
         
-        # Export combined DER results
+        # Export combined DDE results
         if (!is.null(combined_all)) {
             addWorksheet(wb, "Combined_Results_TRPM4")
             writeData(wb, "Combined_Results_TRPM4", combined_all)
@@ -767,7 +767,7 @@ cat("\n", rep("=", 60), "\n")
 cat("GAM-ALIGNED VALIDATION WITH STATISTICAL TESTING AND RANDOM CONTROL COMPLETE\n")
 cat(rep("=", 60), "\n")
 
-# Create GAM plots for DER classification
+# Create GAM plots for DDE classification
 create_gam_validation_plots <- function(current_sample) {
     cat("\n=== Creating GAM Visualization for", current_sample, "===\n")
     
