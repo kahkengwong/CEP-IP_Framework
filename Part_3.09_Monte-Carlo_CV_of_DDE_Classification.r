@@ -1,7 +1,7 @@
-# =============================================================================
-# Part 3.09: Monte-Carlo Cross-Validation (CV) Analysis of DDE Classification
+# =================================================================================================================
+# Part 3.09: Monte-Carlo Cross-Validation (CV) Analysis of Decomposition of Deviance Explained (DDE) Classification
 # Part I: DDE Classification Monte-Carlo CV Analysis with Random Negative Control Classification 
-# =============================================================================
+# =================================================================================================================
 # Cross-validation function for deviance cells
 validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iterations = 20) {
     cat("\n=== Cross-Validation for", current_sample, "===\n")
@@ -2676,3 +2676,4 @@ for (sample_name in tumor_samples) {
 }
 
 cat("\nCompleted generating scatter plots for all samples.\n")
+
