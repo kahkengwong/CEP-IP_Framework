@@ -1,6 +1,6 @@
-# =========================================================================================
+##########################################################################################
 # Part 3.12: TRDE (purple) vs non-TRDE (gray) GAM Plots, and Explanatory Power Values
-# =========================================================================================
+##########################################################################################
 library(dplyr)
 library(tibble)
 
@@ -366,4 +366,5 @@ if (exists("combined_data") && nrow(combined_data) > 0) {
     cat("- Ribo_Expression: Ribosomal gene expression level\n")
     cat("- Model_Dev_Explained: Overall model deviance explained for the sample\n")
 }
+
 
