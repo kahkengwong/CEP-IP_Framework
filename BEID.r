@@ -1,5 +1,5 @@
 ########################################################################
-# Part 3.11: Bidirectional Expansion for Inflection Detection (BEID) 
+# Reserved: Bidirectional Expansion for Inflection Detection (BEID) 
 # with asymmetric expansion and stabilized localized density weighting
 ########################################################################
 # BEID function
@@ -1001,4 +1001,5 @@ cat("The Excel file 'Inflection_Point_Analysis_Results.xlsx' has been created wi
 cat("- Manual_Summary sheet: Overview of all samples\n")
 cat("- Individual sheets for each sample with detailed breakdowns\n")
 cat("- All counts and percentages for purple/gray cells above/below GAM before/after inflection\n")
+
 
