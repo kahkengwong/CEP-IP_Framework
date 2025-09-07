@@ -1,10 +1,10 @@
 ###################################################################################
-# Part 3.11: Mosaic and Raincloud Plots of Ribo Expression in Pre-IP and Post-IP
+# Part 3.13: Mosaic and Raincloud Plots of Ribo Expression in Pre-IP and Post-IP
 ###################################################################################
 
-# ==============================================================================
-# Extract Contingency Table Data for Mosaic Plots using Direct Inflection Points
-# ==============================================================================
+# ========================================================================================
+# Part I: Extract Contingency Table Data for Mosaic Plots using Direct Inflection Points
+# ========================================================================================
 # Initialize lists to store contingency tables
 all_gray_tables <- list()
 all_purple_tables <- list()
@@ -219,9 +219,9 @@ for (i in 1:length(patient_ids)) {
 cat("\nReady for mosaic plot generation\n")
 
 
-# ============
-# Mosaic Plots 
-# ============
+# ========================
+# Part II: Mosaic Plots 
+# ========================
 library(tidyverse)  
 library(ggmosaic)   # For mosaic plots
 library(svglite)    # For SVG export
@@ -715,9 +715,9 @@ create_all_patients_mosaic <- function() {
 }
 
 
-# =================
-# Raincloud Plots
-# =================
+# ===============================
+# Part III: Raincloud Plots
+# ===============================
 # Load required libraries
 library(readxl)
 library(overlapping)
@@ -1006,5 +1006,6 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
           plot.title = element_text(face = "bold", size = 14),
 
           plot.subtitle = element_text(size = 12))
+
 
 
