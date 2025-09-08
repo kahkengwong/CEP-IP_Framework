@@ -286,7 +286,139 @@ set.seed(42)
 prostate_results <- downstream_analyses(prostate_ca_seurat_integrated, "TRPM4", "prostate_ca", dims = 15)
 non_cancerous_results <- downstream_analyses(non_cancerous_seurat_integrated, "TRPM4", "non_cancerous", dims = 15)
 
+# =======================================================================
+# 6. Boxplot plus jitter plot of TRPM4 expression in PCa and BP clusters
+# =======================================================================
+# Extract expression data for TRPM4
+expression_values <- data.frame(
+    clusters = Idents(prostate_results$seurat_obj),
+    TRPM4 = GetAssayData(prostate_ca_seurat, slot = "data")["TRPM4", Cells(prostate_results$seurat_obj)]
+)
+
+# Order of clusters (now in ascending order)
+cluster_order <- sort(unique(as.numeric(as.character(expression_values$clusters))))
+
+# Reorder the levels of 'clusters' based on the cluster order
+expression_values$clusters <- factor(expression_values$clusters, levels = as.character(cluster_order))
+
+# Generate viridis color palette using 'turbo' option, reverse direction and use certain % of the palette
+plot_colors <- viridis(length(cluster_order), end = 1, option = "plasma")
+plot_colors <- rev(plot_colors) # Reverse the color palette
+
+# Create a named color vector (names are the cluster names)
+named_colors <- setNames(plot_colors, as.character(cluster_order))
+
+# Combined boxplot and jitter plot
+p <- ggplot(expression_values, aes(x = clusters, y = TRPM4, fill = clusters)) +
+    geom_jitter(aes(color = clusters), alpha = 0.5, width = 0.3, height = 0) +
+    geom_boxplot(outlier.shape = NA, alpha = 0.2) +  
+    scale_fill_manual(values = named_colors) +
+    scale_color_manual(values = named_colors) +
+    theme_minimal() +
+    theme(
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        legend.position = "none"
+    ) +
+    labs(
+        x = "Prostate Cancer Cluster",
+        y = "Expression of TRPM4",
+        title = "Expression of TRPM4 by Prostate Cancer Cluster"
+    )
+
+# Display the plot
+print(p)
+
+# Boxplot plus jitter plot for BP group (cluster 3 of non-Ca)
+# Extract expression data for TRPM4
+expression_values <- data.frame(
+    clusters = Idents(non_cancerous_results$seurat_obj),
+    TRPM4 = GetAssayData(non_cancerous_seurat, slot = "data")["TRPM4", Cells(non_cancerous_results$seurat_obj)]
+)
+
+# Order of clusters (now in ascending order)
+cluster_order <- sort(unique(as.numeric(as.character(expression_values$clusters))))
+
+# Reorder the levels of 'clusters' based on the cluster order
+expression_values$clusters <- factor(expression_values$clusters, levels = as.character(cluster_order))
+
+# Generate viridis color palette using 'turbo' option, reverse direction and use certain % of the palette
+plot_colors <- viridis(length(cluster_order), end = 1, option = "plasma")
+plot_colors <- rev(plot_colors) # Reverse the color palette
+
+# Create a named color vector (names are the cluster names)
+named_colors <- setNames(plot_colors, as.character(cluster_order))
+
+# Combined boxplot and jitter plot
+p <- ggplot(expression_values, aes(x = clusters, y = TRPM4, fill = clusters)) +
+    geom_jitter(aes(color = clusters), alpha = 0.5, width = 0.3, height = 0) +
+    geom_boxplot(outlier.shape = NA, alpha = 0.2) +  # Increased transparency here
+    scale_fill_manual(values = named_colors) +
+    scale_color_manual(values = named_colors) +
+    theme_minimal() +
+    theme(
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        legend.position = "none"
+    ) +
+    labs(
+        x = "Non-Ca Cluster",
+        y = "Expression of TRPM4",
+        title = "TRPM4 by Non-Ca Cluster"
+    )
+
+# Display the plot
+print(p)
+
+# Kruskal-Wallis and Dunn's Tests of PCa and non-Ca clusters
+# Function to extract expression data
+get_expression_data <- function(seurat_obj, original_seurat, gene) {
+    expression_values <- data.frame(
+        clusters = Idents(seurat_obj),
+        expression = GetAssayData(original_seurat, slot = "data")[gene, Cells(seurat_obj)]
+    )
+    
+    expression_values %>% 
+        mutate(clusters = factor(clusters, levels = sort(unique(clusters))))
+}
+
+# Extract data
+non_ca_data <- get_expression_data(non_cancerous_results$seurat_obj, non_cancerous_seurat, "TRPM4") %>%
+    mutate(type = "Non-Cancerous")
+
+prostate_ca_data <- get_expression_data(prostate_results$seurat_obj, prostate_ca_seurat, "TRPM4") %>%
+    mutate(type = "Prostate Cancer")
+
+# Combine data
+combined_data <- bind_rows(non_ca_data, prostate_ca_data) %>%
+    mutate(group = paste(type, clusters, sep = "_"))
+
+# Calculate additional statistics
+stats_summary <- combined_data %>%
+    group_by(group) %>%
+    summarise(
+        median = median(expression),
+        Q1 = quantile(expression, 0.25),
+        Q3 = quantile(expression, 0.75),
+        IQR = IQR(expression)
+    )
+
+# Kruskal-Wallis test
+kruskal_result <- kruskal_test(expression ~ group, data = combined_data)
+
+# Dunn's post-hoc test
+dunn_result <- dunn_test(expression ~ group, data = combined_data, p.adjust.method = "BH")
+
+# Prepare results for export
+kruskal_df <- as.data.frame(kruskal_result)
+dunn_df <- as.data.frame(dunn_result)
+
+# Export results to Excel
+write_xlsx(list(
+    KruskalWallis = kruskal_df, 
+    DunnsTest = dunn_df,
+    Statistics = stats_summary
+), "TRPM4_expression_analysis.xlsx")
+                                          
 # Save workspace (~10GB, full analysis state)
 save.image(file = "GSE185344_Seurat_processed.RData")
-
 # For subsequent analysis, download the RData (filesize 9.516 GB) from HuggingFace: https://huggingface.co/datasets/kahkengwong/GAM_REML_PRSS_Project/tree/main
+
