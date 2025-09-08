@@ -714,9 +714,288 @@ create_all_patients_mosaic <- function() {
     ))
 }
 
+						# ==============================================================
+# Part III: Chi-Square Test with BH Correction for Mosaic Plots
+# ==============================================================
+# Chi-square tests on the distribution of purple and gray cells relative to the GAM line before and after inflection points
+# Load required libraries
+library(tidyverse)
+library(openxlsx)
+
+# Structure: Each patient has data for both purple and gray cells
+# Patient 1
+pt1_purple <- matrix(c(101, 46, 33, 131), nrow = 2, byrow = TRUE)
+pt1_gray <- matrix(c(104, 206, 226, 138), nrow = 2, byrow = TRUE)
+
+# Patient 2
+pt2_purple <- matrix(c(102, 34, 20, 79), nrow = 2, byrow = TRUE)
+pt2_gray <- matrix(c(147, 250, 125, 63), nrow = 2, byrow = TRUE)
+
+# Patient 3
+pt3_purple <- matrix(c(63, 11, 26, 98), nrow = 2, byrow = TRUE)
+pt3_gray <- matrix(c(6, 62, 64, 7), nrow = 2, byrow = TRUE)
+
+# Patient 4
+pt4_purple <- matrix(c(260, 128, 256, 384), nrow = 2, byrow = TRUE)
+pt4_gray <- matrix(c(0, 92, 112, 0), nrow = 2, byrow = TRUE)
+
+# Patient 5
+pt5_purple <- matrix(c(8, 1, 7, 32), nrow = 2, byrow = TRUE)
+pt5_gray <- matrix(c(15, 26, 47, 20), nrow = 2, byrow = TRUE)
+
+# Patient 6
+pt6_purple <- matrix(c(216, 72, 105, 357), nrow = 2, byrow = TRUE)
+pt6_gray <- matrix(c(113, 305, 243, 57), nrow = 2, byrow = TRUE)
+
+# Patient 7
+pt7_purple <- matrix(c(122, 35, 87, 208), nrow = 2, byrow = TRUE)
+pt7_gray <- matrix(c(47, 161, 160, 37), nrow = 2, byrow = TRUE)
+
+# Create a list of all contingency tables
+all_purple_tables <- list(pt1_purple, pt2_purple, pt3_purple, pt4_purple, pt5_purple, pt6_purple, pt7_purple)
+all_gray_tables <- list(pt1_gray, pt2_gray, pt3_gray, pt4_gray, pt5_gray, pt6_gray, pt7_gray)
+patient_ids <- paste0("Pt.", 1:7)
+
+# Function to perform chi-square test and extract results
+perform_chisq_test <- function(table) {
+  # Check if any cell has expected count < 5
+  expected <- rowSums(table) %*% t(colSums(table)) / sum(table)
+  low_expected <- any(expected < 5)
+  
+  # Use Fisher's exact test if expected counts are too low, otherwise chi-square
+  if (low_expected) {
+    result <- fisher.test(table)
+    test_type <- "Fisher's Exact Test"
+    chi_square_val <- NA  # Fisher's test doesn't provide chi-square statistic
+  } else {
+    result <- chisq.test(table, correct = FALSE)
+    test_type <- "Chi-Square Test"
+    chi_square_val <- result$statistic
+  }
+  
+  # Calculate odds ratio and 95% CI for 2x2 table
+  # Fisher's test already provides OR and CI, but we'll calculate it consistently
+  a <- table[1,1]
+  b <- table[1,2]
+  c <- table[2,1]
+  d <- table[2,2]
+  
+  # Add a small correction if any cell has zero to avoid division by zero
+  if (any(table == 0)) {
+    a <- a + 0.5
+    b <- b + 0.5
+    c <- c + 0.5
+    d <- d + 0.5
+  }
+  
+  odds_ratio <- (a * d) / (b * c)
+  log_or <- log(odds_ratio)
+  se_log_or <- sqrt(1/a + 1/b + 1/c + 1/d)
+  ci_lower <- exp(log_or - 1.96 * se_log_or)
+  ci_upper <- exp(log_or + 1.96 * se_log_or)
+  
+  # Return results
+  return(list(
+    chi_square = chi_square_val,
+    p_value = result$p.value,
+    odds_ratio = odds_ratio,
+    ci_lower = ci_lower,
+    ci_upper = ci_upper,
+    low_expected = low_expected,
+    test_type = test_type
+  ))
+}
+
+# Perform chi-square tests for all patients and cell types
+purple_results <- lapply(all_purple_tables, perform_chisq_test)
+gray_results <- lapply(all_gray_tables, perform_chisq_test)
+
+# Extract p-values for BH correction
+purple_p_values <- sapply(purple_results, function(x) x$p_value)
+gray_p_values <- sapply(gray_results, function(x) x$p_value)
+
+# Apply BH correction to all p-values combined
+all_p_values <- c(purple_p_values, gray_p_values)
+all_p_adjusted <- p.adjust(all_p_values, method = "BH")
+
+# Split adjusted p-values back to purple and gray
+purple_p_adjusted <- all_p_adjusted[1:7]
+gray_p_adjusted <- all_p_adjusted[8:14]
+
+# Create results data frames
+create_results_df <- function(results, p_adjusted, cell_type) {
+  data.frame(
+    Patient_ID = patient_ids,
+    Cell_Type = cell_type,
+    Test_Type = sapply(results, function(x) x$test_type),
+    Chi_Square = sapply(results, function(x) x$chi_square),
+    P_Value = sapply(results, function(x) x$p_value),
+    P_Value_BH_Adjusted = p_adjusted,
+    Significant = p_adjusted < 0.05,
+    Odds_Ratio = sapply(results, function(x) x$odds_ratio),
+    CI_Lower = sapply(results, function(x) x$ci_lower),
+    CI_Upper = sapply(results, function(x) x$ci_upper),
+    Low_Expected = sapply(results, function(x) x$low_expected)
+  )
+}
+
+purple_results_df <- create_results_df(purple_results, purple_p_adjusted, "Purple")
+gray_results_df <- create_results_df(gray_results, gray_p_adjusted, "Gray")
+
+# Combine results
+all_results_df <- rbind(purple_results_df, gray_results_df)
+
+# Add interpretation column
+all_results_df$Interpretation <- ifelse(all_results_df$Significant, 
+  ifelse(all_results_df$Cell_Type == "Purple",
+    ifelse(all_results_df$Odds_Ratio > 1, 
+      "Significant: Purple cells favor Below GAM before inflection and Above GAM after inflection",
+      "Significant: Purple cells favor Above GAM before inflection and Below GAM after inflection"),
+    ifelse(all_results_df$Odds_Ratio > 1, 
+      "Significant: Gray cells favor Below GAM before inflection and Above GAM after inflection",
+      "Significant: Gray cells favor Above GAM before inflection and Below GAM after inflection")),
+  "Not significant")
+
+# Save results to Excel
+wb <- createWorkbook()
+
+# Add main results sheet
+addWorksheet(wb, "Chi-Square Results")
+writeData(wb, "Chi-Square Results", all_results_df)
+
+# Format numbers
+style_number <- createStyle(numFmt = "0.000")
+style_scientific <- createStyle(numFmt = "0.00E+00")
+
+# Apply styles - fixing the unequal length issue by applying styles column by column
+number_cols <- which(names(all_results_df) %in% c("Chi_Square", "Odds_Ratio", "CI_Lower", "CI_Upper"))
+for (col in number_cols) {
+  addStyle(wb, "Chi-Square Results", style_number, rows = 2:(nrow(all_results_df)+1), cols = col)
+}
+
+scientific_cols <- which(names(all_results_df) %in% c("P_Value", "P_Value_BH_Adjusted"))
+for (col in scientific_cols) {
+  addStyle(wb, "Chi-Square Results", style_scientific, rows = 2:(nrow(all_results_df)+1), cols = col)
+}
+
+# Create detailed sheets for each patient with contingency tables
+for (i in 1:7) {
+  patient <- patient_ids[i]
+  sheet_name <- paste0(patient, "_Details")
+  addWorksheet(wb, sheet_name)
+  
+  # Purple cells contingency table
+  writeData(wb, sheet_name, c(patient, "Purple Cells Contingency Table"), startRow = 1)
+  writeData(wb, sheet_name, c("", "Below GAM", "Above GAM", "Row Total"), startRow = 2)
+  
+  purple_table <- all_purple_tables[[i]]
+  purple_row_sums <- rowSums(purple_table)
+  purple_col_sums <- colSums(purple_table)
+  purple_total <- sum(purple_table)
+  
+  writeData(wb, sheet_name, c("Before Inflection", purple_table[1,1], purple_table[1,2], purple_row_sums[1]), startRow = 3)
+  writeData(wb, sheet_name, c("After Inflection", purple_table[2,1], purple_table[2,2], purple_row_sums[2]), startRow = 4)
+  writeData(wb, sheet_name, c("Column Total", purple_col_sums[1], purple_col_sums[2], purple_total), startRow = 5)
+  
+  # Purple cells chi-square results
+  writeData(wb, sheet_name, c("Test Type", "Chi-Square", "p-value", "BH adjusted p-value", "Significant?", "Odds Ratio", "95% CI Lower", "95% CI Upper"), startRow = 7)
+  writeData(wb, sheet_name, c(
+    purple_results[[i]]$test_type,
+    purple_results[[i]]$chi_square, 
+    purple_results[[i]]$p_value,
+    purple_p_adjusted[i],
+    purple_p_adjusted[i] < 0.05,
+    purple_results[[i]]$odds_ratio,
+    purple_results[[i]]$ci_lower,
+    purple_results[[i]]$ci_upper
+  ), startRow = 8)
+  
+  # Gray cells contingency table
+  writeData(wb, sheet_name, c(patient, "Gray Cells Contingency Table"), startRow = 10)
+  writeData(wb, sheet_name, c("", "Below GAM", "Above GAM", "Row Total"), startRow = 11)
+  
+  gray_table <- all_gray_tables[[i]]
+  gray_row_sums <- rowSums(gray_table)
+  gray_col_sums <- colSums(gray_table)
+  gray_total <- sum(gray_table)
+  
+  writeData(wb, sheet_name, c("Before Inflection", gray_table[1,1], gray_table[1,2], gray_row_sums[1]), startRow = 12)
+  writeData(wb, sheet_name, c("After Inflection", gray_table[2,1], gray_table[2,2], gray_row_sums[2]), startRow = 13)
+  writeData(wb, sheet_name, c("Column Total", gray_col_sums[1], gray_col_sums[2], gray_total), startRow = 14)
+  
+  # Gray cells chi-square results
+  writeData(wb, sheet_name, c("Test Type", "Chi-Square", "p-value", "BH adjusted p-value", "Significant?", "Odds Ratio", "95% CI Lower", "95% CI Upper"), startRow = 16)
+  writeData(wb, sheet_name, c(
+    gray_results[[i]]$test_type,
+    gray_results[[i]]$chi_square, 
+    gray_results[[i]]$p_value,
+    gray_p_adjusted[i],
+    gray_p_adjusted[i] < 0.05,
+    gray_results[[i]]$odds_ratio,
+    gray_results[[i]]$ci_lower,
+    gray_results[[i]]$ci_upper
+  ), startRow = 17)
+  
+  # Add interpretation
+  writeData(wb, sheet_name, "Interpretation:", startRow = 19)
+  
+  purple_interp <- ifelse(purple_p_adjusted[i] < 0.05,
+    ifelse(purple_results[[i]]$odds_ratio > 1, 
+      "Significant: Purple cells favor Below GAM before inflection and Above GAM after inflection",
+      "Significant: Purple cells favor Above GAM before inflection and Below GAM after inflection"),
+    "Not significant")
+  
+  gray_interp <- ifelse(gray_p_adjusted[i] < 0.05,
+    ifelse(gray_results[[i]]$odds_ratio > 1, 
+      "Significant: Gray cells favor Below GAM before inflection and Above GAM after inflection",
+      "Significant: Gray cells favor Above GAM before inflection and Below GAM after inflection"),
+    "Not significant")
+  
+  writeData(wb, sheet_name, c("Purple cells:", purple_interp), startRow = 20)
+  writeData(wb, sheet_name, c("Gray cells:", gray_interp), startRow = 21)
+}
+
+# Save workbook
+saveWorkbook(wb, "ChiSquare_Results.xlsx", overwrite = TRUE)
+
+# Print summary of findings
+cat("\nSummary of Chi-Square Test Results:\n")
+cat("==================================\n")
+
+for (i in 1:7) {
+  cat(paste0("\n", patient_ids[i], ":\n"))
+  
+  # Purple cells results
+  cat("Purple Cells: ")
+  if (purple_p_adjusted[i] < 0.05) {
+    if (purple_results[[i]]$odds_ratio > 1) {
+      cat("Significant (p-adj = ", round(purple_p_adjusted[i], 4), 
+          ") - Purple cells favor Below GAM before inflection and Above GAM after inflection\n", sep="")
+    } else {
+      cat("Significant (p-adj = ", round(purple_p_adjusted[i], 4), 
+          ") - Purple cells favor Above GAM before inflection and Below GAM after inflection\n", sep="")
+    }
+  } else {
+    cat("Not significant (p-adj = ", round(purple_p_adjusted[i], 4), ")\n", sep="")
+  }
+  
+  # Gray cells results
+  cat("Gray Cells: ")
+  if (gray_p_adjusted[i] < 0.05) {
+    if (gray_results[[i]]$odds_ratio > 1) {
+      cat("Significant (p-adj = ", round(gray_p_adjusted[i], 4), 
+          ") - Gray cells favor Below GAM before inflection and Above GAM after inflection\n", sep="")
+    } else {
+      cat("Significant (p-adj = ", round(gray_p_adjusted[i], 4), 
+          ") - Gray cells favor Above GAM before inflection and Below GAM after inflection\n", sep="")
+    }
+  } else {
+    cat("Not significant (p-adj = ", round(gray_p_adjusted[i], 4), ")\n", sep="")
+  }
+}
 
 # ===============================
-# Part III: Raincloud Plots
+# Part IV: Raincloud Plots
 # ===============================
 # Load required libraries
 library(readxl)
@@ -1002,3 +1281,4 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
           plot.title = element_text(face = "bold", size = 14),
 
           plot.subtitle = element_text(size = 12))
+
