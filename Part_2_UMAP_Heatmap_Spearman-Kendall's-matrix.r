@@ -1,6 +1,6 @@
-#################################################
-# Part 2: UMAP, Heatmap and Spearman-Kendall matrix
-#################################################
+#######################################################
+# Part 2: UMAP, Heatmap and Spearman-Kendall's matrix
+#######################################################
 
 # =========================================
 # 1. TRPM4 UMAP plot
@@ -195,6 +195,7 @@ pdf("TRPM4_heatmap.pdf", width = 12, height = 8)
 draw(heatmap)
 dev.off()
 draw(heatmap)
+
 
 
 
