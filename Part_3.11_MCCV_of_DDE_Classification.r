@@ -1,5 +1,5 @@
 #######################################################################################################################
-# Part 3.11: Monte-Carlo Cross-Validation (MCCV) Analysis of Decomposition of Deviance Explained (DDE) Classification
+# Part 3.11: Monte Carlo Cross-Validation (MCCV) Analysis of Decomposition of Deviance Explained (DDE) Classification
 #######################################################################################################################
 
 # =================================================================================================================
@@ -2502,5 +2502,6 @@ cat("\n", rep("=", 60), "\n")
 cat("LEVERAGE-BASED RANDOM CONTROL GAM VALIDATION PLOTS COMPLETE\n")
 
 cat(rep("=", 60), "\n")
+
 
 
