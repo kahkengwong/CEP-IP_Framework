@@ -117,8 +117,8 @@ validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iteratio
             # Calculate RMSE for deviance and non-deviance cells
             if (length(test_deviance_cells_idx) > 0 && length(test_non_deviance_cells_idx) > 0) {
                 test_residuals <- test_data$Expression - test_pred
-                test_dec_rmse <- sqrt(mean(test_residuals[test_deviance_cells_idx]^2, na.rm = TRUE))
-                test_non_dec_rmse <- sqrt(mean(test_residuals[test_non_deviance_cells_idx]^2, na.rm = TRUE))
+                test_trde_rmse <- sqrt(mean(test_residuals[test_deviance_cells_idx]^2, na.rm = TRUE))
+                test_non_trde_rmse <- sqrt(mean(test_residuals[test_non_deviance_cells_idx]^2, na.rm = TRUE))
                 
                 validation_results[[iter]] <- data.frame(
                     iteration = iter,
@@ -126,11 +126,11 @@ validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iteratio
                     train_dev_explained = dev_explained_train,
                     train_n = nrow(train_data),
                     test_n = nrow(test_data),
-                    test_dec_n = length(test_deviance_cells_idx),
-                    test_non_dec_n = length(test_non_deviance_cells_idx),
-                    test_dec_rmse = test_dec_rmse,
-                    test_non_dec_rmse = test_non_dec_rmse,
-                    rmse_difference = test_non_dec_rmse - test_dec_rmse,
+                    test_trde_n = length(test_deviance_cells_idx),
+                    test_non_trde_n = length(test_non_deviance_cells_idx),
+                    test_trde_rmse = test_trde_rmse,
+                    test_non_trde_rmse = test_non_trde_rmse,
+                    rmse_difference = test_non_trde_rmse - test_trde_rmse,
                     used_k = optimal_k,
                     used_lambda = optimal_lambda,
                     train_edf = summary(train_model)$edf
@@ -149,7 +149,7 @@ validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iteratio
         cat("\n--- Cross-Validation Summary ---\n")
         cat("Used k =", optimal_k, ", lambda =", optimal_lambda, "\n")
         cat("Successful iterations:", nrow(combined_results), "/", n_iterations, "\n")
-        cat("Mean RMSE difference (Non-TDE - DEC):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
+        cat("Mean RMSE difference (Non-TRDE - TRDE):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("SD RMSE difference:", round(sd(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("Mean training EDF:", round(mean(combined_results$train_edf, na.rm = TRUE), 2), "\n")
         
@@ -230,13 +230,13 @@ validate_random_deviance_cells <- function(current_sample, train_prop = 0.7, n_i
             
             # Randomly classify test cells based on training proportion
             test_target_cells <- round(nrow(test_data) * dev_explained_train)
-            random_dec_idx <- sample(1:nrow(test_data), size = test_target_cells)
-            random_non_dec_idx <- setdiff(1:nrow(test_data), random_dec_idx)
+            random_trde_idx <- sample(1:nrow(test_data), size = test_target_cells)
+            random_non_trde_idx <- setdiff(1:nrow(test_data), random_trde_idx)
             
             # Calculate RMSE for random groups
-            if (length(random_dec_idx) > 0 && length(random_non_dec_idx) > 0) {
-                test_random_dec_rmse <- sqrt(mean(test_residuals[random_dec_idx]^2, na.rm = TRUE))
-                test_random_non_dec_rmse <- sqrt(mean(test_residuals[random_non_dec_idx]^2, na.rm = TRUE))
+            if (length(random_trde_idx) > 0 && length(random_non_trde_idx) > 0) {
+                test_random_trde_rmse <- sqrt(mean(test_residuals[random_trde_idx]^2, na.rm = TRUE))
+                test_random_non_trde_rmse <- sqrt(mean(test_residuals[random_non_trde_idx]^2, na.rm = TRUE))
                 
                 validation_results[[iter]] <- data.frame(
                     iteration = iter,
@@ -244,11 +244,11 @@ validate_random_deviance_cells <- function(current_sample, train_prop = 0.7, n_i
                     train_dev_explained = dev_explained_train,
                     train_n = nrow(train_data),
                     test_n = nrow(test_data),
-                    test_dec_n = length(random_dec_idx),
-                    test_non_dec_n = length(random_non_dec_idx),
-                    test_dec_rmse = test_random_dec_rmse,
-                    test_non_dec_rmse = test_random_non_dec_rmse,
-                    rmse_difference = test_random_non_dec_rmse - test_random_dec_rmse,
+                    test_trde_n = length(random_trde_idx),
+                    test_non_trde_n = length(random_non_trde_idx),
+                    test_trde_rmse = test_random_trde_rmse,
+                    test_non_trde_rmse = test_random_non_trde_rmse,
+                    rmse_difference = test_random_non_trde_rmse - test_random_trde_rmse,
                     used_k = optimal_k,
                     used_lambda = optimal_lambda,
                     train_edf = summary(train_model)$edf
@@ -267,7 +267,7 @@ validate_random_deviance_cells <- function(current_sample, train_prop = 0.7, n_i
         cat("\n--- Random Cross-Validation Summary ---\n")
         cat("Used k =", optimal_k, ", lambda =", optimal_lambda, "\n")
         cat("Successful iterations:", nrow(combined_results), "/", n_iterations, "\n")
-        cat("Mean RMSE difference (Random Non-TDE - Random DEC):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
+        cat("Mean RMSE difference (Random Non-TRDE - Random TRDE):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("SD RMSE difference:", round(sd(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("Mean training EDF:", round(mean(combined_results$train_edf, na.rm = TRUE), 2), "\n")
         
@@ -361,8 +361,8 @@ create_validation_plots <- function(validation_results, sample_name) {
         geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
         geom_smooth(method = "lm", se = TRUE, alpha = 0.3) +
         labs(title = paste("RMSE Difference Across CV Iterations (", sample_name, ")"),
-             subtitle = "Positive values indicate better prediction for TDE cells",
-             x = "CV Iteration", y = "RMSE Difference (Non-TDE - DEC)") +
+             subtitle = "Positive values indicate better prediction for TRDE cells",
+             x = "CV Iteration", y = "RMSE Difference (Non-TRDE - TRDE)") +
         theme_minimal()
     
     # Plot distribution of RMSE differences
@@ -372,7 +372,7 @@ create_validation_plots <- function(validation_results, sample_name) {
         geom_vline(xintercept = mean(validation_results$rmse_difference), linetype = "solid", color = "blue") +
         labs(title = paste("Distribution of RMSE Differences (", sample_name, ")"),
              subtitle = "Red line at 0, blue line at mean",
-             x = "RMSE Difference (Non-TDE - DEC)", y = "Frequency") +
+             x = "RMSE Difference (Non-TRDE - TRDE)", y = "Frequency") +
         theme_minimal()
     
     print(p1)
@@ -521,14 +521,14 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                 validation_plot_data <- rbind(validation_plot_data, 
                                               data.frame(
                                                   Sample = patient_id,
-                                                  RMSE = sample_data$test_dec_rmse[i],
+                                                  RMSE = sample_data$test_trde_rmse[i],
                                                   Group = "DEC"
                                               ))
                 validation_plot_data <- rbind(validation_plot_data, 
                                               data.frame(
                                                   Sample = patient_id,
-                                                  RMSE = sample_data$test_non_dec_rmse[i],
-                                                  Group = "Non-TDE"
+                                                  RMSE = sample_data$test_non_trde_rmse[i],
+                                                  Group = "Non-TRDE"
                                               ))
             }
         }
@@ -542,14 +542,14 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                 random_validation_plot_data <- rbind(random_validation_plot_data, 
                                                      data.frame(
                                                          Sample = patient_id,
-                                                         RMSE = sample_data$test_dec_rmse[i],
-                                                         Group = "Random DEC"
+                                                         RMSE = sample_data$test_trde_rmse[i],
+                                                         Group = "Random TRDE"
                                                      ))
                 random_validation_plot_data <- rbind(random_validation_plot_data, 
                                                      data.frame(
                                                          Sample = patient_id,
-                                                         RMSE = sample_data$test_non_dec_rmse[i],
-                                                         Group = "Random Non-TDE"
+                                                         RMSE = sample_data$test_non_trde_rmse[i],
+                                                         Group = "Random Non-TRDE"
                                                      ))
             }
         }
@@ -612,7 +612,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
         
         # Create boxplot for DDE classification
         if (nrow(validation_plot_data) > 0) {
-            validation_plot_data$Group <- factor(validation_plot_data$Group, levels = c("Non-TDE", "DEC"))
+            validation_plot_data$Group <- factor(validation_plot_data$Group, levels = c("Non-TRDE", "TRDE"))
             
             # Set dynamic y-axis limits
             y_max <- max(validation_plot_data$RMSE, na.rm = TRUE) + 0.1
@@ -623,15 +623,15 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                              position = position_dodge(width = 0.8)) +
                 geom_point(aes(color = Group), alpha = 0.5, size = 1.2,
                            position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.15)) +
-                scale_fill_manual(values = c("Non-TDE" = "#C0C0C0", "DEC" = "#9954C1")) +
-                scale_color_manual(values = c("Non-TDE" = "#A0A0A0", "DEC" = "#4B0082")) +
+                scale_fill_manual(values = c("Non-TRDE" = "#C0C0C0", "TRDE" = "#9954C1")) +
+                scale_color_manual(values = c("Non-TRDE" = "#A0A0A0", "TRDE" = "#4B0082")) +
                 geom_text(data = data.frame(Sample = combined_tests$patient_id, 
                                             RMSE = rep(y_max - 0.02, nrow(combined_tests)),
                                             sig = sig_values),
                           aes(x = Sample, y = RMSE, label = sig), 
                           inherit.aes = FALSE, size = 4, fontface = "bold") +
                 labs(title = "RMSE Classification Validity",
-                     subtitle = "TDE vs Non-TDE cells | Tests if classification captures low RMSE cells | ** = FDR < 0.01",
+                     subtitle = "TRDE vs Non-TRDE cells | Tests if classification captures low RMSE cells | ** = FDR < 0.01",
                      x = "Sample", y = "RMSE", fill = "Classification", color = "Classification") +
                 theme_minimal() +
                 theme(
@@ -650,7 +650,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
         
         # Create boxplot for random control classification
         if (nrow(random_validation_plot_data) > 0) {
-            random_validation_plot_data$Group <- factor(random_validation_plot_data$Group, levels = c("Random Non-TDE", "Random DEC"))
+            random_validation_plot_data$Group <- factor(random_validation_plot_data$Group, levels = c("Random Non-TRDE", "Random TRDE"))
             
             # Set dynamic y-axis limits for random plot
             y_max_random <- max(random_validation_plot_data$RMSE, na.rm = TRUE) + 0.1
@@ -661,15 +661,15 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                              position = position_dodge(width = 0.8)) +
                 geom_point(aes(color = Group), alpha = 0.5, size = 1.2,
                            position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.15)) +
-                scale_fill_manual(values = c("Random Non-TDE" = "#C0C0C0", "Random DEC" = "#9954C1")) +
-                scale_color_manual(values = c("Random Non-TDE" = "#A0A0A0", "Random DEC" = "#4B0082")) +
+                scale_fill_manual(values = c("Random Non-TRDE" = "#C0C0C0", "Random TRDE" = "#9954C1")) +
+                scale_color_manual(values = c("Random Non-TRDE" = "#A0A0A0", "Random TRDE" = "#4B0082")) +
                 geom_text(data = data.frame(Sample = combined_random_tests$patient_id, 
                                             RMSE = rep(y_max_random - 0.02, nrow(combined_random_tests)),
                                             sig = random_sig_values),
                           aes(x = Sample, y = RMSE, label = sig), 
                           inherit.aes = FALSE, size = 4, fontface = "bold") +
                 labs(title = "Random Control Classification",
-                     subtitle = "Random TDE vs Random Non-TDE cells | Should show no significant difference",
+                     subtitle = "Random TRDE vs Random Non-TRDE cells | Should show no significant difference",
                      x = "Sample", y = "RMSE", fill = "Classification", color = "Classification") +
                 theme_minimal() +
                 theme(
@@ -1044,7 +1044,7 @@ create_random_gam_validation_plots <- function(current_sample, random_seed = 42)
     plot_data <- data.frame(
         TRPM4 = sample_data$TRPM4,
         Expression = sample_data$Expression,
-        Group = ifelse(1:nrow(sample_data) %in% random_deviance_cells_idx, "Random DEC", "Random Non-TDE"),
+        Group = ifelse(1:nrow(sample_data) %in% random_deviance_cells_idx, "Random TRDE", "Random Non-TRDE"),
         ExplanatoryPower = explanatory_power
     )
     
@@ -1081,11 +1081,11 @@ create_random_gam_validation_plots <- function(current_sample, random_seed = 42)
         geom_point(data = plot_data, 
                    aes(x = TRPM4, y = Expression, color = Group, alpha = Group),
                    size = 1.8) +
-        scale_alpha_manual(values = c("Random DEC" = 0.25, "Random Non-TDE" = 0.6), guide = "none") +
+        scale_alpha_manual(values = c("Random TRDE" = 0.25, "Random Non-TRDE" = 0.6), guide = "none") +
         geom_line(data = pred_data, aes(x = TRPM4, y = fit), color = "#FFCC99", size = 1.2) +
         geom_ribbon(data = pred_data, aes(x = TRPM4, ymin = fit - 1.96 * se.fit, ymax = fit + 1.96 * se.fit), 
                     fill = "#FFCC99", alpha = 0.2) +
-        scale_color_manual(values = c("Random DEC" = "#4B0082", "Random Non-TDE" = "#C0C0C0")) +
+        scale_color_manual(values = c("Random TRDE" = "#4B0082", "Random Non-TRDE" = "#C0C0C0")) +
         theme_minimal() +
         theme(
             panel.grid.major = element_line(color = "#EEEEEE"),
@@ -1116,8 +1116,8 @@ create_random_gam_validation_plots <- function(current_sample, random_seed = 42)
     # Print random classification summary
     cat("\n--- Random Classification Summary ---\n")
     cat("Total cells:", nrow(sample_data), "\n")
-    cat("Random TDE cells:", length(random_deviance_cells_idx), "\n")
-    cat("Random Non-TDE cells:", length(random_non_deviance_cells_idx), "\n")
+    cat("Random TRDE cells:", length(random_deviance_cells_idx), "\n")
+    cat("Random Non-TRDE cells:", length(random_non_deviance_cells_idx), "\n")
     cat("Classification completeness:", (length(random_deviance_cells_idx) + length(random_non_deviance_cells_idx)) == nrow(sample_data), "\n")
     cat("Model deviance explained:", round(model_dev_explained * 100, 2), "%\n")
     cat("Random target cells:", target_cells, "out of", nrow(sample_data), "\n")
@@ -1125,10 +1125,10 @@ create_random_gam_validation_plots <- function(current_sample, random_seed = 42)
     
     # Summarize explanatory power (EP) for random groups
     cat("\n--- Explanatory Power Summary (Random Groups) ---\n")
-    cat("Random TDE cells - Min EP:", round(min(explanatory_power[random_deviance_cells_idx]), 4), 
+    cat("Random TRDE cells - Min EP:", round(min(explanatory_power[random_deviance_cells_idx]), 4), 
         "| Max EP:", round(max(explanatory_power[random_deviance_cells_idx]), 4),
         "| Mean EP:", round(mean(explanatory_power[random_deviance_cells_idx]), 4), "\n")
-    cat("Random Non-TDE cells - Min EP:", round(min(explanatory_power[random_non_deviance_cells_idx]), 4), 
+    cat("Random Non-TRDE cells - Min EP:", round(min(explanatory_power[random_non_deviance_cells_idx]), 4), 
         "| Max EP:", round(max(explanatory_power[random_non_deviance_cells_idx]), 4),
         "| Mean EP:", round(mean(explanatory_power[random_non_deviance_cells_idx]), 4), "\n")
     cat("EP difference between groups:", round(mean(explanatory_power[random_deviance_cells_idx]) - mean(explanatory_power[random_non_deviance_cells_idx]), 4), "\n")
@@ -1322,7 +1322,7 @@ validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iteratio
             target_cells_train <- round(nrow(train_data) * dev_explained_train)
             target_cells_train <- max(1, min(target_cells_train, nrow(train_data) - 1))  # Ensure valid range
             
-            # Take the top cells by ranking metric (TDE cells)
+            # Take the top cells by ranking metric (TRDE cells)
             deviance_cells_train_idx <- sorted_indices_train[1:target_cells_train]
             non_deviance_cells_train_idx <- sorted_indices_train[(target_cells_train+1):length(sorted_indices_train)]
             
@@ -1360,10 +1360,10 @@ validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iteratio
             
             # Calculate test performance metrics
             if (length(test_deviance_cells_idx) > 0 && length(test_non_deviance_cells_idx) > 0) {
-                # Calculate RMSE for TDE and Non-TDE groups
+                # Calculate RMSE for TRDE and Non-TRDE groups
                 test_residuals <- test_data$Expression - test_pred
-                test_dec_rmse <- sqrt(mean(test_residuals[test_deviance_cells_idx]^2, na.rm = TRUE))
-                test_non_dec_rmse <- sqrt(mean(test_residuals[test_non_deviance_cells_idx]^2, na.rm = TRUE))
+                test_trde_rmse <- sqrt(mean(test_residuals[test_deviance_cells_idx]^2, na.rm = TRUE))
+                test_non_trde_rmse <- sqrt(mean(test_residuals[test_non_deviance_cells_idx]^2, na.rm = TRUE))
                 
                 validation_results[[iter]] <- data.frame(
                     iteration = iter,
@@ -1371,11 +1371,11 @@ validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iteratio
                     train_dev_explained = dev_explained_train,
                     train_n = nrow(train_data),
                     test_n = nrow(test_data),
-                    test_dec_n = length(test_deviance_cells_idx),
-                    test_non_dec_n = length(test_non_deviance_cells_idx),
-                    test_dec_rmse = test_dec_rmse,
-                    test_non_dec_rmse = test_non_dec_rmse,
-                    rmse_difference = test_non_dec_rmse - test_dec_rmse,
+                    test_trde_n = length(test_deviance_cells_idx),
+                    test_non_trde_n = length(test_non_deviance_cells_idx),
+                    test_trde_rmse = test_trde_rmse,
+                    test_non_trde_rmse = test_non_trde_rmse,
+                    rmse_difference = test_non_trde_rmse - test_trde_rmse,
                     used_k = optimal_k,
                     used_lambda = optimal_lambda,
                     train_edf = summary(train_model)$edf
@@ -1395,7 +1395,7 @@ validate_deviance_cells <- function(current_sample, train_prop = 0.7, n_iteratio
         cat("\n--- Cross-Validation Summary ---\n")
         cat("Used k =", optimal_k, ", lambda =", optimal_lambda, "\n")
         cat("Successful iterations:", nrow(combined_results), "/", n_iterations, "\n")
-        cat("Mean RMSE difference (Non-TDE - DEC):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
+        cat("Mean RMSE difference (Non-TRDE - TRDE):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("SD RMSE difference:", round(sd(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("Mean training EDF:", round(mean(combined_results$train_edf, na.rm = TRUE), 2), "\n")
         
@@ -1503,10 +1503,10 @@ validate_random_deviance_cells <- function(current_sample, train_prop = 0.7, n_i
                     train_dev_explained = dev_explained_train,
                     train_n = nrow(train_data),
                     test_n = nrow(test_data),
-                    test_dec_n = sum(test_top_like),
-                    test_non_dec_n = sum(test_bottom_like),
-                    test_dec_rmse = test_top_rmse,
-                    test_non_dec_rmse = test_bottom_rmse,
+                    test_trde_n = sum(test_top_like),
+                    test_non_trde_n = sum(test_bottom_like),
+                    test_trde_rmse = test_top_rmse,
+                    test_non_trde_rmse = test_bottom_rmse,
                     rmse_difference = test_bottom_rmse - test_top_rmse,
                     used_k = optimal_k,
                     used_lambda = optimal_lambda,
@@ -1527,7 +1527,7 @@ validate_random_deviance_cells <- function(current_sample, train_prop = 0.7, n_i
         cat("\n--- Random Cross-Validation Summary ---\n")
         cat("Used k =", optimal_k, ", lambda =", optimal_lambda, "\n")
         cat("Successful iterations:", nrow(combined_results), "/", n_iterations, "\n")
-        cat("Mean RMSE difference (Random Non-TDE - Random DEC):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
+        cat("Mean RMSE difference (Random Non-TRDE - Random TRDE):", round(mean(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("SD RMSE difference:", round(sd(combined_results$rmse_difference, na.rm = TRUE), 4), "\n")
         cat("Mean training EDF:", round(mean(combined_results$train_edf, na.rm = TRUE), 2), "\n")
         
@@ -1623,8 +1623,8 @@ create_validation_plots <- function(validation_results, sample_name) {
         geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
         geom_smooth(method = "lm", se = TRUE, alpha = 0.3) +
         labs(title = paste("RMSE Difference Across CV Iterations (", sample_name, ")"),
-             subtitle = "Positive values indicate better prediction for TDE cells",
-             x = "CV Iteration", y = "RMSE Difference (Non-TDE - DEC)") +
+             subtitle = "Positive values indicate better prediction for TRDE cells",
+             x = "CV Iteration", y = "RMSE Difference (Non-TRDE - TRDE)") +
         theme_minimal()
     
     # Plot 2: Distribution of RMSE differences
@@ -1634,7 +1634,7 @@ create_validation_plots <- function(validation_results, sample_name) {
         geom_vline(xintercept = mean(validation_results$rmse_difference), linetype = "solid", color = "blue") +
         labs(title = paste("Distribution of RMSE Differences (", sample_name, ")"),
              subtitle = "Red line at 0, blue line at mean",
-             x = "RMSE Difference (Non-TDE - DEC)", y = "Frequency") +
+             x = "RMSE Difference (Non-TRDE - TRDE)", y = "Frequency") +
         theme_minimal()
     
     print(p1)
@@ -1774,7 +1774,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             combined_random_all$patient_id <- sample_to_patient[combined_random_all$sample]
         }
         
-        # Create data for EP-based TDE vs Non-TDE boxplot comparison
+        # Create data for EP-based TRDE vs Non-TRDE boxplot comparison
         validation_plot_data <- data.frame()
         for (sample_name in names(all_validation_results)) {
             patient_id <- sample_to_patient[sample_name]
@@ -1783,19 +1783,19 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                 validation_plot_data <- rbind(validation_plot_data, 
                                               data.frame(
                                                   Sample = patient_id,
-                                                  RMSE = sample_data$test_dec_rmse[i],
-                                                  Group = "DEC"
+                                                  RMSE = sample_data$test_trde_rmse[i],
+                                                  Group = "TRDE"
                                               ))
                 validation_plot_data <- rbind(validation_plot_data, 
                                               data.frame(
                                                   Sample = patient_id,
-                                                  RMSE = sample_data$test_non_dec_rmse[i],
-                                                  Group = "Non-TDE"
+                                                  RMSE = sample_data$test_non_trde_rmse[i],
+                                                  Group = "Non-TRDE"
                                               ))
             }
         }
         
-        # Create data for random TDE vs Non-TDE boxplot comparison
+        # Create data for random TRDE vs Non-TRDE boxplot comparison
         random_validation_plot_data <- data.frame()
         for (sample_name in names(all_random_validation_results)) {
             patient_id <- sample_to_patient[sample_name]
@@ -1804,14 +1804,14 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                 random_validation_plot_data <- rbind(random_validation_plot_data, 
                                                      data.frame(
                                                          Sample = patient_id,
-                                                         RMSE = sample_data$test_dec_rmse[i],
-                                                         Group = "Random DEC"
+                                                         RMSE = sample_data$test_trde_rmse[i],
+                                                         Group = "Random TRDE"
                                                      ))
                 random_validation_plot_data <- rbind(random_validation_plot_data, 
                                                      data.frame(
                                                          Sample = patient_id,
-                                                         RMSE = sample_data$test_non_dec_rmse[i],
-                                                         Group = "Random Non-TDE"
+                                                         RMSE = sample_data$test_non_trde_rmse[i],
+                                                         Group = "Random Non-TRDE"
                                                      ))
             }
         }
@@ -1872,9 +1872,9 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
             cat("Overall test p-value:", format.pval(overall_random_test$p.value, digits = 3), "\n")
         }
         
-        # Reorder the groups so Non-TDE appears first
+        # Reorder the groups so Non-TRDE appears first
         if (nrow(validation_plot_data) > 0) {
-            validation_plot_data$Group <- factor(validation_plot_data$Group, levels = c("Non-TDE", "DEC"))
+            validation_plot_data$Group <- factor(validation_plot_data$Group, levels = c("Non-TRDE", "TRDE"))
             
             # Calculate dynamic y-axis limits for original plot
             y_max <- max(validation_plot_data$RMSE, na.rm = TRUE) + 0.1
@@ -1886,15 +1886,15 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                              position = position_dodge(width = 0.8)) +
                 geom_point(aes(color = Group), alpha = 0.5, size = 1.2,
                            position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.15)) +
-                scale_fill_manual(values = c("Non-TDE" = "#C0C0C0", "DEC" = "#9954C1")) +
-                scale_color_manual(values = c("Non-TDE" = "#A0A0A0", "DEC" = "#4B0082")) +
+                scale_fill_manual(values = c("Non-TRDE" = "#C0C0C0", "TRDE" = "#9954C1")) +
+                scale_color_manual(values = c("Non-TRDE" = "#A0A0A0", "TRDE" = "#4B0082")) +
                 geom_text(data = data.frame(Sample = combined_tests$patient_id, 
                                             RMSE = rep(y_max - 0.02, nrow(combined_tests)),
                                             sig = sig_values),
                           aes(x = Sample, y = RMSE, label = sig), 
                           inherit.aes = FALSE, size = 4, fontface = "bold") +
                 labs(title = "RMSE Classification Validity",
-                     subtitle = "TDE vs Non-TDE cells | Tests if classification captures low RMSE cells | ** = FDR < 0.01",
+                     subtitle = "TRDE vs Non-TRDE cells | Tests if classification captures low RMSE cells | ** = FDR < 0.01",
                      x = "Sample", y = "RMSE", fill = "Classification", color = "Classification") +
                 theme_minimal() +
                 theme(
@@ -1913,7 +1913,7 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
         
         # Random control plot
         if (nrow(random_validation_plot_data) > 0) {
-            random_validation_plot_data$Group <- factor(random_validation_plot_data$Group, levels = c("Random Non-TDE", "Random DEC"))
+            random_validation_plot_data$Group <- factor(random_validation_plot_data$Group, levels = c("Random Non-TRDE", "Random TRDE"))
             
             # Calculate dynamic y-axis limits for random plot
             y_max_random <- max(random_validation_plot_data$RMSE, na.rm = TRUE) + 0.1
@@ -1924,15 +1924,15 @@ if (length(all_statistical_tests) > 0 || length(all_random_statistical_tests) > 
                              position = position_dodge(width = 0.8)) +
                 geom_point(aes(color = Group), alpha = 0.5, size = 1.2,
                            position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.15)) +
-                scale_fill_manual(values = c("Random Non-TDE" = "#C2E6F6", "Random DEC" = "#6161B7")) +
-                scale_color_manual(values = c("Random Non-TDE" = "#A6C8E2", "Random DEC" = "#000080")) +
+                scale_fill_manual(values = c("Random Non-TRDE" = "#C2E6F6", "Random TRDE" = "#6161B7")) +
+                scale_color_manual(values = c("Random Non-TRDE" = "#A6C8E2", "Random TRDE" = "#000080")) +
                 geom_text(data = data.frame(Sample = combined_random_tests$patient_id, 
                                             RMSE = rep(y_max_random - 0.02, nrow(combined_random_tests)),
                                             sig = random_sig_values),
                           aes(x = Sample, y = RMSE, label = sig), 
                           inherit.aes = FALSE, size = 4, fontface = "bold") +
                 labs(title = "Random Control Classification",
-                     subtitle = "Random TDE vs Random Non-TDE cells | Should show no significant difference",
+                     subtitle = "Random TRDE vs Random Non-TRDE cells | Should show no significant difference",
                      x = "Sample", y = "RMSE", fill = "Classification", color = "Classification") +
                 theme_minimal() +
                 theme(
@@ -2114,7 +2114,7 @@ create_leverage_gam_validation_plots <- function(current_sample) {
     target_cells <- round(nrow(sample_data) * model_dev_explained)
     target_cells <- max(1, min(target_cells, nrow(sample_data) - 1))  # Ensure valid range
     
-    # Take the top cells by ranking metric (TDE cells)
+    # Take the top cells by ranking metric (TRDE cells)
     deviance_cells_idx <- sorted_indices[1:target_cells]
     non_deviance_cells_idx <- sorted_indices[(target_cells+1):length(sorted_indices)]
     
@@ -2130,7 +2130,7 @@ create_leverage_gam_validation_plots <- function(current_sample) {
     plot_data <- data.frame(
         TRPM4 = sample_data$TRPM4,
         Expression = sample_data$Expression,
-        Group = ifelse(1:nrow(sample_data) %in% deviance_cells_idx, "Leverage DEC", "Leverage Non-TDE"),
+        Group = ifelse(1:nrow(sample_data) %in% deviance_cells_idx, "Leverage TRDE", "Leverage Non-TRDE"),
         RankingMetric = ranking_metric
     )
     
@@ -2168,8 +2168,8 @@ create_leverage_gam_validation_plots <- function(current_sample) {
         geom_point(data = plot_data, 
                    aes(x = TRPM4, y = Expression, color = Group, alpha = Group),
                    size = 1.8) +
-        scale_alpha_manual(values = c("Leverage DEC" = 0.4,        # More transparent purple
-                                      "Leverage Non-TDE" = 0.6),   # Keep gray as is
+        scale_alpha_manual(values = c("Leverage TRDE" = 0.4,        # More transparent purple
+                                      "Leverage Non-TRDE" = 0.6),   # Keep gray as is
                            guide = "none") +  # Hide alpha legend
         # Add the GAM line with orange color
         geom_line(data = pred_data,
@@ -2184,8 +2184,8 @@ create_leverage_gam_validation_plots <- function(current_sample) {
                     fill = "#FFCC99",  # Orange with transparency
                     alpha = 0.2) +
         # Set colors for the groups
-        scale_color_manual(values = c("Leverage DEC" = "#4B0082",      # Purple
-                                      "Leverage Non-TDE" = "#C0C0C0")) + # Gray
+        scale_color_manual(values = c("Leverage TRDE" = "#4B0082",      # Purple
+                                      "Leverage Non-TRDE" = "#C0C0C0")) + # Gray
         # Styling
         theme_minimal() +
         theme(
@@ -2221,8 +2221,8 @@ create_leverage_gam_validation_plots <- function(current_sample) {
     cat("\n--- Classification Summary (Leverage-Based Method) ---\n")
     cat("Method used:", method_used, "\n")
     cat("Total cells:", nrow(sample_data), "\n")
-    cat("Leverage TDE cells:", length(deviance_cells_idx), "\n")
-    cat("Leverage Non-TDE cells:", length(non_deviance_cells_idx), "\n")
+    cat("Leverage TRDE cells:", length(deviance_cells_idx), "\n")
+    cat("Leverage Non-TRDE cells:", length(non_deviance_cells_idx), "\n")
     cat("Classification completeness:", (length(deviance_cells_idx) + length(non_deviance_cells_idx)) == nrow(sample_data), "\n")
     cat("Model deviance explained:", round(model_dev_explained * 100, 2), "%\n")
     cat("Target cells (top X%):", target_cells, "out of", nrow(sample_data), "\n")
@@ -2230,10 +2230,10 @@ create_leverage_gam_validation_plots <- function(current_sample) {
     
     # Verify ranking metric ranges
     cat("\n--- Ranking Metric Summary ---\n")
-    cat("Leverage TDE cells - Min:", round(min(ranking_metric[deviance_cells_idx]), 4), 
+    cat("Leverage TRDE cells - Min:", round(min(ranking_metric[deviance_cells_idx]), 4), 
         "| Max:", round(max(ranking_metric[deviance_cells_idx]), 4), 
         "| Mean:", round(mean(ranking_metric[deviance_cells_idx]), 4), "\n")
-    cat("Leverage Non-TDE cells - Min:", round(min(ranking_metric[non_deviance_cells_idx]), 4), 
+    cat("Leverage Non-TRDE cells - Min:", round(min(ranking_metric[non_deviance_cells_idx]), 4), 
         "| Max:", round(max(ranking_metric[non_deviance_cells_idx]), 4),
         "| Mean:", round(mean(ranking_metric[non_deviance_cells_idx]), 4), "\n")
     
@@ -2351,12 +2351,12 @@ create_leverage_random_gam_validation_plots <- function(current_sample, random_s
     plot_data <- data.frame(
         TRPM4 = sample_data$TRPM4,
         Expression = sample_data$Expression,
-        Group = ifelse(1:nrow(sample_data) %in% random_deviance_cells_idx, "Random Leverage DEC", "Random Leverage Non-TDE"),
+        Group = ifelse(1:nrow(sample_data) %in% random_deviance_cells_idx, "Random Leverage TRDE", "Random Leverage Non-TRDE"),
         RankingMetric = ranking_metric
     )
     
     # Add a drawing order column to control which points appear on top
-    plot_data$draw_order <- ifelse(plot_data$Group == "Random Leverage DEC", 2, 1)
+    plot_data$draw_order <- ifelse(plot_data$Group == "Random Leverage TRDE", 2, 1)
     
     # Sort the data frame by the draw order
     plot_data <- plot_data[order(plot_data$draw_order), ]
@@ -2389,8 +2389,8 @@ create_leverage_random_gam_validation_plots <- function(current_sample, random_s
         geom_point(data = plot_data, 
                    aes(x = TRPM4, y = Expression, color = Group, alpha = Group),
                    size = 1.8) +
-        scale_alpha_manual(values = c("Random Leverage DEC" = 0.25,           # More transparent purple
-                                      "Random Leverage Non-TDE" = 0.6),     # Keep gray as is
+        scale_alpha_manual(values = c("Random Leverage TRDE" = 0.25,           # More transparent purple
+                                      "Random Leverage Non-TRDE" = 0.6),     # Keep gray as is
                            guide = "none") +  # Hide alpha legend
         # Add the GAM line with orange color (same model as leverage method)
         geom_line(data = pred_data,
@@ -2405,8 +2405,8 @@ create_leverage_random_gam_validation_plots <- function(current_sample, random_s
                     fill = "#FFCC99",  # Orange with transparency
                     alpha = 0.2) +
         # Set colors for random groups
-        scale_color_manual(values = c("Random Leverage DEC" = "#4B0082",        # Purple
-                                      "Random Leverage Non-TDE" = "#C0C0C0")) +  # Gray
+        scale_color_manual(values = c("Random Leverage TRDE" = "#4B0082",        # Purple
+                                      "Random Leverage Non-TRDE" = "#C0C0C0")) +  # Gray
         # Styling
         theme_minimal() +
         theme(
@@ -2442,8 +2442,8 @@ create_leverage_random_gam_validation_plots <- function(current_sample, random_s
     cat("\n--- Random Classification Summary (Leverage-Based Negative Control) ---\n")
     cat("Method used:", method_used, "\n")
     cat("Total cells:", nrow(sample_data), "\n")
-    cat("Random Leverage TDE cells:", length(random_deviance_cells_idx), "\n")
-    cat("Random Leverage Non-TDE cells:", length(random_non_deviance_cells_idx), "\n")
+    cat("Random Leverage TRDE cells:", length(random_deviance_cells_idx), "\n")
+    cat("Random Leverage Non-TRDE cells:", length(random_non_deviance_cells_idx), "\n")
     cat("Classification completeness:", (length(random_deviance_cells_idx) + length(random_non_deviance_cells_idx)) == nrow(sample_data), "\n")
     cat("Model deviance explained (same as leverage method):", round(model_dev_explained * 100, 2), "%\n")
     cat("Random target cells:", target_cells, "out of", nrow(sample_data), "\n")
@@ -2451,10 +2451,10 @@ create_leverage_random_gam_validation_plots <- function(current_sample, random_s
     
     # Compare ranking metric between random groups (should be similar)
     cat("\n--- Ranking Metric Summary (Random Groups) ---\n")
-    cat("Random Leverage TDE cells - Min:", round(min(ranking_metric[random_deviance_cells_idx]), 4), 
+    cat("Random Leverage TRDE cells - Min:", round(min(ranking_metric[random_deviance_cells_idx]), 4), 
         "| Max:", round(max(ranking_metric[random_deviance_cells_idx]), 4),
         "| Mean:", round(mean(ranking_metric[random_deviance_cells_idx]), 4), "\n")
-    cat("Random Leverage Non-TDE cells - Min:", round(min(ranking_metric[random_non_deviance_cells_idx]), 4), 
+    cat("Random Leverage Non-TRDE cells - Min:", round(min(ranking_metric[random_non_deviance_cells_idx]), 4), 
         "| Max:", round(max(ranking_metric[random_non_deviance_cells_idx]), 4),
         "| Mean:", round(mean(ranking_metric[random_non_deviance_cells_idx]), 4), "\n")
     cat("Ranking metric difference between groups:", round(mean(ranking_metric[random_deviance_cells_idx]) - mean(ranking_metric[random_non_deviance_cells_idx]), 4), "(should be near zero)\n")
@@ -2502,6 +2502,3 @@ cat("\n", rep("=", 60), "\n")
 cat("LEVERAGE-BASED RANDOM CONTROL GAM VALIDATION PLOTS COMPLETE\n")
 
 cat(rep("=", 60), "\n")
-
-
-
