@@ -1,5 +1,5 @@
 #############################################################
-# Part 3.06: GAM-REML-PRSS Plots and EDF Analysis
+# Part 3.06: REML-PRSS Plots and EDF Analysis
 ##############################################################
 
 # =========================================
@@ -871,5 +871,6 @@ cat("Average basis functions:", mean(non_ca_detailed$Total_Basis_Functions, na.r
 cat("Average non-zero basis functions:", mean(non_ca_detailed$Nonzero_Basis_Functions, na.rm=TRUE), "\n")
 cat("Percentage of significantly non-linear relationships:", 
     sum(non_ca_detailed$Is_Significantly_Nonlinear, na.rm=TRUE) / nrow(non_ca_detailed) * 100, "%\n")
+
 
 
