@@ -834,9 +834,8 @@ for(i in 1:7) {
     pre_data <- patients_data[[i]]$pre
     post_data <- patients_data[[i]]$post
     
-    # Calculate OVL and EW-OVL
+    # Calculate OVL
     ovl <- calc_ovl(pre_data, post_data)
-    ew_ovl <- calc_ew_ovl(pre_data, post_data)
     
     # Calculate IQR
     iqr_pre <- quantile(pre_data, c(0.25, 0.75))
@@ -850,11 +849,9 @@ for(i in 1:7) {
     results[[i]] <- list(
         patient = i,
         ovl = ovl,
-        ew_ovl = ew_ovl,
         iqr_pre = iqr_pre,
         iqr_post = iqr_post,
-        ks_test = ks_test,
-        ew_diag = attr(ew_ovl, "diagnostics")
+        ks_test = ks_test
     )
     
     # Print summary for each patient
@@ -863,7 +860,6 @@ for(i in 1:7) {
     cat("Pre-IP: n =", length(pre_data), "range:", round(range(pre_data), 2), "\n")
     cat("Post-IP: n =", length(post_data), "range:", round(range(post_data), 2), "\n")
     cat("Overlapping Coefficient:", round(ovl, 4), "\n")
-    cat("Extremity-Weighted OVL:", round(ew_ovl, 4), "\n")
     cat("KS Test p-value:", round(ks_test$p.value, 4), "\n")
     cat("KS Test D-statistic:", round(ks_test$statistic, 4), "\n\n")
 }
@@ -894,11 +890,11 @@ for(i in 1:7) {
     plot_data <- rbind(plot_data, patient_df)
 }
 
-# Create facet labels with OVL, EW-OVL, and IQR information
+# Create facet labels with OVL and IQR information
 facet_labels <- c()
 for(i in 1:7) {
     res <- results[[i]]
-    label <- paste0("Pt.", i, " (OVL = ", round(res$ovl * 100, 1), "%, EW-OVL = ", round(res$ew_ovl * 100, 1), 
+    label <- paste0("Pt.", i, " (OVL = ", round(res$ovl * 100, 1), 
                     "%;\nIQR pre = ", round(res$iqr_pre[1], 1), "-", round(res$iqr_pre[2], 1),
                     ", post = ", round(res$iqr_post[1], 1), "-", round(res$iqr_post[2], 1), ")")
     facet_labels <- c(facet_labels, label)
@@ -1006,7 +1002,3 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
           plot.title = element_text(face = "bold", size = 14),
 
           plot.subtitle = element_text(size = 12))
-
-
-
-
