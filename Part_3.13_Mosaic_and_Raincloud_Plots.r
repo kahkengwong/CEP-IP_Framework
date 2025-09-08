@@ -755,7 +755,7 @@ calc_ovl <- function(x, y) {
     return(ovl_result$OV)
 }
 
-# NEW FUNCTION: Calculate Extremity-Weighted OVL (EW-OVL) with improved tail weighting
+# Calculate Extremity-Weighted OVL (EW-OVL) with improved tail weighting
 calc_ew_ovl <- function(x, y) {
     # Calculate standard OVL
     standard_ovl <- calc_ovl(x, y)
@@ -769,8 +769,8 @@ calc_ew_ovl <- function(x, y) {
     # Identify extreme tail cells as specified:
     # - pre-IP cells with values lower than the lowest value in post-IP
     # - post-IP cells with values higher than the highest value in pre-IP
-    x_extreme_low <- x[x < y_min]  # Assuming x is pre-IP
-    y_extreme_high <- y[y > x_max]  # Assuming y is post-IP
+    x_extreme_low <- x[x < y_min]  # x is pre-IP
+    y_extreme_high <- y[y > x_max]  # y is post-IP
     
     # Calculate proportion of cells in extreme tails
     prop_x_extreme <- length(x_extreme_low) / length(x)
@@ -1006,6 +1006,7 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
           plot.title = element_text(face = "bold", size = 14),
 
           plot.subtitle = element_text(size = 12))
+
 
 
 
