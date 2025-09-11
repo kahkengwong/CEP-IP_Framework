@@ -8,6 +8,9 @@
 # Download and then load the RData available on HuggingFace: https://huggingface.co/datasets/kahkengwong/GAM_REML_PRSS_Project/tree/main
 load("GSE185344_Seurat_processed.RData") # Filesize 9.516 GB
 library(parallel)
+library(doParallel)
+library(foreach)
+library(pbapply)
 
 # Plot UMAP with log2 gene expression to visualize gene levels
 plot_umap_gene_expression <- function(seurat_obj, gene, dataset_label, assay = "RNA") {
@@ -122,7 +125,8 @@ calculate_correlations <- function(integrated_obj, original_obj, cluster_ids, ge
     write.xlsx(correlations_df, file = output_file, rowNames = FALSE)  # Export (Excel)
 }
 
-# Compute correlations for clusters focusing on TRPM4
+# Compute correlations for clusters focusing on TRPM4. These steps took hours to complete, accelerated utilizing 23 CPU cores (Intel Core i9-14900KF) 
+# using the doParallel package as detailed above.
 combined_clusters <- c(6, 9, 11, 14, 19)
 output_file_combined <- "TRPM4_Correlations_PCa_Clusters_Combined.xlsx"
 calculate_correlations(prostate_results$seurat_obj, prostate_ca_seurat, combined_clusters, "TRPM4", output_file_combined)
@@ -196,6 +200,7 @@ pdf("TRPM4_heatmap.pdf", width = 12, height = 8)
 draw(heatmap)
 dev.off()
 draw(heatmap)
+
 
 
 
