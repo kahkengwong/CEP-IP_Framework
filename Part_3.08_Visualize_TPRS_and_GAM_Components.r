@@ -1,6 +1,13 @@
 #############################################################
 # Part 3.08: Visualization of TPRS and GAM Components 
 #############################################################
+library(mgcv)
+library(ggplot2) 
+library(patchwork)
+library(viridis)
+library(tidyr)
+library(scales)
+library(gridExtra)
 
 # =========================================
 # 1. TPRS Visualization
@@ -868,6 +875,7 @@ print(examples_viz$dot_plot)
 cat(examples_viz$explanation)
 # Prints the summary table of component values.
 print(examples_viz$summary_table)
+
 
 
 
