@@ -3,6 +3,10 @@
 ##########################################################################################
 library(dplyr)
 library(tibble)
+library(mgcv)
+library(ggplot2)
+library(Seurat)
+library(openxlsx)
 
 # Function to create scatter plot for a sample
 create_sample_scatter_plot <- function(current_sample) {
@@ -366,5 +370,6 @@ if (exists("combined_data") && nrow(combined_data) > 0) {
     cat("- Ribo_Expression: Ribosomal gene expression level\n")
     cat("- Model_Dev_Explained: Overall model deviance explained for the sample\n")
 }
+
 
 
