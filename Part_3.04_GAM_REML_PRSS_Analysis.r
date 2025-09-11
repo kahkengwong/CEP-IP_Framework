@@ -1,6 +1,12 @@
 ###########################################################
 # Part 3.04: GAM-REML-PRSS Analysis and Results Export
 ###########################################################
+library(Seurat)
+library(mgcv)
+library(dplyr)
+library(readxl)
+library(writexl)
+
 # Analyze all gene sets for a given sample
 analyze_multiple_gene_sets <- function(integrated_obj, original_obj, cluster_ids, gene_sets, sample) {
     set.seed(123 + which(c(pca_samples, non_ca_samples) == sample)) 
@@ -963,4 +969,5 @@ process_file(pca_file)
 process_file(nonca_file)
 
 cat("All files have been updated with Is_Best_Model column in the REML_Summary sheets.\n")
+
 
