@@ -1,7 +1,7 @@
-# ========================================================
-# Family Distribution Analysis with gam.check() and AIC/BIC
-# ========================================================
-library(mgcv)
+# =====================================================================
+# Part 3.02: Family Distribution Analysis with gam.check() and AIC/BIC
+# =====================================================================
+library(mgcv) 
 library(writexl)
 library(dplyr)
 
@@ -304,5 +304,6 @@ tryCatch({
 }, error = function(e) {
     cat("Error exporting results:", conditionMessage(e), "\n")
 })
+
 
 cat("\nDiagnostic analysis complete!\n")
