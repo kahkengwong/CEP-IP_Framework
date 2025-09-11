@@ -1,9 +1,12 @@
 ######################################################################################################
 # Part 3.14: DEGs of TRDE vs non-TRDE in Pre-IP or Post-IP (for subsequent GO analysis using ToppGene)
 ######################################################################################################
-library(future) # For parallel processing (plan, multisession)
-library(future.apply) # For future_lapply function
-library(parallel) # For detectCores()
+library(future)
+library(future.apply)
+library(parallel)
+library(dplyr)
+library(writexl)
+library(mgcv)
 
 # Set up parallel processing with memory optimization for 23 CPU cores (Intel i9-14900KF)
 n_cores <- max(1, min(detectCores() - 1, 23))
@@ -305,6 +308,7 @@ for (sample_name in tumor_samples) {
         }
     }
 }
+
 
 
 
