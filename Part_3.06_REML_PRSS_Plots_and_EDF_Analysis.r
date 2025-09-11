@@ -1,17 +1,17 @@
 #############################################################
 # Part 3.06: REML-PRSS Plots and EDF Analysis
 ##############################################################
-
-# =========================================
-# 1. REML and PRSS Iterations Plots 
-# =========================================
-# Load required libraries for visualization and data processing
 library(ggplot2)
 library(dplyr)
 library(reshape2)
 library(readxl)
 library(gridExtra)
+library(writexl)
+library(scales)
 
+# =========================================
+# 1. REML and PRSS Iterations Plots 
+# =========================================
 # Read and prepare data from Excel files for plotting
 prepare_data <- function(file_path) {
     # Read PRSS data from specified Excel file
@@ -871,6 +871,7 @@ cat("Average basis functions:", mean(non_ca_detailed$Total_Basis_Functions, na.r
 cat("Average non-zero basis functions:", mean(non_ca_detailed$Nonzero_Basis_Functions, na.rm=TRUE), "\n")
 cat("Percentage of significantly non-linear relationships:", 
     sum(non_ca_detailed$Is_Significantly_Nonlinear, na.rm=TRUE) / nrow(non_ca_detailed) * 100, "%\n")
+
 
 
 
