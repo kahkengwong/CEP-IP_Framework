@@ -1,12 +1,16 @@
 ####################################################################################################
 # Part 3.15: Monocle3 Trajectory Visualization for TRDE and non-TRDE Cells, and Quantitative Analysis
 ####################################################################################################
-# Load libraries
 library(monocle3)
 library(Seurat)
 library(dplyr)
 library(ggplot2)
 library(viridis)
+library(ggridges)
+library(openxlsx)
+library(cluster)
+library(FNN)
+library(broom)
 
 # Function to create Monocle3 trajectory visualization
 create_monocle3_trajectory <- function(sample_id) {
@@ -694,6 +698,7 @@ clustering_analysis_results <- process_all_samples_clustering(all_trajectories)
 
 
 cat("\nClustering analysis completed!\n")
+
 
 
 
