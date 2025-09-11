@@ -1,5 +1,5 @@
 ######################################################################################################
-# Part 3.14: DEGs of TRDE vs non-TRDE in Pre-IP or Post-IP (for subsequent GO analysis using ToppGene)
+# Part 3.14: DEGs of TREP vs non-TREP in Pre-IP or Post-IP (for subsequent GO analysis using ToppGene)
 ######################################################################################################
 library(mgcv)
 library(future)
@@ -308,6 +308,7 @@ for (sample_name in tumor_samples) {
         }
     }
 }
+
 
 
 
