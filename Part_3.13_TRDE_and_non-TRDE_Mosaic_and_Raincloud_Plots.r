@@ -1,6 +1,15 @@
 ###################################################################################
 # Part 3.13: Mosaic and Raincloud Plots of Ribo Expression in Pre-IP and Post-IP
 ###################################################################################
+library(tidyverse)
+library(ggmosaic)
+library(cowplot)
+library(svglite)
+library(openxlsx)
+library(readxl)
+library(overlapping)
+library(introdataviz)
+library(mgcv)
 
 # ========================================================================================
 # Part I: Extract Contingency Table Data for Mosaic Plots using Direct Inflection Points
@@ -1281,4 +1290,5 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
           plot.title = element_text(face = "bold", size = 14),
 
           plot.subtitle = element_text(size = 12))
+
 
