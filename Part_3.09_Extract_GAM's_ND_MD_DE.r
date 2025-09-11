@@ -1,6 +1,9 @@
 #####################################################################################################
 # Part 3.09: Extract GAM's null deviance (ND), model deviance (MD), and deviance explained (DE), and their components
 #####################################################################################################
+library(mgcv)
+library(writexl)
+
 # Function to extract detailed deviance components from GAM models
 extract_deviance_components <- function(model, data) {
     set.seed(123)
@@ -565,4 +568,5 @@ cat("- Raw deviance = Sum of squares\n")
 cat("- Scaled deviance = Sum of squares / φ̂\n")
 cat("- Scale parameter φ̂ = RSS / (n - df)\n")
 cat("- Standard deviance explained uses scaled deviances\n")
+
 cat("\nAll results exported to: GAM_Deviance_Analysis_Complete.xlsx\n")
