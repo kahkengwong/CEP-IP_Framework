@@ -1,5 +1,5 @@
 ##########################################################################################
-# Part 3.12: TRDE (purple) vs non-TRDE (gray) GAM Plots, and Explanatory Power Values
+# Part 3.12: TREP (purple) vs non-TREP (gray) GAM Plots, and Explanatory Power Values
 ##########################################################################################
 library(dplyr)
 library(tibble)
@@ -179,7 +179,7 @@ for (sample_name in tumor_samples) {
 cat("\nCompleted generating scatter plots for all samples.\n")
 
 
-# Function to extract and compile cell-level data including TRDE and non-TRDE explanatory power values
+# Function to extract and compile cell-level data including TREP and non-TREP explanatory power values
 extract_cell_data_for_export <- function(current_sample) {
     cat("\nExtracting data for sample:", current_sample, "\n")
     
@@ -370,6 +370,7 @@ if (exists("combined_data") && nrow(combined_data) > 0) {
     cat("- Ribo_Expression: Ribosomal gene expression level\n")
     cat("- Model_Dev_Explained: Overall model deviance explained for the sample\n")
 }
+
 
 
 
