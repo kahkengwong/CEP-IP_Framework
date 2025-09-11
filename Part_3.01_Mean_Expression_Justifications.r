@@ -2,9 +2,10 @@
 # Part 3.01: Justifications to Average Genes Expression for Modeling
 #####################################################################
 # Load required libraries
-library(ggplot2)
-library(psych)
+library(Seurat)
+library(psych) # For reliability analysis
 library(openxlsx)
+library(dplyr)
 
 # Function to validate and analyze gene sets (simplified)
 validate_gene_set_simple <- function(sample_name, gene_set_name, genes, analysis_type = "Tumor") {
@@ -379,5 +380,6 @@ cat("\n\nConsolidated Score = Average of (Cronbach's α + McDonald's ω + KMO)")
 
 # Run complete analysis
 validation_results <- validate_all_samples_simple()
+
 
 
