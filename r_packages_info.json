@@ -1,0 +1,198 @@
+{
+  "R": {
+    "Version": "R version 4.4.2 (2024-10-31 ucrt)"
+  },
+  "Packages": {
+    "broom": {
+      "Package": "broom",
+      "Version": "1.0.8",
+      "Source": "CRAN"
+    },
+    "cluster": {
+      "Package": "cluster",
+      "Version": "2.1.6",
+      "Source": "CRAN"
+    },
+    "ComplexHeatmap": {
+      "Package": "ComplexHeatmap",
+      "Version": "2.22.0",
+      "Source": "Bioconductor"
+    },
+    "cowplot": {
+      "Package": "cowplot",
+      "Version": "1.2.0",
+      "Source": "CRAN"
+    },
+    "doParallel": {
+      "Package": "doParallel",
+      "Version": "1.0.17",
+      "Source": "CRAN"
+    },
+    "dplyr": {
+      "Package": "dplyr",
+      "Version": "1.1.4",
+      "Source": "CRAN"
+    },
+    "FNN": {
+      "Package": "FNN",
+      "Version": "1.1.4.1",
+      "Source": "CRAN"
+    },
+    "foreach": {
+      "Package": "foreach",
+      "Version": "1.5.2",
+      "Source": "CRAN"
+    },
+    "future": {
+      "Package": "future",
+      "Version": "1.34.0",
+      "Source": "CRAN"
+    },
+    "future.apply": {
+      "Package": "future.apply",
+      "Version": "1.11.3",
+      "Source": "CRAN"
+    },
+    "ggmosaic": {
+      "Package": "ggmosaic",
+      "Version": "0.3.3",
+      "Source": "CRAN"
+    },
+    "ggplot2": {
+      "Package": "ggplot2",
+      "Version": "3.5.2",
+      "Source": "CRAN"
+    },
+    "ggridges": {
+      "Package": "ggridges",
+      "Version": "0.5.6",
+      "Source": "CRAN"
+    },
+    "grid": {
+      "Package": "grid",
+      "Version": "4.4.2",
+      "Source": "CRAN"
+    },
+    "gridExtra": {
+      "Package": "gridExtra",
+      "Version": "2.3",
+      "Source": "CRAN"
+    },
+    "introdataviz": {
+      "Package": "introdataviz",
+      "Version": "0.0.0.9003",
+      "Source": "GitHub"
+    },
+    "mgcv": {
+      "Package": "mgcv",
+      "Version": "1.9.1",
+      "Source": "CRAN"
+    },
+    "monocle3": {
+      "Package": "monocle3",
+      "Version": "1.3.7",
+      "Source": "Bioconductor"
+    },
+    "openxlsx": {
+      "Package": "openxlsx",
+      "Version": "4.2.7.1",
+      "Source": "CRAN"
+    },
+    "overlapping": {
+      "Package": "overlapping",
+      "Version": "2.2",
+      "Source": "CRAN"
+    },
+    "parallel": {
+      "Package": "parallel",
+      "Version": "4.4.2",
+      "Source": "CRAN"
+    },
+    "patchwork": {
+      "Package": "patchwork",
+      "Version": "1.3.1",
+      "Source": "CRAN"
+    },
+    "pbapply": {
+      "Package": "pbapply",
+      "Version": "1.7.2",
+      "Source": "CRAN"
+    },
+    "psych": {
+      "Package": "psych",
+      "Version": "2.5.6",
+      "Source": "CRAN"
+    },
+    "readxl": {
+      "Package": "readxl",
+      "Version": "1.4.3",
+      "Source": "CRAN"
+    },
+    "reshape2": {
+      "Package": "reshape2",
+      "Version": "1.4.4",
+      "Source": "CRAN"
+    },
+    "rstatix": {
+      "Package": "rstatix",
+      "Version": "0.7.2",
+      "Source": "CRAN"
+    },
+    "scales": {
+      "Package": "scales",
+      "Version": "1.3.0",
+      "Source": "CRAN"
+    },
+    "scDblFinder": {
+      "Package": "scDblFinder",
+      "Version": "1.20.2",
+      "Source": "Bioconductor"
+    },
+    "Seurat": {
+      "Package": "Seurat",
+      "Version": "5.3.0",
+      "Source": "CRAN"
+    },
+    "SingleCellExperiment": {
+      "Package": "SingleCellExperiment",
+      "Version": "1.28.1",
+      "Source": "Bioconductor"
+    },
+    "svglite": {
+      "Package": "svglite",
+      "Version": "2.2.1",
+      "Source": "CRAN"
+    },
+    "tibble": {
+      "Package": "tibble",
+      "Version": "3.2.1",
+      "Source": "CRAN"
+    },
+    "tidyr": {
+      "Package": "tidyr",
+      "Version": "1.3.1",
+      "Source": "CRAN"
+    },
+    "tidyverse": {
+      "Package": "tidyverse",
+      "Version": "2.0.0",
+      "Source": "CRAN"
+    },
+    "viridis": {
+      "Package": "viridis",
+      "Version": "0.6.5",
+      "Source": "CRAN"
+    },
+    "writexl": {
+      "Package": "writexl",
+      "Version": "1.5.1",
+      "Source": "CRAN"
+    }
+  },
+  "Metadata": {
+    "Created": "2025-09-12 02:18:58.639524",
+    "Total_Packages": 37,
+    "Missing_Packages": 0,
+    "Note": "Simplified package list for manual installation reference"
+  }
+}
