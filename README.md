@@ -88,3 +88,6 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 All analyses, modeling, and interpretations were conducted by KK Wong [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
 
 ---
+
+## ✨ Support the Project
+If you find this project valuable, please consider [**starring** ⭐ or **forking** 🍴](https://github.com/kahkengwong/GAM_PCa_Project) the repository. Your support helps others discover these analyses and insights 🙌
