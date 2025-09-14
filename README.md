@@ -77,6 +77,12 @@ The R packages and versions used in this study were saved in the `renv.lock` fil
 
 For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
+## 🚀 Quick Start
+1. Clone the repository
+2. Run `renv::restore()` to install dependencies
+3. Download the processed Seurat object from HuggingFace: [Processed_Seurat_Object](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+4. Follow scripts Part_3.01 through Part_3.15 for main analysis with `mgcv`
+
 ---
 
 ## 🧾License
