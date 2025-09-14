@@ -1,7 +1,7 @@
 <div align="center">
 
 # Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer
-### _Modeling of _TRPM4_-Ribo relationship with GAM, with focus on modeling optimization, interpretability, mapping for top-ranked explanatory power (TREP) cells and identification of their biology._
+### _Modeling of _TRPM4_-Ribo relationship with GAM, with focus on modeling optimization, interpretability, mapping for top-ranked explanatory power (TREP) cells, and identification of their biology._
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
@@ -21,16 +21,11 @@ Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (n
 
 ## Aims of the Project
 The following are the project's objectives:
-1) To predict the functions of the oncogene _TRPM4_ in high-grade prostate cancer (scRNA-seq dataset) via GAM, PRSS, and REML modeling. 
-2) To investigate GAM’s touted interpretability using scRNA-seq’s continuous expression profiles, navigating the limits of its interpretability such as mgcv’s (R package for GAM) lambda optimization process (e.g., gradients, Hessians, and transformed REML formula). 
+1) To optimize and interpret the modeling with mgcv package including *k*, $\lambda$, and $\gamma$ optimization process, PRSS and REML convergence, and visualization of splines' formation.
+2) To uncover how much does _TRPM4_ explain variability in Ribo (average expression of seven ribosomal genes) expression via deviance explained, GAM's performance metrics. 
+3) To identify which cells hold strong _TRPM4_-Ribo relationship, and to uncover their biology via Gene Ontology (GO) enrichment analysis. 
 
-The scripts include extraction and visualization of PRSS and REML components, and validating parameters (*k*, $\lambda$, $\gamma$) through manual recalculation, and visualizations. Key goals include:
-- Preprocessing and clustering scRNA-seq data with UMAP.
-- Analyzing gene expressions (e.g., *TRPM4*, *KLK4*) and their gene set associations.
-- Modeling *TRPM4* with GAMs, optimizing *k*, $\lambda$, and $\gamma$ (manually set, affecting $\lambda$, and validated qualitatively and quantitatively).
-- Ensuring interpretability through validation and visualization.
-
-Key findings include *TRPM4* modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights. A manuscript is in preparation for a Q1 journal (target: April 2025), with results shared here upon acceptance.
+Key findings include _TRPM4_-Ribo modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights.
 
 ---
 
