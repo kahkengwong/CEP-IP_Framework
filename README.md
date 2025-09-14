@@ -38,7 +38,9 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ![Project Key Findings](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Key_Findings.jpg)
 
 
+<div align="center">
 **Hence, the CEP-IP framework based on pairwise genes produces quadrants of cell subpopulations, enabling distinct biology identification that may guide therapy.**
+</div>
 
 ---
 
