@@ -99,7 +99,7 @@ For manual or selected package installation, a simplified `r_packages_info.json`
    - **Option A:** Fork this repository on GitHub, then download to your local machine
    - **Option B:** Click the green "< > Code" button (top right of the file list), select "Download ZIP", and extract to a folder of your choice (e.g., `C:\Users\YourName\Documents\GAM_PCa_Project`)
 2. **Open the project:** Navigate to the extracted folder and double-click any `.r` file to launch RStudio
-3. **Set working directory:** In RStudio, go to Session → Set Working Directory → To Source File Location (or use `setwd("path/to/your/extracted/folder")`)
+3. **Set working directory:** In RStudio, go to Session → Set Working Directory → To Source File Location (or use `setwd("path/to/the/extracted/folder")`)
 4. **Install dependencies:** Type `renv::restore()` in the RStudio console and press Enter to install all required packages
 5. **Download data:** Get the processed Seurat object from HuggingFace: [Processed_Seurat_Object](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 6. **Place data file:** Save the downloaded `.RData` file in the same folder as your scripts
