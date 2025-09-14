@@ -30,7 +30,12 @@ Key findings include _TRPM4_-Ribo modeling with validated parameters and detaile
 ---
 
 # scRNA-seq Analysis and GAM-PRSS-REML Modeling Scripts
-The scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
+The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB) is available on HuggingFace: 
+https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project
+
+The results of the GAM modeling in this study can be replicated by analyzing the processed Seurat object `GSE185344_Seurat_processed.RData` by following the code block `Part_3.01_Mean_Expression_Justifications.r` until `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r`
+
+For the complete workflow, the scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
 
 ## Descriptions of the Scripts
 | No | Script File                                      | Description                                                                                     |
@@ -54,15 +59,7 @@ The scripts should be used in the following sequence, corresponding to the flow 
 | 17    | `Part_3.15_Monocle3_` <br> `Pre-IP_vs_Post-IP_TREP.r`  | Generates Monocle3 trajectory visualizations for TREP and non-TREP cells in PCa samples. Performs quantitative clustering analysis, comparing UMAP1 distributions. |
 
 ## Dependencies
-This project requires the following R packages:
-- **Seurat**: scRNA-seq preprocessing and clustering.
-- **mgcv**: Generalized additive modeling with PRSS and REML.
-- **purrr**, **dplyr**, **tidyr**, **ggplot2**: Data manipulation and visualization of results.
-- **Matrix**, **SparseArray**: Sparse matrix handling.
-- **openxlsx**, **writexl**: Excel file I/O.
-- **parallel**, **pbapply**: Parallel processing.
-
-Additional libraries (e.g., `circlize`, `ComplexHeatmap`, `monocle3`, `viper`) are used for specific analyses and visualizations. See script headers in `Part-1-scRNAseq-Preprocessing-and-UMAP-Clusters.r` for full list of packages used.
+The R packages and versions used in this study were saved in the `renv.lock` file included in the GitHub repository. This lockfile contains version information for all 37 packages used with their dependencies. Clone the repository and run `renv::restore()` to install the identical package versions used in this study. Note that renv creates an isolated library and will not modify a system’s existing R packages and setup. For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
 ---
 
