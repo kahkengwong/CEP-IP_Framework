@@ -29,7 +29,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ---
 
 ## 🔀Workflow of the Project
-![Workflow]((https://github.com/kahkengwong/GAM_PCa_Project/blob/Project_Workflow.jpg))
+![Workflow](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Workflow.jpg)
 
 
 Key findings include _TRPM4_-Ribo modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights.
