@@ -1,5 +1,6 @@
-# Generalized Additive Modeling of TRPM4-Ribo Transcriptional Space in Prostate Cancer
-Modeling of TRPM4-Ribo relationship with GAM, with focus on modeling optimization and interpretability.
+<div align="center">
+# Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer
+Modeling of _TRPM4_-Ribo relationship with GAM, with focus on modeling optimization and interpretability.
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
@@ -9,6 +10,8 @@ Modeling of TRPM4-Ribo relationship with GAM, with focus on modeling optimizatio
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project)
 
 Author: Kah Keng Wong  
+
+</div>
 
 ---
 
