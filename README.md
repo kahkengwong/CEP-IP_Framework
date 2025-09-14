@@ -16,7 +16,7 @@ Author: Kah Keng Wong
 
 ---
 
-## Overview
+## 📋Overview
 Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. The GAM is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
 
 ## Aims of the Project
