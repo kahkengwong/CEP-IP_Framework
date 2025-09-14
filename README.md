@@ -40,7 +40,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 ### Development Environment
 This project was developed and tested on:
-- **System:** Intel Core i9-14900KF, 64GB DDR5, Windows 11 Pro
+- **System:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro
 - **Software:** RStudio 2025.05.0 Build 496, R 4.4.2
 
 ---
