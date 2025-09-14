@@ -44,14 +44,14 @@ The scripts should be used in the following sequence, corresponding to the flow 
 | 7    | `Part_3.05_REML_Extraction_` <br> `and_Convergence.r` | Extracts detailed REML convergence metrics for GAM models in PCa and non-Ca samples. Processes convergence details, including scores and iterations, and exports results to Excel for analysis. |
 | 8    | `Part_3.06_REML_PRSS_Plots_` <br> `and_EDF_Analysis.r` | Creates visualizations of REML and PRSS iterations for PCa and non-Ca samples. Generates detailed EDF reports, applies FDR correction, and non-linear relationship summaries. |
 | 9    | `Part_3.07_Validation_of_` <br> `k_and_Lambda_Selection.r`  | Validates GAM models by refitting with varied k and lambda values for PCa samples. Analyzes PRSS and REML scores, generating plots to identify optimal parameters for model robustness. |
-| 9    | `Part_3.08_Visualize_TPRS_` <br> `and_GAM_Components.r`  | Visualizes TPRS and GAM components for PCa samples, plotting basis functions, knot placement, and data distribution to illustrate spline formation and model contributions. |
-| 9    | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r`  | Extracts and analyzes null deviance, model deviance, and deviance explained for GAM models in PCa and non-Ca samples. |
-| 9    | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r`  | Extracts TRPM4-Ribo explanatory power for PCa samples at the cell level. Computes deviance contributions, sorts cells by explanatory power (EP), and exports detailed results. |
-| 9    | `Part_3.11_MCCV_of_CEP_` <br> `Classification.r`  | Monte Carlo cross-validation (MCCV) for cell EP in PCa samples. Classifies deviance cells, generates leverage-based random control plots, and validates GAM model performance. |
-| 9    | `Part_3.12_TREP_and_` <br> `non-TREP_GAM_Plots.r`  | Generates scatter plots for PCa samples, distinguishing TRPM4-Ribo explanatory power (TREP) cells in purple from non-TREP cells in gray, and exports cell-level data. |
-| 9    | `Part_3.13_TREP_and_` <br> `non-TREP_Mosaic_and_Raincloud_Plots.r`  | Creates mosaic and raincloud plots for Ribo expression in PCa samples, comparing pre-IP and post-IP cells. Exports contingency data and distribution visualizations. |
-| 9    | `Part_3.14_TREP_vs_` <br> `non-TREP_DEGs_Analysis.r`  | Identifies differentially expressed genes (DEGs) between TREP and non-TREP cells in pre-IP and post-IP groups for PCa samples. |
-| 9    | `Part_3.15_Monocle3_` <br> `Pre-IP_vs_Post-IP_TREP.r`  | Generates Monocle3 trajectory visualizations for TREP and non-TREP cells in PCa samples. Performs quantitative clustering analysis, comparing UMAP1 distributions. |
+| 10    | `Part_3.08_Visualize_TPRS_` <br> `and_GAM_Components.r`  | Visualizes TPRS and GAM components for PCa samples, plotting basis functions, knot placement, and data distribution to illustrate spline formation and model contributions. |
+| 11    | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r`  | Extracts and analyzes null deviance, model deviance, and deviance explained for GAM models in PCa and non-Ca samples. |
+| 12    | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r`  | Extracts TRPM4-Ribo explanatory power for PCa samples at the cell level. Computes deviance contributions, sorts cells by explanatory power (EP), and exports detailed results. |
+| 13    | `Part_3.11_MCCV_of_CEP_` <br> `Classification.r`  | Monte Carlo cross-validation (MCCV) for cell EP in PCa samples. Classifies deviance cells, generates leverage-based random control plots, and validates GAM model performance. |
+| 14    | `Part_3.12_TREP_and_` <br> `non-TREP_GAM_Plots.r`  | Generates scatter plots for PCa samples, distinguishing TRPM4-Ribo explanatory power (TREP) cells in purple from non-TREP cells in gray, and exports cell-level data. |
+| 15    | `Part_3.13_TREP_and_non-TREP_` <br> `Mosaic_and_Raincloud_Plots.r`  | Creates mosaic and raincloud plots for Ribo expression in PCa samples, comparing pre-IP and post-IP cells. Exports contingency data and distribution visualizations. |
+| 16    | `Part_3.14_TREP_vs_` <br> `non-TREP_DEGs_Analysis.r`  | Identifies differentially expressed genes (DEGs) between TREP and non-TREP cells in pre-IP and post-IP groups for PCa samples. |
+| 17    | `Part_3.15_Monocle3_` <br> `Pre-IP_vs_Post-IP_TREP.r`  | Generates Monocle3 trajectory visualizations for TREP and non-TREP cells in PCa samples. Performs quantitative clustering analysis, comparing UMAP1 distributions. |
 
 ## Dependencies
 This project requires the following R packages:
