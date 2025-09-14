@@ -25,6 +25,9 @@ The following are the project's objectives:
 2) To uncover how much does _TRPM4_ explain variability in Ribo (average expression of seven ribosomal genes) expression via deviance explained, GAM's performance metrics. 
 3) To identify which cells hold strong _TRPM4_-Ribo relationship, and to uncover their biology via Gene Ontology (GO) enrichment analysis. 
 
+This processed dataset is based on publicly available data from: 
+Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease. Nat Commun 2022;13(1):6036. https://doi.org/10.1038/s41467-022-33780-1
+
 ---
 
 ## Workflow of the Project
