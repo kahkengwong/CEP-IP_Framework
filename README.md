@@ -26,6 +26,23 @@ The following are the project's objectives:
 This processed dataset is based on publicly available data from: 
 Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease. Nat Commun 2022;13(1):6036. https://doi.org/10.1038/s41467-022-33780-1
 
+## 💻 Requirements
+### Software Requirements
+- **R:** ≥ 4.0.0 (tested with R 4.4.2 "Pile of Leaves")
+- **RStudio:** Recommended (tested with RStudio 2025.05.0 Build 496)
+- **Operating System:** Windows, macOS, or Linux
+
+### Hardware Requirements
+- **RAM:** 16GB minimum, **32GB+ recommended** 
+- **CPU:** 8+ cores recommended for optimal performance
+- **Storage:** ~10GB free disk space for data and results
+- **Note:** All analyses are CPU-based; GPU acceleration not required
+
+### Development Environment
+This project was developed and tested on:
+- **System:** Intel Core i9-14900KF, 64GB DDR5, Windows 11 Pro
+- **Software:** RStudio 2025.05.0 Build 496, R 4.4.2
+
 ---
 
 ## 🔀Workflow of the Project
@@ -86,7 +103,7 @@ For manual or selected package installation, a simplified `r_packages_info.json`
 ---
 
 ## 🧾License
-This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE) file in this repository.
+This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE) file in this repository.
 
 
 ---
