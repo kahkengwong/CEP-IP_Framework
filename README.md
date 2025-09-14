@@ -95,15 +95,20 @@ The R packages and versions used in this study were saved in the `renv.lock` fil
 For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
 ## 🚀 Quick Start
-1. Clone the repository
-2. Run `renv::restore()` to install dependencies
-3. Download the processed Seurat object from HuggingFace: [Processed_Seurat_Object](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
-4. Follow scripts Part_3.01 through Part_3.15 for main analysis with `mgcv`
+1. **Get the repository:** 
+   - **Option A:** Fork this repository on GitHub, then download to your local machine
+   - **Option B:** Click the green "< > Code" button (top right of the file list), select "Download ZIP", and extract to a folder of your choice (e.g., `C:\Users\YourName\Documents\GAM_PCa_Project`)
+2. **Open the project:** Navigate to the extracted folder and double-click any `.r` file to launch RStudio
+3. **Set working directory:** In RStudio, go to Session → Set Working Directory → To Source File Location (or use `setwd("path/to/your/extracted/folder")`)
+4. **Install dependencies:** Type `renv::restore()` in the RStudio console and press Enter to install all required packages
+5. **Download data:** Get the processed Seurat object from HuggingFace: [Processed_Seurat_Object](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+6. **Place data file:** Save the downloaded `.RData` file in the same folder as your scripts
+7. **Run analysis:** Execute scripts Part_3.01 through Part_3.15 sequentially for main analysis with `mgcv`
 
 ---
 
 ## 🧾License
-This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE) file in this repository.
+This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE) file in this repository.
 
 
 ---
