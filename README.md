@@ -25,6 +25,12 @@ The following are the project's objectives:
 2) To uncover how much does _TRPM4_ explain variability in Ribo (average expression of seven ribosomal genes) expression via deviance explained, GAM's performance metrics. 
 3) To identify which cells hold strong _TRPM4_-Ribo relationship, and to uncover their biology via Gene Ontology (GO) enrichment analysis. 
 
+---
+
+## Workflow of the Study
+![Workflow](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/Workflow_of_the_Project.jpg)
+
+
 Key findings include _TRPM4_-Ribo modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights.
 
 ---
