@@ -10,7 +10,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project)
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project)
 
-Author: Kah Keng Wong  
+**Author:** **Kah** **Keng** **Wong**  
 
 </div>
 
@@ -19,7 +19,7 @@ Author: Kah Keng Wong
 ## 📋Overview
 Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. The GAM is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
 
-## Aims of the Project
+## 🎯Aims of the Project
 The following are the project's objectives:
 1) To optimize and interpret the modeling with mgcv package including *k*, $\lambda$, and $\gamma$ optimization process, PRSS and REML convergence, and visualization of splines' formation.
 2) To uncover how much does _TRPM4_ explain variability in Ribo (average expression of seven ribosomal genes) expression via deviance explained, GAM's performance metrics. 
@@ -30,7 +30,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 ---
 
-## Workflow of the Project
+## 🔀Workflow of the Project
 ![Workflow](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/Workflow_of_the_Project_vFinal.jpg)
 
 
@@ -38,7 +38,7 @@ Key findings include _TRPM4_-Ribo modeling with validated parameters and detaile
 
 ---
 
-# scRNA-seq Analysis and GAM-PRSS-REML Modeling Scripts
+# 📊scRNA-seq Analysis and GAM-PRSS-REML Modeling Scripts
 The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB) is available on HuggingFace: 
 https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project
 
@@ -46,7 +46,7 @@ The results of the GAM modeling in this study can be replicated by analyzing the
 
 For the complete workflow, the scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
 
-## Descriptions of the Scripts
+## 📜Descriptions of the Scripts
 | No | Script File                                      | Description                                                                                     |
 |------|--------------------------------------------------|-------------------------------------------------------------------------------------------------|
 | 1    | `Part_1_scRNAseq_preprocessing_` <br> `and_UMAP_clusters.r` | Preprocesses scRNA-seq data (PCa and non-Ca samples). Includes QC steps: removing low-quality cells, regressing out cell cycle phase effects, and correcting batch effects. Performs UMAP clustering to identify cell populations. |
@@ -67,25 +67,25 @@ For the complete workflow, the scripts should be used in the following sequence,
 | 16    | `Part_3.14_TREP_vs_` <br> `non-TREP_DEGs_Analysis.r`  | Identifies differentially expressed genes (DEGs) between TREP and non-TREP cells in pre-IP and post-IP groups for PCa samples. |
 | 17    | `Part_3.15_Monocle3_` <br> `Pre-IP_vs_Post-IP_TREP.r`  | Generates Monocle3 trajectory visualizations for TREP and non-TREP cells in PCa samples. Performs quantitative clustering analysis, comparing UMAP1 distributions. |
 
-## Dependencies
+## 🛠️Dependencies
 The R packages and versions used in this study were saved in the `renv.lock` file included in the GitHub repository. This lockfile contains version information for all 37 packages used with their dependencies. Clone the repository and run `renv::restore()` to install the identical package versions used in this study. Note that renv creates an isolated library and will not modify a system’s existing R packages and setup. 
 
 For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
 ---
 
-## License
+## 🧾License
 This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/GAM_PRSS_REML_Project/blob/main/LICENSE) file in this repository.
 
 
 ---
 
-## Contributing
+## 🤝🏻Contributing
 Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.
 
 ---
 
-## Contact
+## 📩Contact
 All analyses, modeling, and interpretations were conducted by KK Wong [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
 
 ---
