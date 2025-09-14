@@ -27,7 +27,7 @@ The following are the project's objectives:
 
 ---
 
-## Workflow of the Study
+## Workflow of the Project
 ![Workflow](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/Workflow_of_the_Project_vFinal.jpg)
 
 
