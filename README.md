@@ -1,8 +1,12 @@
-# GAM_PRSS_REML_Project
-GAM, PRSS, and REML in scRNA-seq prostate cancer and benign cases dataset; GAM, PRSS, and REML tracking for interpretability.
+# Generalized Additive Modeling of TRPM4-Ribo Transcriptional Space in Prostate Cancer
+Modeling of TRPM4-Ribo relationship with GAM, with focus on modeling optimization and interpretability.
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
-
+![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
+![GitHub repo size](https://img.shields.io/github/repo-size/kahkengwong/GAM_PCa_Project)
+![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PCa_Project)
+![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project)
+![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project)
 Author: Kah Keng Wong  
 
 ---
@@ -13,9 +17,9 @@ Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (n
 ## Aims of the Project
 The following are the project's objectives:
 1) To predict the functions of the oncogene _TRPM4_ in high-grade prostate cancer (scRNA-seq dataset) via GAM, PRSS, and REML modeling. 
-2) To investigate GAM’s touted interpretability using scRNA-seq’s continuous expression profiles, navigating the limits of its interpretability such as mgcv’s (R package for GAM) intricate lambda optimization process (e.g., unexposed gradients, Hessians, and transformed REML formula) and absence of built-in k-fold CV for validation. By unpacking these (including retrieving and decoding mgcv’s source code) a foundation is established to tackle the limits of the algorithm's interpretability, and with insights transferable to address less interpretable models such as neural networks with splines or additive structures.
+2) To investigate GAM’s touted interpretability using scRNA-seq’s continuous expression profiles, navigating the limits of its interpretability such as mgcv’s (R package for GAM) lambda optimization process (e.g., gradients, Hessians, and transformed REML formula). 
 
-The scripts include extraction and visualization of PRSS and REML components, and validating parameters (*k*, $\lambda$, $\gamma$) through manual recalculation, 10-fold CV, and visualizations. *Code generation was assisted by Claude (Sonnet 3.5 and 3.7) from Anthropic, and refined by KK Wong.* Key goals include:
+The scripts include extraction and visualization of PRSS and REML components, and validating parameters (*k*, $\lambda$, $\gamma$) through manual recalculation, and visualizations. Key goals include:
 - Preprocessing and clustering scRNA-seq data with UMAP.
 - Analyzing gene expressions (e.g., *TRPM4*, *KLK4*) and their gene set associations.
 - Modeling *TRPM4* with GAMs, optimizing *k*, $\lambda$, and $\gamma$ (manually set, affecting $\lambda$, and validated qualitatively and quantitatively).
