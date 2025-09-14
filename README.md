@@ -28,7 +28,7 @@ The following are the project's objectives:
 ---
 
 ## Workflow of the Study
-![Workflow](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/Workflow_of_the_Project.jpg)
+![Workflow](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/Workflow_of_the_Project_vFinal.jpg)
 
 
 Key findings include _TRPM4_-Ribo modeling with validated parameters and detailed GAM, PRSS, and REML mechanistic insights.
