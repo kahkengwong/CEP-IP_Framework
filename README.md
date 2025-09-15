@@ -79,34 +79,37 @@ The R packages and versions used in this study were saved in the `renv.lock` fil
 
 For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
-## 🚀 Analysis Reproducibility
-Follow these steps to set up and replicate the analysis:
+## 🚀 Quick Start
+1. Download repository (ZIP or git clone)
+2. Install dependencies with `renv::restore()`
+3. Download processed Seurat object from HuggingFace 
+4. Run scripts Part_3.01 through Part_3.15
 
+## 📋 Detailed Setup Instructions
 1. **Get the Repository**:
-   - Option A: Fork this repository on GitHub, then clone to your local machine (`git clone https://github.com/kahkengwong/GAM_PCa_Project.git`).
-   - Option B: Click the green "<> Code" button (top right), select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
+   - **Option A (conventional)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
+   - **Option B (advanced)**: Fork this repository on GitHub, then clone locally.
 
 2. **Open the Project**:
-   - Navigate to the extracted folder and double-click any `.r` file to launch RStudio (requires RStudio 2025.05.0+ and R ≥ 4.0.0).
+   - Navigate to the extracted folder and double-click any `.r` file to launch RStudio.
 
 3. **Set Working Directory**:
-   - In RStudio, go to `Session > Set Working Directory > To Source File Location` or run `setwd("path/to/repository")` (e.g., `setwd("C:/Users/YourName/GAM_PCa_Project")`).
+   - In RStudio, go to `Session > Set Working Directory > To Source File Location` or run `setwd("path/to/repository")`.
 
 4. **Install Packages and Dependencies**:
-   - Run `renv::restore()` in the RStudio console to install all 37 required R packages and dependencies as specified in `renv.lock`. This uses an isolated library and preserves your system R setup. Ensure internet access is available.
-   - For manual installation, refer to `r_packages_info.json` for package names, versions, and sources (CRAN, Bioconductor, GitHub).
+   - Run `renv::restore()` in the RStudio console to install all 37 required R packages and dependencies as specified in `renv.lock`. This uses an isolated library and preserves your system R setup.
+   - For manual installation, refer to `r_packages_info.json` for package names, versions, and sources.
 
 5. **Download Data**:
-   - Obtain the processed Seurat object (`GSE185344_Seurat_processed.RData`) from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main). Note: The file is ~9.52 GB locally (9.74 GB on HF due to added metadata or file versioning by HF).
+   - Obtain the processed Seurat object (`GSE185344_Seurat_processed.RData`) from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main).
 
 6. **Place Data File**:
-   - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts). Ensure the file name matches `GSE185344_Seurat_processed.RData` as expected by `Part_1_scRNAseq_preprocessing_and_UMAP_clusters.r`.
+   - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts).
 
 7. **Run Analysis**:
-   - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis. This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants. 
-   - Each script builds upon the previous (e.g., `Part_3.03` requires outputs from `Part_3.02`), thus they must be run sequentially.
-   - Scripts have been stress-tested with multiple seeds across different occasions, ensuring consistent and reproducible results.
-   - Expect GAM plots (e.g., `Part_3.12_TREP_and_non-TREP_GAM_Plots.r`), DEGs (e.g., `Part_3.14`), and Monocle3 trajectories (e.g., `Part_3.15`) produced by the scripts. 
+   - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis.
+   - This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants.
+   - Scripts have been stress-tested for consistent and reproducible results.
 
 ## 💻 Requirements
 ### Software Requirements
