@@ -107,19 +107,10 @@ For manual or selected package installation, a simplified `r_packages_info.json`
 - GAM modeling with [mgcv](https://cran.r-project.org/web/packages/mgcv/index.html) is computationally efficient and does not require high-end specs
 - Understanding the algorithms and mathematical principles is key; minimum specs are sufficient for GAM analysis using the processed Seurat object
 > [!NOTE]
-> Limited computational resources should never prevent one from learning the key methodologies and mathematical principles; understanding them matters more than hardware specifications.
-
-> <div style="color: white;">💡 <strong>Note:</strong> Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles</div>
-
-**💡 Note:** Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles
-
-<div style="background-color: #0d1117; border-left: 4px solid #58a6ff; padding: 12px; color: white; margin: 16px 0;">
-💡 <strong>Note:</strong> Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles
-</div>
+> 💡Limited computational resources should never prevent one from learning the key methodologies and mathematical principles; understanding them matters more than hardware specifications.
 
 ### Development Environment
 - **Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
-
 
 ---
 
