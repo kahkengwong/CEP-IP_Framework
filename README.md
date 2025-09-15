@@ -5,7 +5,9 @@
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
+![GitHub repo size](https://img.shields.io/github/repo-size/kahkengwong/GAM_PCa_Project)
 ![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PCa_Project)
+![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project)
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project)
 
 **Author:** **Kah** **Keng** **Wong**  
