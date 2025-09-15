@@ -47,8 +47,7 @@ Another key method is to binarize the transcriptional space by **inflection poin
 ---
 
 ## 📊scRNA-seq Analysis and GAM Modeling Scripts
-The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB) is available on HuggingFace: 
-https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project
+The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB when saved in local drive; shown on HuggingFace as 9.74 GB) is available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main)
 
 The results of the GAM modeling in this study can be replicated by analyzing the processed Seurat object `GSE185344_Seurat_processed.RData` by following the code block `Part_3.01_Mean_Expression_Justifications.r` until `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r`
 
@@ -85,26 +84,29 @@ Follow these steps to set up and replicate the analysis:
 
 1. **Get the Repository**:
    - Option A: Fork this repository on GitHub, then clone to your local machine (`git clone https://github.com/kahkengwong/GAM_PCa_Project.git`).
-   - Option B: Click the green "<> Code" button (top right), select "Download ZIP", and extract to a folder.
+   - Option B: Click the green "<> Code" button (top right), select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
 
 2. **Open the Project**:
-   - Navigate to the extracted folder and double-click any `.r` file to launch RStudio.
+   - Navigate to the extracted folder and double-click any `.r` file to launch RStudio (requires RStudio 2025.05.0+ and R ≥ 4.0.0).
 
 3. **Set Working Directory**:
-   - In RStudio, go to `Session > Set Working Directory > To Source File Location` or run `setwd("path/to/repository")` in the console.
+   - In RStudio, go to `Session > Set Working Directory > To Source File Location` or run `setwd("path/to/repository")` (e.g., `setwd("C:/Users/YourName/GAM_PCa_Project")`).
 
 4. **Install Dependencies**:
-   - Run `renv::restore()` in the RStudio console to install all 37 required R packages and their dependencies as specified in `renv.lock`. This creates an isolated library and does not modify your system’s R setup.
+   - Run `renv::restore()` in the RStudio console to install all 37 required R packages and dependencies as specified in `renv.lock`. This uses an isolated library and preserves your system R setup. Ensure internet access is available.
    - For manual installation, refer to `r_packages_info.json` for package names, versions, and sources (CRAN, Bioconductor, GitHub).
 
 5. **Download Data**:
-   - Obtain the processed Seurat object (`GSE185344_Seurat_processed.RData`, 9.52 GB) from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project).
+   - Obtain the processed Seurat object (`GSE185344_Seurat_processed.RData`) from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main). Note: The file is ~9.52 GB locally (9.74 GB on HuggingFace due to compression); download may take time on slower connections.
 
 6. **Place Data File**:
-   - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts).
+   - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts). Ensure the file name matches `GSE185344_Seurat_processed.RData` as expected by `Part_1_scRNAseq_preprocessing_and_UMAP_clusters.r`.
 
 7. **Run Analysis**:
-   - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis.
+   - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis. This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants. 
+   - **Dependencies**: Each script builds on the previous (e.g., `Part_3.03` requires outputs from `Part_3.02`). Check console messages for errors.
+   - **Reproducibility**: Scripts have been stress-tested with multiple seeds across different occasions, ensuring consistent results.
+   - **Outputs**: Expect GAM plots (e.g., `Part_3.12_TREP_and_non-TREP_GAM_Plots.r`), DEGs (e.g., `Part_3.14`), and Monocle3 trajectories (e.g., `Part_3.15`) in the `plots/` or `output/` subdirectories created by the scripts. 
 
 ## 💻 Requirements
 ### Software Requirements
