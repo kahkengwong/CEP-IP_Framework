@@ -81,15 +81,30 @@ The R packages and versions used in this study were saved in the `renv.lock` fil
 For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
 ## 🚀 Quick Start
-1. **Get the repository:** 
-   - **Option A:** Fork this repository on GitHub, then download to your local machine
-   - **Option B:** Click the green "< > Code" button (top right of the file list), select "Download ZIP", and extract to a folder.
-2. **Open the project:** Navigate to the extracted folder and double-click any `.r` file to launch RStudio
-3. **Set working directory:** In RStudio, go to Session → Set Working Directory → To Source File Location (or use `setwd`)
-4. **Install dependencies:** Type `renv::restore()` in the RStudio console and press Enter to install all required packages
-5. **Download data:** Get the processed Seurat object from HuggingFace: [Processed_Seurat_Object](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
-6. **Place data file:** Save the downloaded `.RData` file in the same folder as your scripts
-7. **Run analysis:** Execute scripts Part_3.01 through Part_3.15 sequentially for main analysis with `mgcv`
+Follow these steps to set up and replicate the analysis:
+
+1. **Get the Repository**:
+   - Option A: Fork this repository on GitHub, then clone to your local machine (`git clone https://github.com/kahkengwong/GAM_PCa_Project.git`).
+   - Option B: Click the green "<> Code" button (top right), select "Download ZIP", and extract to a folder.
+
+2. **Open the Project**:
+   - Navigate to the extracted folder and double-click any `.r` file to launch RStudio.
+
+3. **Set Working Directory**:
+   - In RStudio, go to `Session > Set Working Directory > To Source File Location` or run `setwd("path/to/repository")` in the console.
+
+4. **Install Dependencies**:
+   - Run `renv::restore()` in the RStudio console to install all 37 required R packages and their dependencies as specified in `renv.lock`. This creates an isolated library and does not modify your system’s R setup.
+   - For manual installation, refer to `r_packages_info.json` for package names, versions, and sources (CRAN, Bioconductor, GitHub).
+
+5. **Download Data**:
+   - Obtain the processed Seurat object (`GSE185344_Seurat_processed.RData`, 9.52 GB) from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project).
+
+6. **Place Data File**:
+   - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts).
+
+7. **Run Analysis**:
+   - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis.
 
 ## 💻 Requirements
 ### Software Requirements
