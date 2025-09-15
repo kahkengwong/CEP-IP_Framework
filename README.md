@@ -47,7 +47,7 @@ Another key method is to binarize the transcriptional space by **inflection poin
 ---
 
 ## 📊scRNA-seq Analysis and GAM Modeling Scripts
-The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB when saved in local drive; shown on HuggingFace as 9.74 GB) is available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main)
+The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB when saved in local drive; shown on HuggingFace (HF) as 9.74 GB due to added metadata/file versioning by HF) is available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main)
 
 The results of the GAM modeling in this study can be replicated by analyzing the processed Seurat object `GSE185344_Seurat_processed.RData` by following the code block `Part_3.01_Mean_Expression_Justifications.r` until `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r`
 
@@ -97,7 +97,7 @@ Follow these steps to set up and replicate the analysis:
    - For manual installation, refer to `r_packages_info.json` for package names, versions, and sources (CRAN, Bioconductor, GitHub).
 
 5. **Download Data**:
-   - Obtain the processed Seurat object (`GSE185344_Seurat_processed.RData`) from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main). Note: The file is ~9.52 GB locally (9.74 GB on HuggingFace due to compression); download may take time on slower connections.
+   - Obtain the processed Seurat object (`GSE185344_Seurat_processed.RData`) from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main). Note: The file is ~9.52 GB locally (9.74 GB on HF due to added metadata or file versioning by HF).
 
 6. **Place Data File**:
    - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts). Ensure the file name matches `GSE185344_Seurat_processed.RData` as expected by `Part_1_scRNAseq_preprocessing_and_UMAP_clusters.r`.
