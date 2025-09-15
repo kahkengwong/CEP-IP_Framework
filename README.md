@@ -106,7 +106,8 @@ For manual or selected package installation, a simplified `r_packages_info.json`
 - Higher specs are primarily for scRNA-seq preprocessing (e.g., doublet removal, Kendall's τ computation)
 - GAM modeling with [mgcv](https://cran.r-project.org/web/packages/mgcv/index.html) is computationally efficient and does not require high-end specs
 - Understanding the algorithms and mathematical principles is key; minimum specs are sufficient for GAM analysis using the processed Seurat object
-> **💡 Note:** Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles
+> [!NOTE]
+> Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles
 
 ### Development Environment
 - **Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
