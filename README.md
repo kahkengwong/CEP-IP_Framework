@@ -87,7 +87,7 @@ For manual or selected package installation, a simplified `r_packages_info.json`
 
 ## 📋 Detailed Setup Instructions
 1. **Get the Repository**:
-   - **Option A (conventional)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
+   - **Option A (most users)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
    - **Option B (advanced)**: Fork this repository on GitHub, then clone locally.
 
 2. **Open the Project**:
