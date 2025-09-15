@@ -26,25 +26,6 @@ The following are the project's objectives:
 This processed dataset is based on publicly available data from: 
 Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease. Nat Commun 2022;13(1):6036. https://doi.org/10.1038/s41467-022-33780-1
 
-## 💻 Requirements
-### Software Requirements
-- **R:** ≥ 4.0.0 (tested with R 4.4.2 "Pile of Leaves")
-- **RStudio:** Recommended (tested with RStudio 2025.05.0 Build 496)
-
-### Hardware Requirements
-- **RAM:** 16GB (32GB recommended)
-- **CPU:** 8 cores (12+ cores recommended)
-- **Storage:** ~12GB free disk space for data and results
-
-### Performance Notes
-- All analyses are CPU-based; GPU acceleration not required
-- Higher specs are primarily for scRNA-seq preprocessing (e.g., doublet removal, Kendall's τ computation)
-- GAM modeling with [mgcv](https://cran.r-project.org/web/packages/mgcv/index.html) is computationally efficient and does not require high-end specs
-- Understanding the algorithm/modeling is key; minimum specs are sufficient for GAM analysis using the processed Seurat object
-
-### Development Environment
-- **Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
-
 ---
 
 ## 🔀Workflow of the Project
@@ -109,6 +90,25 @@ For manual or selected package installation, a simplified `r_packages_info.json`
 5. **Download data:** Get the processed Seurat object from HuggingFace: [Processed_Seurat_Object](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 6. **Place data file:** Save the downloaded `.RData` file in the same folder as your scripts
 7. **Run analysis:** Execute scripts Part_3.01 through Part_3.15 sequentially for main analysis with `mgcv`
+
+## 💻 Requirements
+### Software Requirements
+- **R:** ≥ 4.0.0 (tested with R 4.4.2 "Pile of Leaves")
+- **RStudio:** Recommended (tested with RStudio 2025.05.0 Build 496)
+
+### Hardware Requirements
+- **RAM:** 16GB (32GB recommended)
+- **CPU:** 8 cores (12+ cores recommended)
+- **Storage:** ~12GB free disk space for data and results
+
+### Performance Notes
+- All analyses are CPU-based; GPU acceleration not required
+- Higher specs are primarily for scRNA-seq preprocessing (e.g., doublet removal, Kendall's τ computation)
+- GAM modeling with [mgcv](https://cran.r-project.org/web/packages/mgcv/index.html) is computationally efficient and does not require high-end specs
+- Understanding the algorithm/modeling is key; minimum specs are sufficient for GAM analysis using the processed Seurat object
+
+### Development Environment
+- **Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
 
 ---
 
