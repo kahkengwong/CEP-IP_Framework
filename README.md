@@ -50,7 +50,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ## 🔀Workflow of the Project
 ![Workflow](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Workflow.jpg)
 
-Key methdologies of this study include **decomposition of model's DE into cell-level**: If a cell highly influences the shape of the fitted spline, then it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells**. The decomposition steps are detailed in part (V) of the figure above. 
+Key methdologies of this study include **decomposition of model's deviance explained (DE) into cell-level**: If a cell highly influences the shape of the fitted spline, then it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells**. The decomposition steps are detailed in part (V) of the figure above. 
 
 Another key method is to binarize the transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution pattern of TREP cells, producing **quadrants of four subpopulation of cells with different biology** - These are detailed in the next section.  
 
