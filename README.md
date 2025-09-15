@@ -92,7 +92,7 @@ Follow these steps to set up and replicate the analysis:
 3. **Set Working Directory**:
    - In RStudio, go to `Session > Set Working Directory > To Source File Location` or run `setwd("path/to/repository")` (e.g., `setwd("C:/Users/YourName/GAM_PCa_Project")`).
 
-4. **Install Dependencies**:
+4. **Install Packages and Dependencies**:
    - Run `renv::restore()` in the RStudio console to install all 37 required R packages and dependencies as specified in `renv.lock`. This uses an isolated library and preserves your system R setup. Ensure internet access is available.
    - For manual installation, refer to `r_packages_info.json` for package names, versions, and sources (CRAN, Bioconductor, GitHub).
 
