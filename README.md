@@ -46,7 +46,7 @@ Another key method is to binarize the transcriptional space by **inflection poin
 
 ---
 
-## 📊scRNA-seq Analysis and GAM-PRSS-REML Modeling Scripts
+## 📊scRNA-seq Analysis and GAM Modeling Scripts
 The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB) is available on HuggingFace: 
 https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project
 
