@@ -109,8 +109,17 @@ For manual or selected package installation, a simplified `r_packages_info.json`
 > [!NOTE]
 > Limited computational resources should never prevent one from learning the key methodologies and mathematical principles; understanding them matters more than hardware specifications.
 
+> <div style="color: white;">💡 <strong>Note:</strong> Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles</div>
+
+**💡 Note:** Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles
+
+<div style="background-color: #0d1117; border-left: 4px solid #58a6ff; padding: 12px; color: white; margin: 16px 0;">
+💡 <strong>Note:</strong> Limited computational resources should never prevent you from learning the underlying methodology and mathematical principles
+</div>
+
 ### Development Environment
 - **Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
+
 
 ---
 
