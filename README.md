@@ -129,6 +129,3 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 All analyses, modeling, and interpretations were conducted by Kah Keng Wong [kahkeng@usm.my](mailto:kahkeng@usm.my), [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
 
 ---
-
-## ✨ Support the Project
-If you find this project valuable, please consider **starring** ⭐ or **forking** 🍴 the repository. Your support helps others discover these analyses and insights 🙌
