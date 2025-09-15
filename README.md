@@ -47,7 +47,7 @@ Another key method is to binarize the transcriptional space by **inflection poin
 ---
 
 ## 📊scRNA-seq Analysis and GAM Modeling Scripts
-The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB when saved in local drive; shown on HuggingFace (HF) as 9.74 GB due to added metadata/file versioning by HF) is available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main)
+The processed Seurat object `GSE185344_Seurat_processed.RData` (9.52 GB locally; shown on HuggingFace (HF) as 9.74 GB due to added metadata or file versioning by HF) is available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main)
 
 The results of the GAM modeling in this study can be replicated by analyzing the processed Seurat object `GSE185344_Seurat_processed.RData` by following the code block `Part_3.01_Mean_Expression_Justifications.r` until `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r`
 
