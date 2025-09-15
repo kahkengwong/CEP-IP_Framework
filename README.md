@@ -126,6 +126,6 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 ---
 
 ## 📩Contact
-All analyses, modeling, and interpretations were conducted by Kah Keng Wong [kahkeng@usm.my](mailto:kahkeng@usm.my), [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
+All analyses, modeling, and interpretations were conducted by Kah Keng Wong: [kahkeng@usm.my](mailto:kahkeng@usm.my), [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
 
 ---
