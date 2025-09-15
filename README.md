@@ -30,18 +30,20 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ### Software Requirements
 - **R:** ≥ 4.0.0 (tested with R 4.4.2 "Pile of Leaves")
 - **RStudio:** Recommended (tested with RStudio 2025.05.0 Build 496)
-- **Operating System:** Windows, macOS, or Linux
 
 ### Hardware Requirements
-- **RAM:** 16GB minimum, **32GB+ recommended** 
-- **CPU:** 8+ cores recommended for optimal performance
-- **Storage:** ~10GB free disk space for data and results
-- **Note:** All analyses are CPU-based; GPU acceleration not required
+- **RAM:** 16GB (32GB recommended)
+- **CPU:** 8 cores (12+ cores recommended)
+- **Storage:** ~12GB free disk space for data and results
+
+### Performance Notes
+- All analyses are CPU-based; GPU acceleration not required
+- Higher specs are primarily for scRNA-seq preprocessing (e.g., doublet removal, Kendall's τ computation)
+- GAM modeling with [mgcv](https://cran.r-project.org/web/packages/mgcv/index.html) is computationally efficient and does not require high-end specs
+- Understanding the algorithm/modeling is key; minimum specs are sufficient for GAM analysis using the processed Seurat object
 
 ### Development Environment
-This project was developed and tested on:
-- **System:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro
-- **Software:** RStudio 2025.05.0 Build 496, R 4.4.2
+**Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
 
 ---
 
