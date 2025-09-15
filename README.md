@@ -79,7 +79,7 @@ The R packages and versions used in this study were saved in the `renv.lock` fil
 
 For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
-## 🚀 Quick Start
+## 🚀 Analysis Reproducibility
 Follow these steps to set up and replicate the analysis:
 
 1. **Get the Repository**:
