@@ -104,9 +104,9 @@ Follow these steps to set up and replicate the analysis:
 
 7. **Run Analysis**:
    - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis. This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants. 
-   - **Dependencies**: Each script builds on the previous (e.g., `Part_3.03` requires outputs from `Part_3.02`). Check console messages for errors.
-   - **Reproducibility**: Scripts have been stress-tested with multiple seeds across different occasions, ensuring consistent results.
-   - **Outputs**: Expect GAM plots (e.g., `Part_3.12_TREP_and_non-TREP_GAM_Plots.r`), DEGs (e.g., `Part_3.14`), and Monocle3 trajectories (e.g., `Part_3.15`) in the `plots/` or `output/` subdirectories created by the scripts. 
+   - Each script builds upon the previous (e.g., `Part_3.03` requires outputs from `Part_3.02`), thus they must be run sequentially.
+   - Scripts have been stress-tested with multiple seeds across different occasions, ensuring consistent and reproducible results.
+   - Expect GAM plots (e.g., `Part_3.12_TREP_and_non-TREP_GAM_Plots.r`), DEGs (e.g., `Part_3.14`), and Monocle3 trajectories (e.g., `Part_3.15`) produced by the scripts. 
 
 ## 💻 Requirements
 ### Software Requirements
