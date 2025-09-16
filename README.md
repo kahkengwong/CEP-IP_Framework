@@ -17,7 +17,9 @@
 ---
 
 ## 📋Overview
-Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. The GAM is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML). 
+Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. The GAM is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML).
+
+Introducing the CEP-IP framework [cell explanatory power (CEP) with inflection point (IP)] that subsets the cell subpopulations into quadrants, and Gene Ontology (GO) analysis uncovers distinct biological pathways for each cell subpopulation. 
 
 ## 🎯Aims of the Project
 The following are the project's objectives:
