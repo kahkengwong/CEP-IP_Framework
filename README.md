@@ -5,11 +5,11 @@
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
-![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=r&logoColor=white)
+![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=r&logoColor=486FBA)
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Project%20Page-GitHub-purple?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
-[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-F3D34E?logo=huggingface&logoColor=black)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-FF6F00?logo=huggingface&logoColor=white)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 
 **Author:** **Kah** **Keng** **Wong**  
 
