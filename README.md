@@ -147,7 +147,7 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 ---
 
 ## 📚 Citation
-If you use this processed dataset or methodology, please cite:
+If you found this study useful, please cite the paper:
 
 **BibTeX:**
 ```bibtex
