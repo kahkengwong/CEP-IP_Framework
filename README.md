@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🧬 Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer
-### Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), with focus on modeling optimization, interpretability, mapping for top-ranked explanatory power (TREP) cells, and identification of their biology.
+### Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), with focus on modeling optimization, interpretability, mapping for top-ranked explanatory power (TREP) cells, and identification of their biology. Introducing the CEP-IP framework that separates cell subpopulations into quadrants.
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
