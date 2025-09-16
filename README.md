@@ -8,6 +8,8 @@
 ![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PCa_Project)
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project)
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project)
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2509.12073)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 
 **Author:** **Kah** **Keng** **Wong**  
 
