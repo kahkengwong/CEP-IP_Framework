@@ -146,12 +146,10 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 
 ---
 
-## 📩Contact
-All analyses, modeling, and interpretations were conducted by Kah Keng Wong: [kahkeng@usm.my](mailto:kahkeng@usm.my), [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
-
----
 ## 📚 Citation
 If you use this processed dataset or methodology, please cite:
+
+**BibTeX:**
 ```bibtex
 @misc{wong2025gamtrpm4,
       title={Generalized Additive Modeling of TRPM4-Ribo Transcriptional Space in Prostate Cancer}, 
@@ -163,3 +161,14 @@ If you use this processed dataset or methodology, please cite:
       url={https://arxiv.org/abs/2509.12073}, 
 }
 ```
+Wong KK (2025). Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer. arXiv preprint arXiv:2509.12073. https://arxiv.org/abs/2509.12073
+
+Please also cite the original data source:
+Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al (2022). Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease. Nat Commun 13(1):6036. https://doi.org/10.1038/s41467-022-33780-1
+
+---
+
+## 📩Contact
+All analyses, modeling, and interpretations were conducted by Kah Keng Wong: [kahkeng@usm.my](mailto:kahkeng@usm.my), [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
+
+---
