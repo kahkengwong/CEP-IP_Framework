@@ -1,16 +1,16 @@
 <div align="center">
 
 # 🧬 Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer
-### Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), with focus on modeling optimization and interpretability, and introducing the CEP-IP framework that separates cell subpopulations into quadrants.
+### Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), with focus on modeling optimization and interpretability. Introducing the CEP-IP framework that separates cell subpopulations into quadrants, each with distinct biological pathways.
 
-![Project Status](https://img.shields.io/badge/status-active-brightgreen)
-![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
-![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PCa_Project)
-![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project)
-![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project)
+![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=checkmark&logoColor=white)
+![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
+![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
+![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=r&logoColor=white)
+![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Project%20Page-GitHub-purple?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
-[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-FF6F00?logo=huggingface&logoColor=white)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-F3D34E?logo=huggingface&logoColor=black)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 
 **Author:** **Kah** **Keng** **Wong**  
 
