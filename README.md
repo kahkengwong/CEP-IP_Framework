@@ -163,7 +163,7 @@ If you use this processed dataset or methodology, please cite:
 ```
 Wong KK (2025). Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer. arXiv preprint arXiv:2509.12073. https://arxiv.org/abs/2509.12073
 
-Please also cite the original data source:
+Please also cite the source dataset:
 Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al (2022). Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease. Nat Commun 13(1):6036. https://doi.org/10.1038/s41467-022-33780-1
 
 ---
