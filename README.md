@@ -17,11 +17,11 @@
 ---
 
 ## 📋Overview
-Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. 
+- Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. 
 
-The GAM fitting is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML).
+- The GAM fitting is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML).
 
-Introducing the **CEP-IP framework** [cell explanatory power (CEP) with inflection point (IP)] that subsets the cell subpopulations into quadrants, and Gene Ontology (GO) analysis uncovers distinct biological pathways for each cell subpopulation. 
+- Introducing the **CEP-IP framework** [cell explanatory power (CEP) with inflection point (IP)] that subsets the cell subpopulations into quadrants, and Gene Ontology (GO) analysis uncovers distinct biological pathways for each cell subpopulation. 
 
 ## 🎯Aims of the Project
 The following are the project's objectives:
@@ -37,9 +37,9 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ## 🔀Workflow of the Project
 ![Workflow](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Workflow.jpg)
 
-Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells**. These crucial steps are detailed in part (V) of the figure above.
+- Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells**. These crucial steps are detailed in part (V) of the figure above.
 
-Another key method is to binarize the transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution pattern of TREP cells, producing **quadrants of four subpopulation of cells with different biology**. Collectively, this forms the **CEP-IP framework** detailed in the next section.  
+- Another key method is to binarize the transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution pattern of TREP cells, producing **quadrants of four subpopulation of cells with different biology**. Collectively, this forms the **CEP-IP framework** detailed in the next section.  
 
 ---
 
@@ -47,7 +47,7 @@ Another key method is to binarize the transcriptional space by **inflection poin
 ![Project Key Findings](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Key_Findings.jpg)
 
 
-**Hence, the CEP-IP framework based on pairwise genes produces quadrants of cell subpopulations, enabling distinct biology identification that may guide therapy.**
+- **Hence, the CEP-IP framework based on pairwise genes produces quadrants of cell subpopulations, enabling distinct biology identification that may guide therapy.**
 
 
 ---
