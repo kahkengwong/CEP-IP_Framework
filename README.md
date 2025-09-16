@@ -5,7 +5,7 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
-[![Project Page](https://img.shields.io/badge/Project%20Page-GitHub-purple?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
+[![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=r&logoColor=486FBA)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-FF6F00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
