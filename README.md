@@ -9,7 +9,7 @@
 ![Contributors](https://img.shields.io/github/contributors/kahkengwong/GAM_PCa_Project?logo=github&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Project%20Page-GitHub-purple?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
-[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-FF6F00?logo=huggingface&logoColor=white)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-FF6F00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 
 **Author:** **Kah** **Keng** **Wong**  
 
