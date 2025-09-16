@@ -152,3 +152,16 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 All analyses, modeling, and interpretations were conducted by Kah Keng Wong: [kahkeng@usm.my](mailto:kahkeng@usm.my), [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
 
 ---
+## 📚 Citation
+If you use this processed dataset or methodology, please cite:
+```bibtex
+@misc{wong2024gamtrpm4,
+      title={Generalized Additive Modeling of TRPM4-Ribo Transcriptional Space in Prostate Cancer}, 
+      author={Kah Keng Wong},
+      year={2024},
+      eprint={2509.12073},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.GN},
+      url={https://arxiv.org/abs/2509.12073}, 
+}
+```
