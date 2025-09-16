@@ -3,10 +3,11 @@
 # 🧬 Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer
 ### Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), with focus on modeling optimization and interpretability. Introducing the CEP-IP framework that separates cell subpopulations into quadrants, each with distinct biological pathways.
 
+![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=R&logoColor=486FBA)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
-[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-EAA23B?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-EFAB00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 
 **Author:** **Kah** **Keng** **Wong**  
 
