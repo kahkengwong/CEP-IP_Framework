@@ -21,7 +21,7 @@ Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (n
 ## 🎯Aims of the Project
 The following are the project's objectives:
 1) To optimize and interpret the modeling with mgcv package including *k*, $\lambda$, and $\gamma$ optimization process, PRSS and REML convergence, and visualization of splines' formation.
-2) To uncover how much does _TRPM4_ explain variability in Ribo (average expression of seven ribosomal genes) expression via deviance explained, GAM's performance metrics. 
+2) To determine how much does _TRPM4_ explain variability in Ribo (average expression of seven ribosomal genes) expression via deviance explained, GAM's performance metrics. 
 3) To identify which cells hold strong _TRPM4_-Ribo relationship via the CEP-IP framework, and to uncover their potentially distinctive biology.
 
 This processed dataset is based on publicly available data from: 
