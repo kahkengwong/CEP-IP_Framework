@@ -39,7 +39,9 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 - Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells**. These crucial steps are detailed in part (V) of the figure above.
 
-- Another key method is to binarize the transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution pattern of TREP cells, producing **quadrants of four subpopulation of cells with different biology**. Collectively, this forms the **CEP-IP framework** detailed in the next section.  
+- Another key method is to binarize the transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution pattern of TREP cells, producing **quadrants of four subpopulation of cells with different biology**.
+
+- Collectively, this forms the **CEP-IP framework** detailed in the next section.  
 
 ---
 
