@@ -154,7 +154,7 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 ---
 
 ## 📚 Citation
-If you found this study useful, please cite the paper:
+If you found this study useful, please cite the preprint:
 
 **BibTeX:**
 ```bibtex
