@@ -21,7 +21,7 @@
 
 - The GAM fitting is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML).
 
-- Introducing the **CEP-IP framework** [cell explanatory power (CEP) with inflection point (IP)] that subsets the cell subpopulations into quadrants, and Gene Ontology (GO) analysis uncovers distinct biological pathways for each cell subpopulation. 
+- Introducing the **CEP-IP framework** **[cell explanatory power (CEP) with inflection point (IP)]** that subsets the cell subpopulations into quadrants, and Gene Ontology (GO) analysis uncovers distinct biological pathways for each cell subpopulation. 
 
 ## 🎯Aims of the Project
 The following are the project's objectives:
