@@ -83,7 +83,9 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 | 17    | `Part_3.15_Monocle3_` <br> `Pre-IP_vs_Post-IP_TREP.r`  | Generates Monocle3 trajectory visualizations for TREP and non-TREP cells in PCa samples. Performs quantitative clustering analysis, comparing UMAP1 distributions. |
 
 ## 🛠️Packages and Dependencies
-- The R packages and versions used in this study were saved in the `renv.lock` file included in the GitHub repository. This lockfile contains version information for all 37 packages used with their dependencies. Download the repository and run `renv::restore()` to install the identical package versions used in this study. Note that renv creates an isolated library and will not modify a system's existing R packages and setup. 
+- The R packages and versions used in this study were saved in the `renv.lock` file included in the GitHub repository. This lockfile contains version information for all 37 packages used with their dependencies.
+
+- Download or fork the repository and run `renv::restore()` to install the identical package versions used in this study. Note that renv creates an isolated library and will not modify a system's existing R packages and setup. 
 
 - For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
