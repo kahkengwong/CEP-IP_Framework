@@ -1,8 +1,8 @@
 <div align="center">
 
 # 🧬 CEP-IP: A novel interpretable framework for cell subpopulation identification in single-cell transcriptomics
-### ✨ Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), focusing on model optimization and interpretability. 
 ### ✨ Introducing the CEP-IP framework that separates cell subpopulations into quadrants, each with distinct biology.
+### ✨ Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), and subsequent stratification by the CEP-IP framework. 
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
