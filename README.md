@@ -142,7 +142,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 - GAM modeling with [mgcv](https://cran.r-project.org/web/packages/mgcv/index.html) is computationally efficient and does not require high-end specs
 - Understanding the algorithms and mathematical principles is key; minimum specs are sufficient for GAM analysis using the processed Seurat object
 > [!NOTE]
-> 💡Limited computational resources should never prevent one from learning the key methodologies and mathematical principles in machine learning; understanding them matters more than hardware specs.
+> 💡**To students and young researchers:** Limited computational resources should never prevent one from learning the key methodologies and mathematical principles in machine learning; understanding them matters more than hardware specs.
 
 ---
 
