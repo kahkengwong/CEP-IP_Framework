@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧬 Generalized Additive Modeling of _TRPM4_-Ribo Transcriptional Space in Prostate Cancer
+# 🧬 CEP-IP: A novel interpretable framework for cell subpopulation identification in single-cell transcriptomics
 ### ✨ Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), focusing on model optimization and interpretability. 
 ### ✨ Introducing the CEP-IP framework that separates cell subpopulations into quadrants, each with distinct biology.
 
