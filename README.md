@@ -134,7 +134,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 - **Storage:** ~12GB free disk space for data and results
 
 ### Development Environment
-- **Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, RTX 4090 24GB VRAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
+- **Developed and tested on:** Intel Core i9-14900KF, 64GB DDR5 RAM, Windows 11 Pro, RStudio 2025.05.0 Build 496, R 4.4.2
 
 ### Performance Notes
 - All analyses are CPU-based; GPU acceleration not required
