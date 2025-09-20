@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧬 CEP-IP: A novel interpretable framework for cell subpopulation identification in single-cell transcriptomics
+# 🧬 CEP-IP: An explainable framework for cell subpopulation identification in single-cell transcriptomics
 ### ✨ Introducing the CEP-IP framework that separates cell subpopulations into quadrants, each with distinct biology.
 ### ✨ Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), and subsequent stratification by the CEP-IP framework. 
 
@@ -27,7 +27,7 @@
 
 ## 🎯Aims of the Project
 The following are the project's objectives:
-1) To optimize and interpret the modeling with mgcv package including *k*, $\lambda$, and $\gamma$ optimization process, PRSS and REML convergence, and visualization of splines' formation.
+1) To optimize and explain the modeling with mgcv package including *k*, $\lambda$, and $\gamma$ optimization process, PRSS and REML convergence, and visualization of splines' formation.
 2) To determine how much does _TRPM4_ explain variability in Ribo (average expression of seven ribosomal genes) expression via deviance explained, GAM's performance metrics. 
 3) To identify which cells hold strong _TRPM4_-Ribo relationship via the CEP-IP framework, and to uncover their potentially distinctive biology.
 
