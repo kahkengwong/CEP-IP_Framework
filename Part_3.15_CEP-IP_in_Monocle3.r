@@ -1,6 +1,6 @@
-####################################################################################################
-# Part 3.15: Monocle3 Trajectory Visualization for TREP and non-TREP Cells, and Quantitative Analysis
-####################################################################################################
+######################################################################################################################
+# Part 3.15: CEP-IP in Monocle3 Trajectory (Visualization for TREP and non-TREP Cells, and Quantitative Analysis)
+######################################################################################################################
 library(monocle3)
 library(Seurat)
 library(dplyr)
@@ -698,6 +698,7 @@ clustering_analysis_results <- process_all_samples_clustering(all_trajectories)
 
 
 cat("\nClustering analysis completed!\n")
+
 
 
 
