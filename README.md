@@ -37,7 +37,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ---
 
 ## 🔀Workflow of the Project
-![Workflow](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Workflow.jpg)
+![Workflow](https://raw.githubusercontent.com/kahkengwong/CEP-IP_Framework/main/Project_Workflow.jpg)
 
 - Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells**. These crucial steps are detailed in part (V) of the figure above.
 
