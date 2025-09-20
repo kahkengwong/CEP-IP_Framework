@@ -180,6 +180,6 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al (2022). Single cell analysis
 ---
 
 ## 📩Contact
-All analyses, modeling, and interpretations were conducted by Kah Keng Wong: [kahkeng@usm.my](mailto:kahkeng@usm.my), [kahkeng3@gmail.com](mailto:kahkeng3@gmail.com)
+All analyses, modeling, and interpretations were conducted by Kah Keng Wong: [kahkeng@usm.my](mailto:kahkeng@usm.my)
 
 ---
