@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧬 CEP-IP: An explainable framework for cell subpopulation identification in single-cell transcriptomics
+# 🧬 CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics
 ### ✨ Introducing the CEP-IP framework that separates cell subpopulations into quadrants, each with distinct biology.
 ### ✨ Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), and subsequent stratification by the CEP-IP framework. 
 
