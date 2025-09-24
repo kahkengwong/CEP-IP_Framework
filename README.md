@@ -163,7 +163,7 @@ If you found this study useful, please cite the preprint:
 **BibTeX:**
 ```bibtex
 @misc{wong2025gamtrpm4,
-      title={Generalized Additive Modeling of TRPM4-Ribo Transcriptional Space in Prostate Cancer}, 
+      title={CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics}, 
       author={Kah Keng Wong},
       year={2025},
       eprint={2509.12073},
