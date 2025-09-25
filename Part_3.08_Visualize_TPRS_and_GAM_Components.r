@@ -875,9 +875,3 @@ print(examples_viz$dot_plot)
 cat(examples_viz$explanation)
 # Prints the summary table of component values.
 print(examples_viz$summary_table)
-
-
-
-
-
-
