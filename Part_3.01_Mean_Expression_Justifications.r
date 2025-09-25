@@ -3,7 +3,7 @@
 #####################################################################
 # Load required libraries
 library(Seurat)
-library(psych) # For reliability analysis
+library(psych) 
 library(openxlsx)
 library(dplyr)
 
@@ -380,6 +380,3 @@ cat("\n\nConsolidated Score = Average of (Cronbach's α + McDonald's ω + KMO)")
 
 # Run complete analysis
 validation_results <- validate_all_samples_simple()
-
-
-
