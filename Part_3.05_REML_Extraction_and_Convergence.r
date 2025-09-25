@@ -1,6 +1,6 @@
-######################################################
+########################################################
 # Part 3.05: REML Extraction and Convergence Analysis
-######################################################
+########################################################
 library(mgcv)
 library(writexl) 
 library(readxl)
@@ -1332,6 +1332,7 @@ all_convergence <- rbind(pca_convergence, non_ca_convergence)
 # Export the convergence details
 write_xlsx(list(Convergence_Details = all_convergence), 
            path = "Ribo_AR_Convergence_Details_g1.5-all-lin.xlsx")
+
 
 
 
