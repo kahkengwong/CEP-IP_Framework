@@ -1,6 +1,6 @@
-###########################################################
+########################################################
 # Part 3.04: GAM-REML-PRSS Analysis and Results Export
-###########################################################
+########################################################
 library(Seurat)
 library(mgcv)
 library(dplyr)
@@ -969,5 +969,6 @@ process_file(pca_file)
 process_file(nonca_file)
 
 cat("All files have been updated with Is_Best_Model column in the REML_Summary sheets.\n")
+
 
 
