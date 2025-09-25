@@ -289,6 +289,3 @@ analyze_for_lambdas <- function(best_model, lambda_values) {
 best_model <- pca_results[["HYW_4881_Tumor"]][["Ribo"]]$best_model
 lambda_values <- c(0.264006588, 0.332627458, 0.419084336, 0.528013177, 0.6, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0)
 results <- analyze_for_lambdas(best_model, lambda_values)
-
-
-
