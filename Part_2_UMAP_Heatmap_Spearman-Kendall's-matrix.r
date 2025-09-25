@@ -1,12 +1,11 @@
 #######################################################
 # Part 2: UMAP, Heatmap and Spearman-Kendall's matrix
 #######################################################
-
 # =========================================
 # 1. TRPM4 UMAP plot
 # =========================================
-# Download and then load the RData available on HuggingFace: https://huggingface.co/datasets/kahkengwong/GAM_REML_PRSS_Project/tree/main
-load("GSE185344_Seurat_processed.RData") # Filesize 9.516 GB
+# Download and then load the RData available on HuggingFace: https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main
+load("GSE185344_Seurat_processed.RData") # Filesize 9.52 GB
 library(Seurat)
 library(parallel)
 library(doParallel)
@@ -204,6 +203,7 @@ pdf("TRPM4_heatmap.pdf", width = 12, height = 8)
 draw(heatmap)
 dev.off()
 draw(heatmap)
+
 
 
 
