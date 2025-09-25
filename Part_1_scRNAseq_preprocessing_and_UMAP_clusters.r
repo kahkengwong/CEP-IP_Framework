@@ -1,6 +1,9 @@
-######################################
-# scRNA-seq Dataset Analysis
-######################################
+#############################################################
+# Part 1: scRNA-seq Dataset Pre-processing and UMAP Clusters
+#############################################################
+# =========================================
+# 1. scRNA-seq Dataset Pre-processing
+# =========================================
 # Load required libraries
 library(dplyr)  
 library(future)         
@@ -14,12 +17,6 @@ library(viridis)
 library(rstatix)
 library(writexl)
 
-#############################################################
-# Part 1: scRNA-seq Dataset Pre-processing and UMAP Clusters
-#############################################################
-# =========================================
-# 1. scRNA-seq Dataset Pre-processing
-# =========================================
 # Load scRNA-seq dataset
 loaded_df <- readRDS("C:/...directory.../scRNA.final.rds")
 
@@ -422,6 +419,7 @@ write_xlsx(list(
 # Save workspace (~10GB, full analysis state)
 save.image(file = "GSE185344_Seurat_processed.RData")
 # For subsequent analysis, download the RData (filesize 9.516 GB) from HuggingFace: https://huggingface.co/datasets/kahkengwong/GAM_REML_PRSS_Project/tree/main
+
 
 
 
