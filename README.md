@@ -162,7 +162,7 @@ If you found this study useful, please cite the preprint:
 
 **BibTeX:**
 ```bibtex
-@misc{wong2025gamtrpm4,
+@misc{wong2025cep-ip,
       title={CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics}, 
       author={Kah Keng Wong},
       year={2025},
