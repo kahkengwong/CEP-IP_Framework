@@ -1,9 +1,9 @@
 ##################################################
 # Part 3.03: GAM-REML-PRSS Setup 
 ##################################################
-library(mgcv)    # For GAM modeling
-library(Seurat)  # For single-cell analysis
-set.seed(123)  # Set a global seed for reproducibility
+library(mgcv)    
+library(Seurat)  
+set.seed(123)  
 
 # Define expanded gene sets for analysis
 gene_sets <- list(
@@ -1113,6 +1113,7 @@ calculate_reml_convergence_stats <- function(convergence_df) {
     cat("Produced", nrow(result_df), "rows of convergence statistics summary\n")
     return(result_df)
 }
+
 
 
 
