@@ -252,9 +252,9 @@ run_comprehensive_gam_diagnostics <- function(results_object, sample_type = "PCa
     ))
 }
 
-# ========================================================
+# ===========
 # Usage
-# ========================================================
+# ===========
 
 # Run comprehensive diagnostics on the results
 cat("Running comprehensive GAM diagnostics with gam.check()...\n")
@@ -307,3 +307,4 @@ tryCatch({
 
 
 cat("\nDiagnostic analysis complete!\n")
+
