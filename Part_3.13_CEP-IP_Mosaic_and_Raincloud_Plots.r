@@ -1291,6 +1291,3 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
 
           plot.subtitle = element_text(size = 12))
 
-
-
-
