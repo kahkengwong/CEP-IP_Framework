@@ -10,6 +10,8 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=R&logoColor=486FBA)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-B08C00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+[![HF Downloads](https://img.shields.io/badge/downloads-100+-success?logo=huggingface)](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework)
+[![Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17114394-blue?logo=zenodo)](https://zenodo.org/records/17114394)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
 
 **Author:** **Kah** **Keng** **Wong**  
@@ -92,7 +94,6 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 - For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
 ---
----
 
 ## 🚀 Quick Start
 1. Download repository (ZIP or git clone)
@@ -132,7 +133,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 </details>
 
 
-## 📋 Tabular Results Available on Zenodo
+## 📋 Supplementary Tables & Results (Zenodo)
 **Contents on Zenodo and aims:** 
 - 13 Supplementary Tables (Excel format) available from [Zenodo](https://zenodo.org/records/17114394)
 - Detailed tabular results from analyses conducted in the study
