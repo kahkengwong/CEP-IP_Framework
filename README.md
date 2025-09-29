@@ -127,13 +127,13 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 **Contents on Zenodo and aims:** 
 - 13 Supplementary Tables (Excel format) available from [Zenodo](https://zenodo.org/records/17114394)
 - Detailed tabular results from analyses conducted in the study
-- Reference these tables to understand detailed results without running the full pipeline, or to validate your own results
+- Refer these tables to understand detailed results without running the full pipeline, or to validate your own results
 
 **Contents organized by analysis stage:**
-- **Quality Control & Clustering** (Supp. Tables 1-2): Cell filtering metrics, cluster statistics
+- **scRNA-seq QC & Clustering** (Supp. Tables 1-2): Cell filtering metrics, cluster statistics
 - **Gene Selection & Enrichment** (Supp. Tables 3-5): Gene set reliability, correlation matrices, GO enrichment
 - **GAM Modeling & Optimization** (Supp. Tables 6-10): Model parameters, REML convergence, deviance metrics, k-optimization, λ-optimization
-- **Cell Classification & Enrichment** (Supp. Tables 11-13): TREP vs non-TREP comparisons, DEG analysis, pathway enrichment
+- **Cell Classification & GO Enrichment** (Supp. Tables 11-13): TREP vs non-TREP comparisons, DEG analysis, pathway enrichment
 
 ## 💻 Requirements
 ### Software Requirements
