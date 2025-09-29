@@ -18,25 +18,6 @@
 
 ---
 
-## 📑 Table of Contents
-- [Overview](#overview)
-- [Aims of the Project](#aims-of-the-project)
-- [Workflow of the Project](#workflow-of-the-project)
-- [Project Key Findings](#project-key-findings)
-- [scRNA-seq Analysis and GAM Modeling Scripts](#scrna-seq-analysis-and-gam-modeling-scripts)
-- [Descriptions of the Scripts](#descriptions-of-the-scripts)
-- [Packages and Dependencies](#packages-and-dependencies)
-- [Quick Start](#quick-start)
-- [Detailed Setup Instructions](#detailed-setup-instructions-optional)
-- [Tabular Results Available on Zenodo](#tabular-results-available-on-zenodo)
-- [Requirements](#requirements)
-- [License](#license)
-- [Contributing](#contributing)
-- [Citation](#citation)
-- [Contact](#contact)
-
----
-
 ## 📋Overview
 - Analysis of an scRNA-seq dataset of prostate cancer (PCa) and benign prostate (non-Ca) samples using the **Seurat** package, with subsequent modeling via generalized additive models (GAMs) through the **mgcv** package. 
 
