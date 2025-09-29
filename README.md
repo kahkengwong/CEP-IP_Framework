@@ -93,11 +93,11 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 ## 🚀 Quick Start
 1. Download repository (ZIP or git clone)
-2. Install dependencies with `renv::restore()`
-3. Download processed Seurat object from HuggingFace 
+2. Optional: Install dependencies with `renv::restore()` or selected packages according to `r_packages_info.json`
+3. Download processed Seurat object from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main) 
 4. Run scripts Part_3.01 through Part_3.15
 
-## 🔬 Detailed Setup Instructions
+## 🔬 Detailed Setup Instructions (Optional)
 1. **Get the Repository**:
    - **Option A (most users)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
    - **Option B (advanced)**: Fork this repository on GitHub, then clone locally.
@@ -123,13 +123,10 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
    - This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants.
    - Scripts have been stress-tested for consistent and reproducible results.
 
-## 📦 Zenodo - Supplementary Tables
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17114394.svg)](https://doi.org/10.5281/zenodo.17114394)
-
-**What's hosted on Zenodo:** 13 Supplementary Tables (Excel format)
-
-**Aims:** 
-- Detailed tabular results from all analyses conducted in the study
+## 📋 Zenodo - Supplementary Tables
+**Contents on Zenodo and aims:** 
+- 13 Supplementary Tables (Excel format) available from [Zenodo](https://zenodo.org/records/17114394)
+- Detailed tabular results from analyses conducted in the study
 - Reference these tables to understand detailed results without running the full pipeline, or to validate your own results
 
 **Contents organized by analysis stage:**
