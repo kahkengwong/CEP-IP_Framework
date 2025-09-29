@@ -170,15 +170,13 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ---
 
 ## 🔬 Adapting CEP-IP for Your Research
-This framework is designed to be generalizable beyond prostate cancer. Consider forking if you want to:
+This framework is designed to be generalizable beyond prostate cancer. Consider 🍴[forking](https://github.com/kahkengwong/CEP-IP_Framework/fork) if you want to:
 
 - **Apply to different cancer types** - Adapt for breast, lung, colorectal, or other cancers
 - **Explore different gene pairs** - Replace _TRPM4_-Ribo with your genes of interest
 - **Integrate with your pipeline** - Use CEP-IP as a module in larger workflows
 - **Benchmark against other methods** - Compare with your current cell classification approaches
 - **Educational purposes** - Learn GAM, PRSS, and REML methodologies with working code
-
-🍴[Fork this repository](https://github.com/kahkengwong/CEP-IP_Framework/fork) to start customizing for your research. 
 
 ---
 
