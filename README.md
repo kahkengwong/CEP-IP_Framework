@@ -91,6 +91,8 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 - For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
+---
+---
 
 ## 🚀 Quick Start
 1. Download repository (ZIP or git clone)
