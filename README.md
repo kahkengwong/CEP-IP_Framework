@@ -10,7 +10,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=R&logoColor=486FBA)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-B08C00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
-[![HF Downloads](https://img.shields.io/badge/downloads-100+-success?logo=huggingface)](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework)
+[![HF Downloads](https://img.shields.io/badge/downloads-100+-FFD21E?logo=huggingface&logoColor=white)](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
 
 **Author:** **Kah** **Keng** **Wong**  
@@ -52,7 +52,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ![Project Key Findings](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Key_Findings.jpg)
 
 
-- **Hence, the CEP-IP framework based on pairwise genes produces quadrants of cell subpopulations, enabling distinct biology identification that may guide therapy.**
+- **The CEP-IP framework transforms pairwise gene relationships into clinically actionable cell subpopulations, each with distinct biology and therapeutic potential.**
 
 ---
 
