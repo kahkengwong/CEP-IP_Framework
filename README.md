@@ -3,6 +3,7 @@
 # 🧬 CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics
 ### ✨ Introducing the CEP-IP framework that separates cell subpopulations into quadrants, each with distinct biology.
 ### ✨ Modeling of _TRPM4_-Ribo relationship with generalized additive model (GAM), and subsequent stratification by the CEP-IP framework. 
+### ⭐ Generalizable to any gene pair in single-cell transcriptomics.
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
@@ -24,8 +25,6 @@
 - The GAM fitting is implemented with thin-plate regression splines (TPRS), regularized by penalized residual sum of squares (PRSS) based on the smoothing parameter $\lambda$ derived from restricted maximum likelihood (REML).
 
 - Introducing the **CEP-IP framework** **[cell explanatory power (CEP) with inflection point (IP)]** that subsets the cell subpopulations into quadrants, and Gene Ontology (GO) analysis uncovers distinct biological pathways for each cell subpopulation. 
-
-- **The methodology is generalizable** - **[Fork this repository](https://github.com/kahkengwong/CEP-IP_Framework/fork)** and adapt this framework for your own gene pairs and cell types.
 
 ## 🎯Aims of the Project
 The following are the project's objectives:
