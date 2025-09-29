@@ -178,7 +178,7 @@ This framework is designed to be generalizable beyond prostate cancer. Consider 
 - **Benchmark against other methods** - Compare with your current cell classification approaches
 - **Educational purposes** - Learn GAM, PRSS, and REML methodologies with working code
 
-**[Fork this repository](https://github.com/kahkengwong/CEP-IP_Framework/fork)** to start customizing for your needs. 
+🍴**[Fork this repository](https://github.com/kahkengwong/CEP-IP_Framework/fork)** to start customizing for your research. 
 
 ---
 
