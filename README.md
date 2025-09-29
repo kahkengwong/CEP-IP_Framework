@@ -169,7 +169,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 ---
 
-## 🔬 Adapting CEP-IP for Your Research
+## 🎨 Adapting CEP-IP for Your Research
 This framework is designed to be generalizable beyond prostate cancer. Consider 🍴[forking](https://github.com/kahkengwong/CEP-IP_Framework/fork) if you want to:
 
 - **Apply to different cancer types** - Adapt for breast, lung, colorectal, or other cancers
