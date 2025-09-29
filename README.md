@@ -62,8 +62,6 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 - For the complete workflow, the scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
 
----
-
 ## 📜Descriptions of the Scripts
 | No | Script File                                      | Description                                                                                     |
 |------|--------------------------------------------------|-------------------------------------------------------------------------------------------------|
@@ -85,7 +83,6 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 | 16    | `Part_3.14_TREP_vs_` <br> `non-TREP_DEGs_Analysis.r`  | Identifies differentially expressed genes (DEGs) between TREP and non-TREP cells in pre-IP and post-IP groups for PCa samples. |
 | 17    | `Part_3.15_Monocle3_` <br> `Pre-IP_vs_Post-IP_TREP.r`  | Generates Monocle3 trajectory visualizations for TREP and non-TREP cells in PCa samples. Performs quantitative clustering analysis, comparing UMAP1 distributions. |
 
----
 
 ## 🛠️Packages and Dependencies
 - The R packages and versions used in this study were saved in the `renv.lock` file included in the GitHub repository. This lockfile contains version information for all 37 packages used with their dependencies.
@@ -94,7 +91,6 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 
 - For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
----
 
 ## 🚀 Quick Start
 1. Download repository (ZIP or git clone)
@@ -102,7 +98,6 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 3. Download processed Seurat object from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main) 
 4. Run scripts Part_3.01 through Part_3.15
 
----
 
 ## 🔬 Detailed Setup Instructions (Optional)
 <details>
@@ -134,7 +129,6 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
    - Scripts have been stress-tested for consistent and reproducible results.
 </details>
 
----
 
 ## 📋 Tabular Results Available on Zenodo
 **Contents on Zenodo and aims:** 
