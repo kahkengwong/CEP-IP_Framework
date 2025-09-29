@@ -11,7 +11,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-B08C00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
 [![HF Downloads](https://img.shields.io/badge/downloads-100+-success?logo=huggingface)](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework)
-[![Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17114394-blue?logo=zenodo)](https://zenodo.org/records/17114394)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
 
 **Author:** **Kah** **Keng** **Wong**  
