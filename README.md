@@ -97,7 +97,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 3. Download processed Seurat object from HuggingFace 
 4. Run scripts Part_3.01 through Part_3.15
 
-## 📋 Detailed Setup Instructions
+## 🔬 Detailed Setup Instructions
 1. **Get the Repository**:
    - **Option A (most users)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
    - **Option B (advanced)**: Fork this repository on GitHub, then clone locally.
@@ -122,6 +122,21 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
    - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis.
    - This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants.
    - Scripts have been stress-tested for consistent and reproducible results.
+
+## 📦 Zenodo - Supplementary Tables
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17114394.svg)](https://doi.org/10.5281/zenodo.17114394)
+
+**What's hosted on Zenodo:** 13 Supplementary Tables (Excel format)
+
+**Aims:** 
+- Detailed tabular results from all analyses conducted in the study
+- Reference these tables to understand detailed results without running the full pipeline, or to validate your own results
+
+**Contents organized by analysis stage:**
+- **Quality Control & Clustering** (Supp. Tables 1-2): Cell filtering metrics, cluster statistics
+- **Gene Selection & Enrichment** (Supp. Tables 3-5): Gene set reliability, correlation matrices, GO enrichment
+- **GAM Modeling & Optimization** (Supp. Tables 6-10): Model parameters, REML convergence, deviance metrics, k-optimization, λ-optimization
+- **Cell Classification & Enrichment** (Supp. Tables 11-13): TREP vs non-TREP comparisons, DEG analysis, pathway enrichment
 
 ## 💻 Requirements
 ### Software Requirements
