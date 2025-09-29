@@ -183,20 +183,20 @@ Contributions, issues, and feature requests are welcome!
 ### 💡 Have an Improvement?
 You can contribute via a **pull request**:
 
-**What is a pull request?**  
-A way to propose changes to the repository. You fork (copy) the project, make improvements in your copy, then ask me to review and merge your changes into the main project.
+- **What is a pull request?**: A way to propose changes to the repository. You fork (copy) the project, make improvements in your copy, then ask me to review and merge your changes into the main project.
 
-**How to submit:**
+- **How to submit:**
 1. Fork this repository (click "Fork" button at top)
 2. Make your changes in your forked copy
 3. Click "Contribute" → "Open pull request" on your fork's GitHub page
 4. Describe your changes and submit
 
-I'll review and may ask questions before merging. **Not comfortable with GitHub?** Just [open an issue](https://github.com/kahkengwong/CEP-IP_Framework/issues) describing your suggested improvement instead.
+- I'll review and may ask questions before merging.
+- **Not comfortable with GitHub?** Just [open an issue](https://github.com/kahkengwong/CEP-IP_Framework/issues) describing your suggested improvement instead.
 
 ### ❓ Questions?
 - **Methodology questions:** [Open an issue](https://github.com/kahkengwong/CEP-IP_Framework/issues) or contact via email below
-- **Using this for your research?** Share your experience by opening an issue!
+- **Share your experience on this?** You can do this by opening an issue.
 
 ---
 
