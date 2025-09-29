@@ -98,6 +98,9 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 4. Run scripts Part_3.01 through Part_3.15
 
 ## 🔬 Detailed Setup Instructions (Optional)
+<details>
+<summary><strong>📜 Click to view all the setup descriptions (7 steps)</strong></summary>
+
 1. **Get the Repository**:
    - **Option A (most users)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
    - **Option B (advanced)**: Fork this repository on GitHub, then clone locally.
@@ -122,12 +125,13 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
    - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_Monocle3_Pre-IP_vs_Post-IP_TREP.r` for the main GAM analysis.
    - This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants.
    - Scripts have been stress-tested for consistent and reproducible results.
+</details>
 
-## 📋 Zenodo - Supplementary Tables
+## 📋 Tabular Results Available on Zenodo
 **Contents on Zenodo and aims:** 
 - 13 Supplementary Tables (Excel format) available from [Zenodo](https://zenodo.org/records/17114394)
 - Detailed tabular results from analyses conducted in the study
-- Refer these tables to understand detailed results without running the full pipeline, or to validate your own results
+- Refer these tables to understand the results without running the full pipeline, or to validate your own results
 
 **Contents organized by analysis stage:**
 - **scRNA-seq QC & Clustering** (Supp. Tables 1-2): Cell filtering metrics, cluster statistics
