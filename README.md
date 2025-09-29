@@ -25,6 +25,8 @@
 
 - Introducing the **CEP-IP framework** **[cell explanatory power (CEP) with inflection point (IP)]** that subsets the cell subpopulations into quadrants, and Gene Ontology (GO) analysis uncovers distinct biological pathways for each cell subpopulation. 
 
+- **The methodology is generalizable** - **[Fork this repository](https://github.com/kahkengwong/CEP-IP_Framework/fork)** and adapt this framework for your own gene pairs and cell types.
+
 ## 🎯Aims of the Project
 The following are the project's objectives:
 1) To optimize and explain the modeling with mgcv package including *k*, $\lambda$, and $\gamma$ optimization process, PRSS and REML convergence, and visualization of splines' formation.
@@ -171,13 +173,13 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ## 🔬 Adapting CEP-IP for Your Research
 This framework is designed to be generalizable beyond prostate cancer. Consider forking if you want to:
 
-- **Apply to different cancer types**: Adapt for breast, lung, colorectal, or other cancers
-- **Explore different gene pairs**: Replace TRPM4-Ribo with your genes of interest
-- **Integrate with your pipeline**: Use CEP-IP as a module in larger workflows
-- **Benchmark against other methods**: Compare with your current cell classification approaches
-- **Educational purposes**: Learn GAM-REML-TPRS methodology with working code
+- **Apply to different cancer types** - Adapt for breast, lung, colorectal, or other cancers
+- **Explore different gene pairs** - Replace _TRPM4_-Ribo with your genes of interest
+- **Integrate with your pipeline** - Use CEP-IP as a module in larger workflows
+- **Benchmark against other methods** - Compare with your current cell classification approaches
+- **Educational purposes** - Learn GAM, PRSS, and REML methodologies with working code
 
-**[Fork this repository](https://github.com/kahkengwong/CEP-IP_Framework/fork)** to start customizing for your needs. No permission needed!
+**[Fork this repository](https://github.com/kahkengwong/CEP-IP_Framework/fork)** to start customizing for your needs. 
 
 ---
 
