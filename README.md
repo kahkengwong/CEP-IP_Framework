@@ -97,7 +97,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 ## 🚀 Quick Start
 1. Download repository (ZIP or git clone)
 2. Optional: Install dependencies with `renv::restore()` or selected packages according to `r_packages_info.json`
-3. Download processed Seurat object from [HuggingFace](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project/tree/main) 
+3. Download processed Seurat object from [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main) 
 4. Run scripts Part_3.01 through Part_3.15
 
 
@@ -106,7 +106,7 @@ Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al. Single cell analysis of cri
 <summary><strong>📜 Click to view all the setup descriptions (7 steps)</strong></summary>
 
 1. **Get the Repository**:
-   - **Option A (most users)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/GAM_PCa_Project`).
+   - **Option A (most users)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/CEP-IP_Framework`).
    - **Option B (advanced)**: Fork this repository on GitHub, then clone locally.
 
 2. **Open the Project**:
