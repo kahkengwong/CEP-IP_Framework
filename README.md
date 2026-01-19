@@ -221,6 +221,7 @@ If you found this study useful, please cite the preprint:
 Wong KK (2025). CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics. arXiv preprint arXiv:2509.12073. https://arxiv.org/abs/2509.12073
 
 Please also cite the source dataset:
+
 Wong HY, Sheng Q, Hesterberg AB, Croessmann S et al (2022). Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease. Nat Commun 13(1):6036. https://doi.org/10.1038/s41467-022-33780-1
 
 ---
