@@ -23,9 +23,22 @@ patient_ids <- c("HYW_4701_Tumor", "HYW_4847_Tumor", "HYW_4880_Tumor",
                  "HYW_4881_Tumor", "HYW_5386_Tumor", "HYW_5742_Tumor", 
                  "HYW_5755_Tumor")
 
-# Define inflection points for each patient
-inflection_points <- c(3.800, 2.214, 3.179, 3.306, 2.636, 3.465, 3.476)
-names(inflection_points) <- patient_ids
+# Pull inflection points directly from ip_values (returned by IP detection)
+if (!exists("ip_values")) stop("Run IP detection and extraction block first.")
+
+inflection_points <- ip_values[patient_ids]  # named numeric vector, same structure as before
+
+cat("Using algorithmically determined inflection points:\n")
+for (i in seq_along(patient_ids)) {
+    cat("Pt.", i, "(", patient_ids[i], "):", 
+        ifelse(is.na(inflection_points[i]), "NA — check convergence", 
+               sprintf("%.4f", inflection_points[i])), "\n")
+}
+
+# Warn if any IPs are missing
+if (any(is.na(inflection_points))) {
+    warning("Some IP values are NA. Samples with NA IPs will have NULL contingency tables.")
+}
 
 cat("Using the following inflection points:\n")
 for (i in 1:length(patient_ids)) {
@@ -723,7 +736,7 @@ create_all_patients_mosaic <- function() {
     ))
 }
 
-						# ==============================================================
+# ==============================================================
 # Part III: Chi-Square Test with BH Correction for Mosaic Plots
 # ==============================================================
 # Chi-square tests on the distribution of purple and gray cells relative to the GAM line before and after inflection points
@@ -731,39 +744,8 @@ create_all_patients_mosaic <- function() {
 library(tidyverse)
 library(openxlsx)
 
-# Structure: Each patient has data for both purple and gray cells
-# Patient 1
-pt1_purple <- matrix(c(101, 46, 33, 131), nrow = 2, byrow = TRUE)
-pt1_gray <- matrix(c(104, 206, 226, 138), nrow = 2, byrow = TRUE)
-
-# Patient 2
-pt2_purple <- matrix(c(102, 34, 20, 79), nrow = 2, byrow = TRUE)
-pt2_gray <- matrix(c(147, 250, 125, 63), nrow = 2, byrow = TRUE)
-
-# Patient 3
-pt3_purple <- matrix(c(63, 11, 26, 98), nrow = 2, byrow = TRUE)
-pt3_gray <- matrix(c(6, 62, 64, 7), nrow = 2, byrow = TRUE)
-
-# Patient 4
-pt4_purple <- matrix(c(260, 128, 256, 384), nrow = 2, byrow = TRUE)
-pt4_gray <- matrix(c(0, 92, 112, 0), nrow = 2, byrow = TRUE)
-
-# Patient 5
-pt5_purple <- matrix(c(8, 1, 7, 32), nrow = 2, byrow = TRUE)
-pt5_gray <- matrix(c(15, 26, 47, 20), nrow = 2, byrow = TRUE)
-
-# Patient 6
-pt6_purple <- matrix(c(216, 72, 105, 357), nrow = 2, byrow = TRUE)
-pt6_gray <- matrix(c(113, 305, 243, 57), nrow = 2, byrow = TRUE)
-
-# Patient 7
-pt7_purple <- matrix(c(122, 35, 87, 208), nrow = 2, byrow = TRUE)
-pt7_gray <- matrix(c(47, 161, 160, 37), nrow = 2, byrow = TRUE)
-
-# Create a list of all contingency tables
-all_purple_tables <- list(pt1_purple, pt2_purple, pt3_purple, pt4_purple, pt5_purple, pt6_purple, pt7_purple)
-all_gray_tables <- list(pt1_gray, pt2_gray, pt3_gray, pt4_gray, pt5_gray, pt6_gray, pt7_gray)
-patient_ids <- paste0("Pt.", 1:7)
+# Labels for chi-square output 
+chisq_patient_ids <- paste0("Pt.", 1:7)
 
 # Function to perform chi-square test and extract results
 perform_chisq_test <- function(table) {
@@ -834,7 +816,7 @@ gray_p_adjusted <- all_p_adjusted[8:14]
 # Create results data frames
 create_results_df <- function(results, p_adjusted, cell_type) {
   data.frame(
-    Patient_ID = patient_ids,
+    Patient_ID = chisq_patient_ids,
     Cell_Type = cell_type,
     Test_Type = sapply(results, function(x) x$test_type),
     Chi_Square = sapply(results, function(x) x$chi_square),
@@ -889,7 +871,7 @@ for (col in scientific_cols) {
 
 # Create detailed sheets for each patient with contingency tables
 for (i in 1:7) {
-  patient <- patient_ids[i]
+  patient <- chisq_patient_ids[i]
   sheet_name <- paste0(patient, "_Details")
   addWorksheet(wb, sheet_name)
   
@@ -1013,8 +995,64 @@ library(ggplot2)
 library(dplyr)
 library(introdataviz)
 
+# ── Build Pre/Post-IP Ribo expression data from ip_values ──────────────
+if (!exists("ip_values")) stop("Run IP detection and extraction block first.")
+
+output_dir <- "C:/Users/Wong/Desktop/GO_preIP_&_postIP/Revision_Feb2026"
+
+prepost_list <- lapply(seq_along(patient_ids), function(i) {
+    s        <- patient_ids[i]
+    ip_val   <- ip_values[s]
+    
+    # Get sample data and GAM model
+    sample_data <- pca_results[[s]][["Ribo"]]$gam_data
+    gam_model   <- pca_results[[s]][["Ribo"]]$best_model
+    
+    # Common cells (same filtering as rest of pipeline)
+    pca_clusters  <- c(6, 9, 11, 14, 19)
+    cluster_cells <- WhichCells(prostate_results$seurat_obj, idents = pca_clusters)
+    sample_cells  <- WhichCells(prostate_results$seurat_obj,
+                                cells = grep(s, colnames(prostate_results$seurat_obj), value = TRUE))
+    common_cells  <- intersect(intersect(cluster_cells, sample_cells), rownames(sample_data))
+    sample_data   <- sample_data[rownames(sample_data) %in% common_cells, ]
+    
+    if (is.na(ip_val)) {
+        cat("WARNING: IP is NA for", s, "— skipping Pre/Post split\n")
+        return(list(pre = numeric(0), post = numeric(0)))
+    }
+    
+    pre  <- sample_data$Expression[sample_data$TRPM4 <  ip_val]
+    post <- sample_data$Expression[sample_data$TRPM4 >= ip_val]
+    
+    cat(sprintf("Pt.%d (%s): IP=%.4f | Pre-IP n=%d | Post-IP n=%d\n",
+                i, s, ip_val, length(pre), length(post)))
+    
+    list(pre = pre, post = post)
+})
+
+# Pad columns to equal length with NA so they fit in a rectangular data frame
+max_len <- max(sapply(prepost_list, function(x) max(length(x$pre), length(x$post))))
+
+prepost_df <- do.call(cbind, lapply(seq_along(patient_ids), function(i) {
+    pre  <- prepost_list[[i]]$pre
+    post <- prepost_list[[i]]$post
+    length(pre)  <- max_len   # pads with NA
+    length(post) <- max_len
+    df <- data.frame(pre, post)
+    names(df) <- c(paste0("Pt", i, "_Pre-IP"), paste0("Pt", i, "_Post-IP"))
+    df
+}))
+
+# Save to xlsx
+xlsx_path <- file.path(output_dir, "Pt1_to_Pt7_Pre-Post-IP.xlsx")
+wb_rc <- createWorkbook()
+addWorksheet(wb_rc, "Pre_Post_IP")
+writeData(wb_rc, "Pre_Post_IP", prepost_df)
+saveWorkbook(wb_rc, xlsx_path, overwrite = TRUE)
+cat("\nSaved:", xlsx_path, "\n")
+
 # Read the data
-data <- read_excel("C:.../Pt1_to_Pt7_Pre-Post-IP.xlsx") # Ribo expression values in pre-IP and post-IP for each patient
+data <- read_excel(xlsx_path)
 
 # Extract data for all patients and convert to numeric
 patients_data <- list()
@@ -1206,9 +1244,10 @@ for(i in 1:7) {
         geom_flat_violin(trim = FALSE, alpha = 0.6,
                          position = position_nudge(x = rain_height + 0.05)) +
         # Raw data points (rain)
-        geom_point(aes(colour = condition), size = 1.2, alpha = 0.5, 
-                   show.legend = FALSE,
-                   position = position_jitter(width = rain_height, height = 0)) +
+        geom_point(aes(fill = condition, colour = condition), shape = 21,
+                size = 2, alpha = 0.4, stroke = 1.0,
+                show.legend = FALSE,
+                position = position_jitter(width = rain_height, height = 0)) +
         # Boxplots
         geom_boxplot(width = rain_height, alpha = 0.6, 
                      show.legend = FALSE, outlier.shape = NA,
@@ -1256,9 +1295,10 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
     geom_flat_violin(trim = FALSE, alpha = 0.6,
                      position = position_nudge(x = rain_height + 0.05)) +
     # Raw data points (rain)
-    geom_point(aes(colour = condition), size = 0.8, alpha = 0.4, 
-               show.legend = FALSE,
-               position = position_jitter(width = rain_height, height = 0)) +
+    geom_point(aes(fill = condition, colour = condition), shape = 21,
+                size = 2.0, alpha = 0.4, stroke = 1.0,
+                show.legend = FALSE,
+                position = position_jitter(width = rain_height, height = 0)) +
     # Boxplots
     geom_boxplot(width = rain_height, alpha = 0.6, 
                  show.legend = FALSE, outlier.shape = NA,
@@ -1278,7 +1318,7 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
                ncol = 2) +
     # Custom colors
     scale_fill_manual(values = c("Pre-IP" = "#000066", "Post-IP" = "#21908CFF")) +
-    scale_colour_manual(values = c("Pre-IP" = "#000066", "Post-IP" = "#21908CFF")) +
+    scale_colour_manual(values = c("Pre-IP" = "#00003a", "Post-IP" = "#0d4f4d")) +
     labs(title = "Raincloud Plot: Pre-IP vs Post-IP Expression Distributions (All Patients)",
          subtitle = "Comparing overlapping coefficients and extremity-weighted OVL across all 7 patients") +
     theme_minimal() +
@@ -1290,4 +1330,3 @@ combined_plot <- ggplot(plot_data, aes(x = "", y = value, fill = condition)) +
           plot.title = element_text(face = "bold", size = 14),
 
           plot.subtitle = element_text(size = 12))
-
