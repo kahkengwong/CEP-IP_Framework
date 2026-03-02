@@ -8,6 +8,9 @@ library(ggplot2)
 library(Seurat)
 library(openxlsx)
 
+# Check if the automated IP values exist in the environment before create_sample_scatter_plot() is called
+if (!exists("ip_values")) stop("Run IP detection and extraction block first.")
+
 # Function to create scatter plot for a sample
 create_sample_scatter_plot <- function(current_sample) {
   cat("\nCreating scatter plot for sample:", current_sample, "\n")
@@ -146,9 +149,62 @@ create_sample_scatter_plot <- function(current_sample) {
     scale_x_continuous(limits = c(x_range[1] - x_margin, x_range[2] + x_margin)) +
     scale_y_continuous(limits = c(y_range[1] - y_margin, y_range[2] + y_margin))
   
-  # Display the plot
+  # Retrieve IP for this sample (from the named vector in environment)
+  ip_val <- ip_values[current_sample]   # NA if not found
+
+  p <- ggplot() +
+    geom_point(data = plot_data,
+               aes(x = TRPM4, y = Expression, color = Group),
+               size = 1.8, alpha = 0.3) +
+    geom_line(data = pred_data,
+              aes(x = TRPM4, y = fit),
+              color = "#FFCC99", size = 1.2) +
+    geom_ribbon(data = pred_data,
+                aes(x = TRPM4,
+                    ymin = fit - 1.96 * se.fit,
+                    ymax = fit + 1.96 * se.fit),
+                fill = "#FFCC99", alpha = 0.2) +
+
+    # ── ADD 1: IP vertical dashed line ──────────────────────────────
+    {if (!is.na(ip_val))
+        geom_vline(xintercept = ip_val,
+                   linetype   = "dashed",
+                   color      = "black",
+                   linewidth  = 0.6)
+    } +
+
+    scale_color_manual(values = c("Dev explained"     = "#4B0082",
+                                  "Non-dev explained" = "#C0C0C0")) +
+    theme_minimal() +
+    theme(
+      panel.grid.major = element_line(color = "#EEEEEE"),
+      panel.grid.minor = element_line(color = "#F5F5F5"),
+      legend.position  = "none",
+      plot.title       = element_text(size = 11, face = "bold", hjust = 0.5),
+      plot.subtitle    = element_text(size = 10, hjust = 0.5),
+      axis.title       = element_text(size = 9),
+      axis.text        = element_text(size = 8),
+      panel.border     = element_rect(color = "black", fill = NA, size = 0.5),
+      axis.line        = element_blank()
+    ) +
+
+    # ── ADD 2: IP value printed above the line ───────────────────────
+    # Uses annotate() so it references data coordinates, not plot fractions.
+    labs(
+      title    = paste("TRPM4 vs Ribo Expression (", current_sample, ")", sep = ""),
+      subtitle = paste0(
+        if (!is.na(ip_val)) paste0("IP: ", sprintf("%.3f", ip_val), ";  ") else "",
+        "Dev explained: ", dev_explained_percentage, "%"
+    ),
+  x = "TRPM4 Expression",
+  y = "Ribo Expression"
+) +
+    scale_x_continuous(
+        limits = c(x_range[1] - x_margin, x_range[2] + x_margin)) +
+    scale_y_continuous(
+        limits = c(y_range[1] - y_margin, y_range[2] + y_margin))
+
   print(p)
-  
   return(p)
 }
 
