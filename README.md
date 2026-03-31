@@ -2,7 +2,8 @@
 
 # 🧬 CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics
 ### ✨ **CEP-IP** is a novel explainable AI framework that identifies cell subpopulations harboring strong pairwise monotonic **gene-of-interest (GOI)-dual-filtered gene (DFG)** module relationships in scRNA-seq data.
-### ✨ Modeling of the **GOI-DFGs module** with generalized additive model (GAM), and subsequent stratification by the **CEP-IP framework** (first demonstrated with the *TRPM4*-Ribo module in prostate cancer).
+### ✨ Modeling of the **GOI-DFGs module** with generalized additive model (GAM), and subsequent stratification by the **CEP-IP framework**.
+### ✨ First demonstrated with the *TRPM4*-Ribo module in prostate cancer, then validated with the *CARM1P1*-DFG module in Allen brain MTG and *FOXM1*-DFG module in Neftel GBM datasets. 
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
@@ -23,7 +24,7 @@
 
 - The strength of each **GOI-DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that most strongly harbor the GOI-DFGs signal.
 
-- The **CEP-IP framework** (Cell Explanatory Power with Inflection Point) subsequently stratifies the transcriptional space into biologically distinct subpopulations using automated inflection-point (IP) analysis. Differential gene expression, Gene Ontology (GO) enrichment, and Monocle3 trajectory analysis then uncover the distinct biology of each subpopulation.
+- The **CEP-IP framework** (Cell Explanatory Power with Inflection Point) subsequently stratifies the transcriptional space into biologically distinct subpopulations using automated inflection-point (IP) analysis. Differential gene expression, GO enrichment, and Monocle3 trajectory analysis then uncover the distinct biology of each subpopulation.
 
 **Three GOI-DFGs module pairings were tested by CEP-IP in this study:**
 1. **Prostate cancer (PCa) dataset** - *TRPM4*-Ribo module (7 dual-filtered ribosomal genes averaged as “Ribo”).
@@ -34,7 +35,7 @@
 The project objectives are:
 1. To optimize and explain GAM modeling (including *k*, λ, and γ optimization, PRSS/REML convergence, and visualization of thin-plate regression splines).
 2. To quantify how much a **GOI** explains variability in its monotonically co-expressed **DFGs** via deviance explained (DE).
-3. To identify cells harboring the strongest **GOI-DFGs** relationship via the CEP-IP framework and uncover their distinctive biology through GO enrichment and Monocle3 trajectory analysis.
+3. To identify cells harboring the strongest **GOI-DFGs** relationship via the CEP-IP framework and uncover their distinctive biology through GO enrichment and Monocle3 analysis.
 
 **CEP-IP was validated in two independent brain datasets**, each using a different **GOI-DFGs module pairing**:
 - Allen MTG dataset (*CARM1P1*-DFG module)
@@ -64,7 +65,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
  
 - Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells** — those most strongly harboring the GOI-DFG module. These crucial steps are detailed in part (V) of the figure above.
  
-- Another key method is to binarize the GOI-DFG transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution patterns of TREP cells, producing **quadrants of four subpopulations of cells with different biology**, revealed through GO enrichment and Monocle3 trajectory analysis.
+- Another key method is to binarize the GOI-DFG transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution patterns of TREP cells, producing **quadrants of four subpopulations of cells with different biology**, revealed through GO enrichment and Monocle3 analysis.
  
 - Collectively, this forms the **CEP-IP framework** detailed in the next section.
 
@@ -117,8 +118,8 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 | 15 | `Part_3.13_CEP-IP_Mosaic_and_` <br> `Raincloud_Plots.r` | Mosaic plots of TREP/non-TREP proportions above/below the GAM curve in pre-IP and post-IP regions; raincloud plots of DFG (Ribo) expression with overlap coefficient (OVL) comparisons. |
 | 16 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | DEG analysis between TREP and non-TREP cells in pre-IP and post-IP regions. GO enrichment via ToppGene for each of the four CEP-IP subpopulations. |
 | 17 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Monocle3 trajectory analysis of pre-IP and post-IP TREP cells. Quantifies their UMAP1 separation using Cliff's delta and ridgeline plots. |
-| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | CEP-IP validation in the Allen Human MTG SMART-seq dataset (15,928 nuclei, 8 donors) using the _CARM1P1_–DFG module. Includes dual-filtering, GAM fitting, CEP classification, automated IP detection with IPRS scoring, GO enrichment, and Monocle3 trajectory analysis. |
-| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | CEP-IP validation in the Neftel GBM SMART-seq2 dataset (4,916 cells, 20 patients) using the _FOXM1_–DFG module. Includes GOI screening across 659 candidates for MES-state DFGs, wcDFG construction, within-positive monotonicity validation, GAM fitting in FOXM1⁺ cells, CEP classification, automated IP detection with IPRS scoring, GO enrichment, and 2D/3D Monocle3 trajectory analysis with PERMANOVA and PERMDISP. |
+| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | CEP-IP validation in the Allen Human MTG SMART-seq dataset (15,928 nuclei, 8 donors) using the _CARM1P1_–DFG module: dual-filtering, GAM fitting, CEP classification, automated IP detection with IPRS scoring, GO enrichment, and Monocle3 trajectory analysis. |
+| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | CEP-IP validation in the Neftel GBM SMART-seq2 dataset (4,916 cells, 20 patients) using the _FOXM1_–DFG module: GOI screening across 659 candidates for MES-state DFGs, wcDFG construction, within-positive monotonicity validation in _FOXM1_⁺ cells, full CEP-IP pipeline with IPRS scoring, GO enrichment, and 2D/3D Monocle3 trajectory analysis. |
 
 
 ## 🛠️Packages and Dependencies
@@ -185,11 +186,11 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 - Refer to these tables to understand the results without running the full pipeline, or to validate your own results
  
 **Contents organized by analysis stage:**
-- **scRNA-seq QC & Clustering** (Supp. Tables 1-2): Cell filtering metrics, cluster statistics
-- **GOI-DFG Module Selection & Enrichment** (Supp. Tables 3-5): DFG identification via Spearman-Kendall dual-filter, gene set reliability metrics for DFG composite averaging, correlation matrices, GO enrichment of DFGs
-- **GAM Modeling & Optimization** (Supp. Tables 6-10): Model parameters, REML convergence, deviance metrics (DE of GOI-DFG relationship), k-optimization, λ-optimization
-- **CEP-IP Cell Classification & GO Enrichment** (Supp. Tables 11-14): TREP vs non-TREP MCCV comparisons, HVG analysis, cell counts per CEP-IP quadrant, DEG analysis and GO pathway enrichment for each subpopulation
-- **IP Reliability & Validation Datasets** (Supp. Tables 15-17): IPRS component scores for all three datasets; GAM performance metrics and GO enrichment for Allen MTG (_CARM1P1_-DFG module) and Neftel GBM (_FOXM1_-DFG module) validation datasets; GBM GOI screening results and within-positive monotonicity classification
+- **QC & Clustering** (Supp. Tables 1–2): Cell filtering metrics, cluster statistics
+- **GOI–DFG Module Selection** (Supp. Tables 3–5): DFG identification, composite reliability metrics, correlation matrices, GO enrichment
+- **GAM Modeling & Optimization** (Supp. Tables 6–10): Model parameters, REML convergence, DE metrics, k- and λ-optimization
+- **CEP-IP Classification & GO Enrichment** (Supp. Tables 11–14): MCCV results, HVG analysis, CEP-IP quadrant cell counts, DEG analysis and GO enrichment per subpopulation
+- **IP Reliability & Validation** (Supp. Tables 15–17): IPRS scores for all datasets; GAM metrics and GO enrichment for Allen MTG (_CARM1P1_–DFG) and Neftel GBM (_FOXM1_–DFG) validations; GBM GOI screening and within-positive monotonicity results
 
 ---
 
