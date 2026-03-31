@@ -6,8 +6,6 @@
 
 #############################################################
 # Part 1: scRNA-seq Dataset Pre-processing and UMAP Clusters
-# Dataset: Allen Human MTG SMART-seq (2018)
-# 15,928 nuclei, 8 donors (age 24-66y), MTG, 75 cell types
 #############################################################
 # =========================================
 # 1. scRNA-seq Dataset Pre-processing
