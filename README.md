@@ -1,8 +1,8 @@
 <div align="center">
 
 # 🧬 CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics
-### ✨ **CEP-IP** is a novel explainable AI framework that identifies cell subpopulations harboring strong pairwise monotonic **gene-of-interest (GOI)–dual-filtered gene (DFG)** module relationships in scRNA-seq data.
-### ✨ Modeling of the **GOI–DFGs module** with generalized additive model (GAM), and subsequent stratification by the **CEP-IP framework** (first demonstrated with the *TRPM4*-Ribo module in prostate cancer).
+### ✨ **CEP-IP** is a novel explainable AI framework that identifies cell subpopulations harboring strong pairwise monotonic **gene-of-interest (GOI)-dual-filtered gene (DFG)** module relationships in scRNA-seq data.
+### ✨ Modeling of the **GOI-DFGs module** with generalized additive model (GAM), and subsequent stratification by the **CEP-IP framework** (first demonstrated with the *TRPM4*-Ribo module in prostate cancer).
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/GAM_PCa_Project)
@@ -19,24 +19,24 @@
 ---
 
 ## 📋Overview
-- Analysis of multiple scRNA-seq datasets using the **Seurat** package, followed by modeling of pairwise monotonic **GOI–DFGs** relationships via **generalized additive models (GAMs)** implemented in the **mgcv** package.
+- Analysis of multiple scRNA-seq datasets using the **Seurat** package, followed by modeling of pairwise monotonic **GOI-DFGs** relationships via **generalized additive models (GAMs)** implemented in the **mgcv** package.
 
-- The strength of each **GOI–DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that most strongly harbor the GOI–DFGs signal.
+- The strength of each **GOI-DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that most strongly harbor the GOI-DFGs signal.
 
 - The **CEP-IP framework** (Cell Explanatory Power with Inflection Point) subsequently stratifies the transcriptional space into biologically distinct subpopulations using automated inflection-point (IP) analysis. Differential gene expression, Gene Ontology (GO) enrichment, and Monocle3 trajectory analysis then uncover the distinct biology of each subpopulation.
 
-**Three GOI–DFGs module pairings were tested by CEP-IP in this study:**
-1. **Prostate cancer (PCa) dataset** – *TRPM4*-Ribo module (7 dual-filtered ribosomal genes averaged as “Ribo”).
-2. **Allen Human Middle Temporal Gyrus (MTG) dataset** – *CARM1P1*-DFG module (validation).
-3. **Neftel glioblastoma multiforme (GBM) dataset** – *FOXM1*-DFG module (validation).
+**Three GOI-DFGs module pairings were tested by CEP-IP in this study:**
+1. **Prostate cancer (PCa) dataset** - *TRPM4*-Ribo module (7 dual-filtered ribosomal genes averaged as “Ribo”).
+2. **Allen Human Middle Temporal Gyrus (MTG) dataset** - *CARM1P1*-DFG module (validation).
+3. **Neftel glioblastoma multiforme (GBM) dataset** - *FOXM1*-DFG module (validation).
 
 ## 🎯Aims of the Project
 The project objectives are:
 1. To optimize and explain GAM modeling (including *k*, λ, and γ optimization, PRSS/REML convergence, and visualization of thin-plate regression splines).
 2. To quantify how much a **GOI** explains variability in its monotonically co-expressed **DFGs** via deviance explained (DE).
-3. To identify cells harboring the strongest **GOI–DFGs** relationship via the CEP-IP framework and uncover their distinctive biology through GO enrichment and Monocle3 trajectory analysis.
+3. To identify cells harboring the strongest **GOI-DFGs** relationship via the CEP-IP framework and uncover their distinctive biology through GO enrichment and Monocle3 trajectory analysis.
 
-**CEP-IP was validated in two independent brain datasets**, each using a different **GOI–DFGs module pairing**:
+**CEP-IP was validated in two independent brain datasets**, each using a different **GOI-DFGs module pairing**:
 - Allen MTG dataset (*CARM1P1*-DFG module)
 - Neftel GBM dataset (*FOXM1*-DFG module)
 
@@ -50,21 +50,21 @@ The datasets used in this study are based on publicly available data from the fo
 H.Y. Wong, Q. Sheng, A.B. Hesterberg, S. Croessmann, B.L. Rios, et al., Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease, *Nat Commun*, 13 (2022) 6036. https://doi.org/10.1038/s41467-022-33780-1
  
 **2. Allen Human Middle Temporal Gyrus (MTG) dataset**
-R.D. Hodge, T.E. Bakken, J.A. Miller, K.A. Smith, E.R. Barkan, et al., Conserved cell types with divergent features in human versus mouse cortex, *Nature*, 573 (2019) 61–68. https://doi.org/10.1038/s41586-019-1506-7
+R.D. Hodge, T.E. Bakken, J.A. Miller, K.A. Smith, E.R. Barkan, et al., Conserved cell types with divergent features in human versus mouse cortex, *Nature*, 573 (2019) 61-68. https://doi.org/10.1038/s41586-019-1506-7
  
 **3. Neftel Glioblastoma Multiforme (GBM) dataset**
-C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma, *Cell*, 178 (2019) 835–849 e821. https://doi.org/10.1016/j.cell.2019.06.024
+C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma, *Cell*, 178 (2019) 835-849 e821. https://doi.org/10.1016/j.cell.2019.06.024
 
 ---
 
 ## 🔀Workflow of the Project
 ![Workflow](https://raw.githubusercontent.com/kahkengwong/CEP-IP_Framework/main/Project_Workflow.jpg)
 
-- The workflow begins with identification of the **GOI** and its monotonically co-expressed **DFGs** via Spearman–Kendall dual-filtering, establishing the GOI–DFG module. GAM then quantifies the strength of their relationship (DE), and PRSS–REML optimization ensures an appropriately fitted model.
+- The workflow begins with identification of the **GOI** and its monotonically co-expressed **DFGs** via Spearman-Kendall dual-filtering, establishing the GOI-DFG module. GAM then quantifies the strength of their relationship (DE), and PRSS-REML optimization ensures an appropriately fitted model.
  
-- Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells** — those most strongly harboring the GOI–DFG module. These crucial steps are detailed in part (V) of the figure above.
+- Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells** — those most strongly harboring the GOI-DFG module. These crucial steps are detailed in part (V) of the figure above.
  
-- Another key method is to binarize the GOI–DFG transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution patterns of TREP cells, producing **quadrants of four subpopulations of cells with different biology**, revealed through GO enrichment and Monocle3 trajectory analysis.
+- Another key method is to binarize the GOI-DFG transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution patterns of TREP cells, producing **quadrants of four subpopulations of cells with different biology**, revealed through GO enrichment and Monocle3 trajectory analysis.
  
 - Collectively, this forms the **CEP-IP framework** detailed in the next section.
 
@@ -74,51 +74,51 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 ![Project Key Findings](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Key_Findings.jpg)
 
 
-- **The CEP-IP framework transforms pairwise GOI–DFG module relationships into clinically actionable cell subpopulations, each with distinct biology and trajectories.**
+- **The CEP-IP framework transforms pairwise GOI-DFG module relationships into clinically actionable cell subpopulations, each with distinct biology and trajectories.**
   
 ---
 
 ## 📊scRNA-seq Analysis and GAM Modeling Scripts
 Three processed Seurat objects are required to reproduce all analyses and are available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main):
  
-| Seurat Object | Size | Dataset | GOI–DFG Module |
+| Seurat Object | Size | Dataset | GOI-DFG Module |
 |---|---|---|---|
-| `GSE185344_Seurat_processed.RData` | 9.52 GB* | PCa (GSE185344) | _TRPM4_–Ribo |
-| `AllenMTG_Seurat_processed.RData` | 8.22 GB | Allen Human MTG | _CARM1P1_–DFG |
-| `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` | 4.02 GB | Neftel GBM | _FOXM1_–DFG |
+| `GSE185344_Seurat_processed.RData` | 9.52 GB* | PCa (GSE185344) | _TRPM4_-Ribo |
+| `AllenMTG_Seurat_processed.RData` | 8.22 GB | Allen Human MTG | _CARM1P1_-DFG |
+| `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` | 4.02 GB | Neftel GBM | _FOXM1_-DFG |
  
 *Note: HuggingFace displays `GSE185344_Seurat_processed.RData` as 9.74 GB due to platform metadata — this is the same file.
  
-- The results of the GAM modeling and CEP-IP framework application in the PCa dataset (_TRPM4_–Ribo GOI–DFG module) can be replicated by analyzing `GSE185344_Seurat_processed.RData` following the code blocks `Part_3.01_Mean_Expression_Justifications.r` through `Part_3.15_CEP-IP_in_Monocle3_Trajectory.r`.
+- The results of the GAM modeling and CEP-IP framework application in the PCa dataset (_TRPM4_-Ribo GOI-DFG module) can be replicated by analyzing `GSE185344_Seurat_processed.RData` following the code blocks `Part_3.01_Mean_Expression_Justifications.r` through `Part_3.15_CEP-IP_in_Monocle3_Trajectory.r`.
  
-- Validation of the CEP-IP framework with the _CARM1P1_–DFG module in cortical neurons can be reproduced by analyzing `AllenMTG_Seurat_processed.RData` using `Part_3.16_CEP-IP_Validation_Allen_MTG_dataset.r`.
+- Validation of the CEP-IP framework with the _CARM1P1_-DFG module in cortical neurons can be reproduced by analyzing `AllenMTG_Seurat_processed.RData` using `Part_3.16_CEP-IP_Validation_Allen_MTG_dataset.r`.
  
-- Validation with the _FOXM1_–DFG module in GBM cells can be reproduced by analyzing `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` using `Part_3.17_CEP-IP_Validation_Neftel_GBM_dataset.r`.
+- Validation with the _FOXM1_-DFG module in GBM cells can be reproduced by analyzing `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` using `Part_3.17_CEP-IP_Validation_Neftel_GBM_dataset.r`.
  
 - For the complete workflow, the scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
  
 ## 📜 Descriptions of the Scripts
 | No | Script File | Description |
 |------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1 | `Part_1_scRNAseq_preprocessing_` <br> `and_UMAP_clusters.r` | Preprocesses scRNA-seq data (PCa and non-Ca samples). Includes QC steps: removing low-quality cells, regressing out cell cycle phase effects, and correcting batch effects. Performs UMAP clustering to identify cell populations and the GOI (_TRPM4_)-expressing clusters for downstream GOI–DFG module analysis. |
-| 2 | `Part_2_UMAP_Heatmap_Spearman-` <br> `Kendall's-matrix.r` | Visualizes _TRPM4_ (GOI) expression in UMAP clusters for PCa and non-Ca samples. Applies the Spearman–Kendall dual-filter to identify DFGs monotonically co-expressed with the GOI, and creates a heatmap to compare the GOI with candidate DFG gene sets. |
-| 3 | `Part_3.01_Mean_Expression_` <br> `Justifications.r` | Analyzes internal reliability of the Ribo DFG composite and AR gene sets in PCa and BP samples. Computes Cronbach's α, McDonald's ω, and KMO scores to justify averaging the seven dual-filtered ribosomal DFGs into a single Ribo composite for downstream GOI–DFG modeling. |
-| 4 | `Part_3.02_Family_Distribution_` <br> `Analysis.r` | Performs GAM diagnostics for PCa and non-Ca samples, testing multiple distribution families for the GOI–DFG modeling. Generates diagnostic plots and exports AIC/BIC metrics and best family results. |
-| 5 | `Part_3.03_GAM_REML_PRSS_` <br> `Setup.r` | GAM-REML-PRSS modeling with `mgcv` for PCa and non-Ca samples across multiple gene sets including the GOI–DFG module (TRPM4–Ribo). Extracts basis functions, model details, and PRSS metrics, analyzing REML convergence. |
-| 6 | `Part_3.04_GAM_REML_PRSS_` <br> `Analysis.r` | Conducts GAM-REML-PRSS analysis for PCa and non-Ca samples across gene sets. Extracts model parameters, calculates PRSS, and convergence metrics to identify the optimal GOI–DFG model. |
+| 1 | `Part_1_scRNAseq_preprocessing_` <br> `and_UMAP_clusters.r` | Preprocesses scRNA-seq data (PCa and non-Ca samples). Includes QC steps: removing low-quality cells, regressing out cell cycle phase effects, and correcting batch effects. Performs UMAP clustering to identify cell populations and the GOI (_TRPM4_)-expressing clusters for downstream GOI-DFG module analysis. |
+| 2 | `Part_2_UMAP_Heatmap_Spearman-` <br> `Kendall's-matrix.r` | Visualizes _TRPM4_ (GOI) expression in UMAP clusters for PCa and non-Ca samples. Applies the Spearman-Kendall dual-filter to identify DFGs monotonically co-expressed with the GOI, and creates a heatmap to compare the GOI with candidate DFG gene sets. |
+| 3 | `Part_3.01_Mean_Expression_` <br> `Justifications.r` | Analyzes internal reliability of the Ribo DFG composite and AR gene sets in PCa and BP samples. Computes Cronbach's α, McDonald's ω, and KMO scores to justify averaging the seven dual-filtered ribosomal DFGs into a single Ribo composite for downstream GOI-DFG modeling. |
+| 4 | `Part_3.02_Family_Distribution_` <br> `Analysis.r` | Performs GAM diagnostics for PCa and non-Ca samples, testing multiple distribution families for the GOI-DFG modeling. Generates diagnostic plots and exports AIC/BIC metrics and best family results. |
+| 5 | `Part_3.03_GAM_REML_PRSS_` <br> `Setup.r` | GAM-REML-PRSS modeling with `mgcv` for PCa and non-Ca samples across multiple gene sets including the GOI-DFG module (TRPM4-Ribo). Extracts basis functions, model details, and PRSS metrics, analyzing REML convergence. |
+| 6 | `Part_3.04_GAM_REML_PRSS_` <br> `Analysis.r` | Conducts GAM-REML-PRSS analysis for PCa and non-Ca samples across gene sets. Extracts model parameters, calculates PRSS, and convergence metrics to identify the optimal GOI-DFG model. |
 | 7 | `Part_3.05_REML_Extraction_` <br> `and_Convergence.r` | Extracts detailed REML convergence metrics for GAM models in PCa and non-Ca samples. Processes convergence details, including scores and iterations, and exports results to Excel for analysis. |
-| 8 | `Part_3.06_REML_PRSS_Plots_` <br> `and_EDF_Analysis.r` | Creates visualizations of REML and PRSS iterations for PCa and non-Ca samples. Generates detailed EDF reports, applies FDR correction, and summarizes non-linear relationships for the fitted GOI–DFG models. |
-| 9 | `Part_3.07_Validation_of_` <br> `k_and_Lambda_Selection.r` | Validates GAM models by refitting with varied k and lambda values for PCa samples. Analyzes PRSS and REML scores, generating plots to confirm optimal parameters for the GOI–DFG model. |
-| 10 | `Part_3.08_Visualize_TPRS_` <br> `and_GAM_Components.r` | Visualizes TPRS basis functions and GAM components for the TRPM4–Ribo GOI–DFG model in PCa samples, plotting individual splines, knot placement, and variance contributions of linear and smooth terms. |
-| 11 | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r` | Extracts and analyzes null deviance (ND), model deviance (MD), and deviance explained (DE) — the aggregate measure of GOI–DFG relationship strength — for GAM models in PCa and non-Ca samples. |
-| 12 | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r` | Decomposes aggregate DE into cell-level explanatory power (EP) for the TRPM4–Ribo GOI–DFG module in PCa samples. Computes NDC, MDC, and EP per cell, ranks cells by EP, and identifies TREP cells as those most strongly harboring the GOI–DFG relationship. |
-| 13 | `Part_3.11_CEP-IP_MCCV_of_` <br> `CEP_Classification.r` | Monte Carlo cross-validation (MCCV) of CEP classification for the TRPM4–Ribo GOI–DFG module in PCa samples. Validates that TREP cells are genuinely better predicted out-of-sample compared with random, leverage-based, and Cook's distance-based classification controls. |
-| 14 | `Part_3.12_CEP-IP_GAM_Plots.r` | Generates CEP-IP scatter plots for PCa samples, distinguishing TREP cells (purple; strong GOI–DFG relationship) from non-TREP cells (gray), and applies IP stratification to produce the four CEP-IP cell subpopulations. Exports cell-level data. |
+| 8 | `Part_3.06_REML_PRSS_Plots_` <br> `and_EDF_Analysis.r` | Creates visualizations of REML and PRSS iterations for PCa and non-Ca samples. Generates detailed EDF reports, applies FDR correction, and summarizes non-linear relationships for the fitted GOI-DFG models. |
+| 9 | `Part_3.07_Validation_of_` <br> `k_and_Lambda_Selection.r` | Validates GAM models by refitting with varied k and lambda values for PCa samples. Analyzes PRSS and REML scores, generating plots to confirm optimal parameters for the GOI-DFG model. |
+| 10 | `Part_3.08_Visualize_TPRS_` <br> `and_GAM_Components.r` | Visualizes TPRS basis functions and GAM components for the TRPM4-Ribo GOI-DFG model in PCa samples, plotting individual splines, knot placement, and variance contributions of linear and smooth terms. |
+| 11 | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r` | Extracts and analyzes null deviance (ND), model deviance (MD), and deviance explained (DE) — the aggregate measure of GOI-DFG relationship strength — for GAM models in PCa and non-Ca samples. |
+| 12 | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r` | Decomposes aggregate DE into cell-level explanatory power (EP) for the TRPM4-Ribo GOI-DFG module in PCa samples. Computes NDC, MDC, and EP per cell, ranks cells by EP, and identifies TREP cells as those most strongly harboring the GOI-DFG relationship. |
+| 13 | `Part_3.11_CEP-IP_MCCV_of_` <br> `CEP_Classification.r` | Monte Carlo cross-validation (MCCV) of CEP classification for the TRPM4-Ribo GOI-DFG module in PCa samples. Validates that TREP cells are genuinely better predicted out-of-sample compared with random, leverage-based, and Cook's distance-based classification controls. |
+| 14 | `Part_3.12_CEP-IP_GAM_Plots.r` | Generates CEP-IP scatter plots for PCa samples, distinguishing TREP cells (purple; strong GOI-DFG relationship) from non-TREP cells (gray), and applies IP stratification to produce the four CEP-IP cell subpopulations. Exports cell-level data. |
 | 15 | `Part_3.13_CEP-IP_Mosaic_and_` <br> `Raincloud_Plots.r` | Creates mosaic plots comparing TREP/non-TREP proportions above/below the GAM curve in pre-IP and post-IP regions, and raincloud plots of DFG (Ribo) expression distributions across both regions. Computes overlap coefficients (OVL) and exports contingency data. |
-| 16 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | Identifies DEGs between TREP and non-TREP cells within pre-IP and post-IP regions of the TRPM4–Ribo GOI–DFG module in PCa samples. Performs GO enrichment analysis via ToppGene for each of the four CEP-IP cell subpopulations to reveal their distinct biological pathways. |
-| 17 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Generates Monocle3 trajectory visualizations mapping pre-IP and post-IP TREP cells of the TRPM4–Ribo GOI–DFG module in PCa samples. Quantifies separation of pre-IP and post-IP TREP cells along UMAP1 using Cliff's delta effect size and ridgeline plots. |
-| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | Validates the CEP-IP framework in the Allen Human MTG SMART-seq dataset (15,928 nuclei, 8 donors) using the _CARM1P1_–DFG GOI–DFG module. Applies Spearman–Kendall dual-filter with _CARM1P1_ as GOI, fits GAM with PRSS-REML optimization, performs CEP classification, automated IP detection with IPRS scoring, GO enrichment analysis, and Monocle3 trajectory analysis. |
-| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Validates the CEP-IP framework in the Neftel GBM SMART-seq2 dataset (4,916 adult malignant GBM cells, 20 patients) using the _FOXM1_–DFG GOI–DFG module. Screens 659 GBM-upregulated GOIs for MES-state DFGs, identifies _FOXM1_ as the sole GOI yielding MES-state DFGs, constructs a frequency-weighted DFG composite (wcDFG), performs within-positive monotonicity validation, GAM fitting in FOXM1⁺ cells, CEP classification, automated IP detection with IPRS scoring, GO enrichment analysis, and 2D/3D Monocle3 trajectory analysis with PERMANOVA and PERMDISP. |
+| 16 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | Identifies DEGs between TREP and non-TREP cells within pre-IP and post-IP regions of the TRPM4-Ribo GOI-DFG module in PCa samples. Performs GO enrichment analysis via ToppGene for each of the four CEP-IP cell subpopulations to reveal their distinct biological pathways. |
+| 17 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Generates Monocle3 trajectory visualizations mapping pre-IP and post-IP TREP cells of the TRPM4-Ribo GOI-DFG module in PCa samples. Quantifies separation of pre-IP and post-IP TREP cells along UMAP1 using Cliff's delta effect size and ridgeline plots. |
+| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | Validates the CEP-IP framework in the Allen Human MTG SMART-seq dataset (15,928 nuclei, 8 donors) using the _CARM1P1_-DFG GOI-DFG module. Applies Spearman-Kendall dual-filter with _CARM1P1_ as GOI, fits GAM with PRSS-REML optimization, performs CEP classification, automated IP detection with IPRS scoring, GO enrichment analysis, and Monocle3 trajectory analysis. |
+| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Validates the CEP-IP framework in the Neftel GBM SMART-seq2 dataset (4,916 adult malignant GBM cells, 20 patients) using the _FOXM1_-DFG GOI-DFG module. Screens 659 GBM-upregulated GOIs for MES-state DFGs, identifies _FOXM1_ as the sole GOI yielding MES-state DFGs, constructs a frequency-weighted DFG composite (wcDFG), performs within-positive monotonicity validation, GAM fitting in FOXM1⁺ cells, CEP classification, automated IP detection with IPRS scoring, GO enrichment analysis, and 2D/3D Monocle3 trajectory analysis with PERMANOVA and PERMDISP. |
 
 
 ## 🛠️Packages and Dependencies
@@ -137,9 +137,9 @@ Three processed Seurat objects are required to reproduce all analyses and are av
    - `GSE185344_Seurat_processed.RData` (9.52 GB) — for the main PCa analysis
    - `AllenMTG_Seurat_processed.RData` (8.22 GB) — for the Allen MTG validation
    - `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` (4.02 GB) — for the Neftel GBM validation
-4. Run scripts `Part_3.01` through `Part_3.15` using `GSE185344_Seurat_processed.RData` for the main PCa analysis (_TRPM4_–Ribo GOI–DFG module)
-5. Run `Part_3.16` using `AllenMTG_Seurat_processed.RData` for CEP-IP validation with the _CARM1P1_–DFG module in the Allen MTG dataset
-6. Run `Part_3.17` using `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` for CEP-IP validation with the _FOXM1_–DFG module in the Neftel GBM dataset
+4. Run scripts `Part_3.01` through `Part_3.15` using `GSE185344_Seurat_processed.RData` for the main PCa analysis (_TRPM4_-Ribo GOI-DFG module)
+5. Run `Part_3.16` using `AllenMTG_Seurat_processed.RData` for CEP-IP validation with the _CARM1P1_-DFG module in the Allen MTG dataset
+6. Run `Part_3.17` using `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` for CEP-IP validation with the _FOXM1_-DFG module in the Neftel GBM dataset
 
 
 ## 🔬 Detailed Setup Instructions (Optional)
@@ -162,18 +162,18 @@ Three processed Seurat objects are required to reproduce all analyses and are av
  
 5. **Download Data**:
    - Obtain all three processed Seurat objects from [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main):
-     - `GSE185344_Seurat_processed.RData` (9.52 GB) — PCa dataset for the _TRPM4_–Ribo GOI–DFG module analysis.
-     - `AllenMTG_Seurat_processed.RData` (8.22 GB) — Allen Human MTG dataset for the _CARM1P1_–DFG module validation.
-     - `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` (4.02 GB) — Neftel GBM dataset for the _FOXM1_–DFG module validation.
+     - `GSE185344_Seurat_processed.RData` (9.52 GB) — PCa dataset for the _TRPM4_-Ribo GOI-DFG module analysis.
+     - `AllenMTG_Seurat_processed.RData` (8.22 GB) — Allen Human MTG dataset for the _CARM1P1_-DFG module validation.
+     - `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` (4.02 GB) — Neftel GBM dataset for the _FOXM1_-DFG module validation.
  
 6. **Place Data File**:
    - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts).
  
 7. **Run Analysis**:
-   - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_CEP-IP_in_Monocle3_Trajectory.r` for the main PCa GAM analysis with the _TRPM4_–Ribo GOI–DFG module.
+   - Execute the scripts sequentially from `Part_3.01_Mean_Expression_Justifications.r` to `Part_3.15_CEP-IP_in_Monocle3_Trajectory.r` for the main PCa GAM analysis with the _TRPM4_-Ribo GOI-DFG module.
    - This pipeline implements the PRSS-REML optimization and generates CEP-IP quadrants.
-   - Run `Part_3.16_CEP-IP_Validation_Allen_MTG_dataset.r` for CEP-IP validation with the _CARM1P1_–DFG module in human cortical neurons.
-   - Run `Part_3.17_CEP-IP_Validation_Neftel_GBM_dataset.r` for CEP-IP validation with the _FOXM1_–DFG module in adult malignant GBM cells.
+   - Run `Part_3.16_CEP-IP_Validation_Allen_MTG_dataset.r` for CEP-IP validation with the _CARM1P1_-DFG module in human cortical neurons.
+   - Run `Part_3.17_CEP-IP_Validation_Neftel_GBM_dataset.r` for CEP-IP validation with the _FOXM1_-DFG module in adult malignant GBM cells.
    - Scripts have been stress-tested for consistent and reproducible results.
 </details>
 
@@ -185,11 +185,11 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 - Refer to these tables to understand the results without running the full pipeline, or to validate your own results
  
 **Contents organized by analysis stage:**
-- **scRNA-seq QC & Clustering** (Supp. Tables 1–2): Cell filtering metrics, cluster statistics
-- **GOI–DFG Module Selection & Enrichment** (Supp. Tables 3–5): DFG identification via Spearman–Kendall dual-filter, gene set reliability metrics for DFG composite averaging, correlation matrices, GO enrichment of DFGs
-- **GAM Modeling & Optimization** (Supp. Tables 6–10): Model parameters, REML convergence, deviance metrics (DE of GOI–DFG relationship), k-optimization, λ-optimization
-- **CEP-IP Cell Classification & GO Enrichment** (Supp. Tables 11–14): TREP vs non-TREP MCCV comparisons, HVG analysis, cell counts per CEP-IP quadrant, DEG analysis and GO pathway enrichment for each subpopulation
-- **IP Reliability & Validation Datasets** (Supp. Tables 15–17): IPRS component scores for all three datasets; GAM performance metrics and GO enrichment for Allen MTG (_CARM1P1_–DFG module) and Neftel GBM (_FOXM1_–DFG module) validation datasets; GBM GOI screening results and within-positive monotonicity classification
+- **scRNA-seq QC & Clustering** (Supp. Tables 1-2): Cell filtering metrics, cluster statistics
+- **GOI-DFG Module Selection & Enrichment** (Supp. Tables 3-5): DFG identification via Spearman-Kendall dual-filter, gene set reliability metrics for DFG composite averaging, correlation matrices, GO enrichment of DFGs
+- **GAM Modeling & Optimization** (Supp. Tables 6-10): Model parameters, REML convergence, deviance metrics (DE of GOI-DFG relationship), k-optimization, λ-optimization
+- **CEP-IP Cell Classification & GO Enrichment** (Supp. Tables 11-14): TREP vs non-TREP MCCV comparisons, HVG analysis, cell counts per CEP-IP quadrant, DEG analysis and GO pathway enrichment for each subpopulation
+- **IP Reliability & Validation Datasets** (Supp. Tables 15-17): IPRS component scores for all three datasets; GAM performance metrics and GO enrichment for Allen MTG (_CARM1P1_-DFG module) and Neftel GBM (_FOXM1_-DFG module) validation datasets; GBM GOI screening results and within-positive monotonicity classification
 
 ---
 
