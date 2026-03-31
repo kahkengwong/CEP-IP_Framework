@@ -118,8 +118,8 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 | 15 | `Part_3.13_CEP-IP_Mosaic_and_` <br> `Raincloud_Plots.r` | Mosaic plots of TREP/non-TREP proportions above/below the GAM curve in pre-IP and post-IP regions; raincloud plots of DFG (Ribo) expression with overlap coefficient (OVL) comparisons. |
 | 16 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | DEG analysis between TREP and non-TREP cells in pre-IP and post-IP regions. GO enrichment via ToppGene for each of the four CEP-IP subpopulations. |
 | 17 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Monocle3 trajectory analysis of pre-IP and post-IP TREP cells. Quantifies their UMAP1 separation using Cliff's delta and ridgeline plots. |
-| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | CEP-IP validation in the Allen Human MTG SMART-seq dataset (15,928 nuclei, 8 donors) using the _CARM1P1_–DFG module: dual-filtering, GAM fitting, CEP classification, automated IP detection with IPRS scoring, GO enrichment, and Monocle3 trajectory analysis. |
-| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | CEP-IP validation in the Neftel GBM SMART-seq2 dataset (4,916 cells, 20 patients) using the _FOXM1_–DFG module: GOI screening across 659 candidates for MES-state DFGs, wcDFG construction, within-positive monotonicity validation in _FOXM1_-pos cells, full CEP-IP pipeline with IPRS scoring, GO enrichment, and 2D/3D Monocle3 trajectory analysis. |
+| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | CEP-IP validation in the Allen Human MTG SMART-seq dataset using the _CARM1P1_-DFG module: dual-filtering, GAM fitting, CEP classification, automated IP detection with IPRS, GO, and Monocle3 analysis. |
+| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | CEP-IP validation in the Neftel GBM SMART-seq2 dataset using the _FOXM1_-DFG module: GOI screening across 659 candidates for MES-state DFGs, wcDFG construction, within-positive monotonicity validation in _FOXM1_-pos cells, full CEP-IP pipeline with IPRS, GO, and 2D/3D Monocle3 analysis. |
 
 
 ## 🛠️Packages and Dependencies
