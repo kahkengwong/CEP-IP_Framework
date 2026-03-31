@@ -22,9 +22,9 @@
 ## 📋Overview
 - Analysis of multiple scRNA-seq datasets using the **Seurat** package, followed by modeling of pairwise monotonic **GOI-DFGs** relationships via **generalized additive models (GAMs)** implemented in the **mgcv** package.
 
-- The strength of each **GOI-DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that most strongly harbor the GOI-DFGs signal.
+- The strength of each **GOI-DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that strongly harbor the GOI-DFGs signal.
 
-- The **CEP-IP framework** (Cell Explanatory Power with Inflection Point) subsequently stratifies the transcriptional space into biologically distinct subpopulations using automated inflection-point (IP) analysis. Differential gene expression, GO enrichment, and Monocle3 trajectory analysis then uncover the distinct biology of each subpopulation.
+- The **CEP-IP framework** (Cell Explanatory Power with Inflection Point) then stratifies the transcriptional space into biologically distinct subpopulations using inflection-point (IP) analysis. DEGs, GO, and Monocle3 analyses then uncover the biology of each subpopulation.
 
 **Three GOI-DFGs module pairings were tested by CEP-IP in this study:**
 1. **Prostate cancer (PCa) dataset** - *TRPM4*-Ribo module (7 dual-filtered ribosomal genes averaged as “Ribo”).
@@ -99,27 +99,27 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 - For the complete workflow, the scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
  
 ## 📜 Descriptions of the Scripts
-| No  | Script File                                              | Description |
-|-----|----------------------------------------------------------|-------------|
-| 1   | `Part_1_scRNAseq_preprocessing_and_UMAP_clusters.r`     | Preprocesses scRNA-seq data (PCa, MTG, GBM). Includes QC (gene/ribosomal/mitochondrial filtering, cell-cycle regression, doublet removal, batch correction) and UMAP clustering. |
-| 2   | `Part_2_UMAP_Heatmap_Spearman-Kendall's-matrix.r`       | Visualizes GOI expression in UMAPs and computes Spearman–Kendall dual-filter correlation matrices for GOI–DFGs identification. |
-| 3   | `Part_3.01_Mean_Expression_Justifications.r`            | Assesses internal reliability of gene sets (Cronbach’s α, McDonald’s ω, KMO) for downstream averaging into composite scores. |
-| 4   | `Part_3.02_Family_Distribution_Analysis.r`              | Performs GAM family diagnostics and selects optimal distribution. |
-| 5   | `Part_3.03_GAM_REML_PRSS_Setup.r`                       | Sets up PRSS–REML optimization pipeline for GOI–DFGs modeling. |
-| 6   | `Part_3.04_GAM_REML_PRSS_Analysis.r`                    | Runs full GAM-REML-PRSS optimization across samples and gene sets. |
-| 7   | `Part_3.05_REML_Extraction_and_Convergence.r`           | Extracts detailed REML convergence metrics, gradients, and Hessian values. |
-| 8   | `Part_3.06_REML_PRSS_Plots_and_EDF_Analysis.r`          | Generates PRSS/REML convergence plots and effective degrees-of-freedom reports (FDR-corrected). |
-| 9   | `Part_3.07_Validation_of_k_and_Lambda_Selection.r`      | Validates optimal *k* and λ choices through refitting and robustness checks. |
-| 10  | `Part_3.08_Visualize_TPRS_and_GAM_Components.r`         | Visualizes thin-plate regression spline basis functions, knots, and model component contributions. |
-| 11  | `Part_3.09_Extract_GAM's_ND_MD_DE.r`                    | Extracts null deviance, model deviance, and deviance explained for each GOI–DFGs model. |
-| 12  | `Part_3.10_Extract_TRPM4-Ribo_EP.r`                     | Computes cell-level explanatory power (EP) for the *TRPM4*-Ribo module. |
-| 13  | `Part_3.11_CEP-IP_MCCV_of_CEP_Classification.r`         | Monte Carlo cross-validation (MCCV) of CEP classification (TREP vs non-TREP) with random and leverage-based controls. |
-| 14  | `Part_3.12_CEP-IP_GAM_Plots.r`                          | Generates GOI–DFGs GAM scatter plots highlighting TREP (purple) vs non-TREP (gray) cells. |
-| 15  | `Part_3.13_CEP-IP_Mosaic_and_Raincloud_Plots.r`         | Creates mosaic plots (TREP distribution above/below GAM curve) and raincloud plots for pre-IP vs post-IP regions. |
-| 16  | `Part_3.14_CEP-IP_DEGs_Analysis.r`                      | Performs differential expression (TREP vs non-TREP) within pre-IP and post-IP regions. |
-| 17  | `Part_3.15_CEP-IP_in_Monocle3_Trajectory.r`             | Runs Monocle3 trajectory analysis and quantitative UMAP1 distribution comparisons for the four CEP-IP subpopulations. |
-| 18  | `Part_3.16_CEP-IP_Validation_Allen_MTG_dataset.r`       | Full CEP-IP pipeline on Allen MTG dataset (*CARM1P1*-DFG module). |
-| 19  | `Part_3.17_CEP-IP_Validation_Neftel_GBM_dataset.r`      | Full CEP-IP pipeline on Neftel GBM dataset (*FOXM1*-DFG module). |
+| No | Script File | Description |
+|------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | `Part_1_scRNAseq_preprocessing_` <br> `and_UMAP_clusters.r` | Preprocesses scRNA-seq data (PCa, MTG, GBM). Includes QC (gene/ribosomal/mitochondrial filtering, cell-cycle regression, doublet removal, batch correction) and UMAP clustering. |
+| 2 | `Part_2_UMAP_Heatmap_Spearman-` <br> `Kendall's-matrix.r` | Visualizes GOI expression in UMAPs and computes Spearman–Kendall dual-filter correlation matrices for GOI–DFG identification. |
+| 3 | `Part_3.01_Mean_Expression_` <br> `Justifications.r` | Assesses internal reliability of gene sets (Cronbach's α, McDonald's ω, KMO) for downstream averaging into composite scores. |
+| 4 | `Part_3.02_Family_Distribution_` <br> `Analysis.r` | Performs GAM family diagnostics and selects optimal distribution. |
+| 5 | `Part_3.03_GAM_REML_PRSS_` <br> `Setup.r` | Sets up PRSS–REML optimization pipeline for GOI–DFG modeling. |
+| 6 | `Part_3.04_GAM_REML_PRSS_` <br> `Analysis.r` | Runs full GAM-REML-PRSS optimization across samples and gene sets. |
+| 7 | `Part_3.05_REML_Extraction_` <br> `and_Convergence.r` | Extracts detailed REML convergence metrics, gradients, and Hessian values. |
+| 8 | `Part_3.06_REML_PRSS_Plots_` <br> `and_EDF_Analysis.r` | Generates PRSS/REML convergence plots and effective degrees-of-freedom reports (FDR-corrected). |
+| 9 | `Part_3.07_Validation_of_` <br> `k_and_Lambda_Selection.r` | Validates optimal k and λ choices through refitting and robustness checks. |
+| 10 | `Part_3.08_Visualize_TPRS_` <br> `and_GAM_Components.r` | Visualizes thin-plate regression spline basis functions, knots, and model component contributions. |
+| 11 | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r` | Extracts null deviance, model deviance, and deviance explained for each GOI–DFG model. |
+| 12 | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r` | Computes cell-level explanatory power (EP) for the _TRPM4_–Ribo module. |
+| 13 | `Part_3.11_CEP-IP_MCCV_of_` <br> `CEP_Classification.r` | Monte Carlo cross-validation (MCCV) of CEP classification (TREP vs non-TREP) with random and leverage-based controls. |
+| 14 | `Part_3.12_CEP-IP_GAM_Plots.r` | Generates GOI–DFG GAM scatter plots highlighting TREP (purple) vs non-TREP (gray) cells. |
+| 15 | `Part_3.13_CEP-IP_Mosaic_and_` <br> `Raincloud_Plots.r` | Creates mosaic plots (TREP distribution above/below GAM curve) and raincloud plots for pre-IP vs post-IP regions. |
+| 16 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | Performs differential expression (TREP vs non-TREP) within pre-IP and post-IP regions. |
+| 17 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Runs Monocle3 trajectory analysis and quantitative UMAP1 distribution comparisons for the four CEP-IP subpopulations. |
+| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | Full CEP-IP pipeline on Allen MTG dataset (_CARM1P1_–DFG module). |
+| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Full CEP-IP pipeline on Neftel GBM dataset (_FOXM1_–DFG module). |
 
 
 ## 🛠️Packages and Dependencies
