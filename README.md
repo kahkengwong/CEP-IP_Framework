@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🧬 CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics
-### ✨ **CEP-IP** is a novel explainable AI framework that identifies cell subpopulations harboring strong pairwise monotonic **gene-of-interest (GOI)-dual-filtered gene (DFG)** module relationships in scRNA-seq data.
+### ✨ **CEP-IP** is a novel explainable AI framework that identifies cell subpopulations harboring strong pairwise monotonic **gene-of-interest (GOI)** and **dual-filtered gene (DFG)** module relationships in scRNA-seq data.
 ### ✨ Modeling of the **GOI-DFGs module** with generalized additive model (GAM), and subsequent stratification by the **CEP-IP framework**.
 ### ✨ First demonstrated with the *TRPM4*-Ribo module in prostate cancer, then validated with the *CARM1P1*-DFG module in Allen brain MTG and *FOXM1*-DFG module in Neftel GBM datasets. 
 
