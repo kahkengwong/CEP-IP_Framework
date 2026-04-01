@@ -265,7 +265,9 @@ K.K. Wong. CEP-IP: An Explainable Framework for Cell Subpopulation Identificatio
 Please also cite the source dataset:
 
 H.Y. Wong, Q. Sheng, A.B. Hesterberg, S. Croessmann, B.L. Rios, et al., Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease, Nat Commun, 13 (2022) 6036. https://doi.org/10.1038/s41467-022-33780-1
+
 R.D. Hodge, T.E. Bakken, J.A. Miller, K.A. Smith, E.R. Barkan, et al., Conserved cell types with divergent features in human versus mouse cortex, Nature, 573 (2019) 61-68. https://doi.org/10.1038/s41586-019-1506-7
+
 C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma, Cell, 178 (2019) 835-849 e821. https://doi.org/10.1016/j.cell.2019.06.024 
 
 ---
