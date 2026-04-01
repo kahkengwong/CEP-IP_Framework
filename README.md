@@ -61,9 +61,11 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 ## 🔀Workflow of the Project
 ![Workflow](https://raw.githubusercontent.com/kahkengwong/CEP-IP_Framework/main/Project_Workflow.jpg)
 
-- The workflow begins with identification of the **GOI** and its monotonically co-expressed **DFGs** via Spearman-Kendall dual-filtering, establishing the GOI-DFG module. GAM then quantifies the strength of their relationship (DE), and PRSS-REML optimization ensures an appropriately fitted model.
+- The workflow begins with identification of the **GOI** and its monotonically co-expressed **DFGs** via Spearman-Kendall dual-filtering, establishing the GOI-DFG module.
+
+- GAM then quantifies the strength of their relationship (DE), and PRSS-REML optimization ensures an appropriately fitted model.
  
-- Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells** — those most strongly harboring the GOI-DFG module. These crucial steps are detailed in part (V) of the figure above.
+- Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells** — those most strongly harboring the GOI-DFG module (part (V) of the figure above)
  
 - Another key method is to binarize the GOI-DFG transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution patterns of TREP cells, producing **quadrants of four subpopulations of cells with different biology**, revealed through GO enrichment and Monocle3 analysis.
  
