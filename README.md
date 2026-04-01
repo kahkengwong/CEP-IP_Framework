@@ -31,6 +31,8 @@
 2. **Allen Human Middle Temporal Gyrus (MTG) dataset** - *CARM1P1*-DFG module (validation).
 3. **Neftel glioblastoma multiforme (GBM) dataset** - *FOXM1*-DFG module (validation).
 
+---
+
 ## 🎯Aims of the Project
 The project objectives are:
 1. To optimize and explain GAM modeling (including *k*, λ, and γ optimization, PRSS/REML convergence, and visualization of thin-plate regression splines).
