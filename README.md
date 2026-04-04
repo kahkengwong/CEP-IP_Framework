@@ -61,7 +61,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 ---
 
 ## 🔀Workflow of the Project
-![Workflow](https://raw.githubusercontent.com/kahkengwong/CEP-IP_Framework/main/Project_Workflow.jpg)
+![Workflow](https://raw.githubusercontent.com/kahkengwong/CEP-IP_Framework/main/CEP-IP_Framework.svg)
 
 - The workflow begins with identification of the **GOI** and its monotonically co-expressed **DFGs** via Spearman-Kendall dual-filtering, establishing the GOI-DFG module.
 
