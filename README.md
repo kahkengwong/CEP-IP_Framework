@@ -22,11 +22,11 @@
 ## 📋Overview
 - Analysis of multiple scRNA-seq datasets using the **Seurat** package, followed by modeling of pairwise monotonic **GOI-DFGs** relationships via **generalized additive models (GAMs)** implemented in the **mgcv** package.
 
-- The strength of each **GOI-DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that strongly harbor the GOI-DFGs signal.
+- The strength of each **GOI-DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that strongly harbor the GOI-DFG signal.
 
-- The **CEP-IP framework** (Cell Explanatory Power with Inflection Point) then stratifies the transcriptional space into biologically distinct subpopulations using inflection-point (IP) analysis. DEGs, GO, and Monocle3 analyses then uncover the biology of each subpopulation.
+- The **CEP-IP framework** (Cell Explanatory Power with Inflection Point) then stratifies the transcriptional space into biologically distinct subpopulations using inflection point (IP) analysis. DEGs, GO, and Monocle3 analyses then show the biology of each subpopulation.
 
-**Three GOI-DFGs module pairings were tested by CEP-IP in this study:**
+**Three GOI-DFG modules were tested by CEP-IP in this study:**
 1. **Prostate cancer (PCa) dataset** - *TRPM4*-Ribo module (7 dual-filtered ribosomal genes averaged as “Ribo”).
 2. **Allen Human Middle Temporal Gyrus (MTG) dataset** - *CARM1P1*-DFG module (validation).
 3. **Neftel glioblastoma multiforme (GBM) dataset** - *FOXM1*-DFG module (validation).
@@ -35,11 +35,11 @@
 
 ## 🎯Aims of the Project
 The project objectives are:
-1. To optimize and explain GAM modeling (including *k*, λ, and γ optimization, PRSS/REML convergence, and visualization of thin-plate regression splines).
+1. To optimize and explain GAM modeling (including *k*, λ, and γ optimization, PRSS/REML convergence, and visualization of GAM splines).
 2. To quantify how much a **GOI** explains variability in its monotonically co-expressed **DFGs** via deviance explained (DE).
-3. To identify cells harboring the strongest **GOI-DFGs** relationship via the CEP-IP framework and uncover their distinctive biology through GO enrichment and Monocle3 analysis.
+3. To identify cells harboring the strongest **GOI-DFG** relationship via the CEP-IP framework and uncover their biology through GO enrichment and Monocle3 analysis.
 
-**CEP-IP was validated in two independent brain datasets**, each using a different **GOI-DFGs module pairing**:
+**CEP-IP was validated in two independent brain datasets**, each using a different **GOI-DFG module pairings**:
 - Allen MTG dataset (*CARM1P1*-DFG module)
 - Neftel GBM dataset (*FOXM1*-DFG module)
 
@@ -47,7 +47,7 @@ The project objectives are:
  
 ### 📂 Datasets Used
  
-The datasets used in this study are based on publicly available data from the following sources:
+The datasets used in this study are based on publicly available data as follows:
  
 **1. PCa dataset (GSE185344)**
 H.Y. Wong, Q. Sheng, A.B. Hesterberg, S. Croessmann, B.L. Rios, et al., Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease, *Nat Commun*, 13 (2022) 6036. https://doi.org/10.1038/s41467-022-33780-1
@@ -65,13 +65,13 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 
 - The workflow begins with identification of the **GOI** and its monotonically co-expressed **DFGs** via Spearman-Kendall dual-filtering, establishing the GOI-DFG module.
 
-- GAM then quantifies the strength of their relationship (DE), and PRSS-REML optimization ensures an appropriately fitted model.
+- GAM then quantifies the strength of their relationship (DE), and PRSS-REML optimization ensures an ideal, fitted model.
  
-- Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells** — those most strongly harboring the GOI-DFG module (part (V) of the figure above)
+- Key methodologies of this study include identification of cells most well-predicted by the model: If a cell is well-predicted, it should have high **explanatory power (EP)**. These cells are termed as **top-ranked EP (TREP) cells** i.e., those most strongly harboring the GOI-DFG module (part (V) of the figure above)
  
-- Another key method is to binarize the GOI-DFG transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions exhibit distinct distribution patterns of TREP cells, producing **quadrants of four subpopulations of cells with different biology**, revealed through GO enrichment and Monocle3 analysis.
+- Another key method is to binarize the GOI-DFG transcriptional space by **inflection point (IP)** into **pre-IP and post-IP regions**. These regions show different distribution patterns of TREP cells, producing **quadrants of four subpopulations of cells with different biology**, shown via GO enrichment and Monocle3 analysis.
  
-- Collectively, this forms the **CEP-IP framework** detailed in the next section.
+- Collectively, this forms the **CEP-IP framework**.
 
 ---
 
@@ -79,7 +79,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 ![Project Key Findings](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Key_Findings.jpg)
 
 
-- **The CEP-IP framework transforms pairwise GOI-DFG module relationships into clinically actionable cell subpopulations, each with distinct biology and trajectories.**
+- **The CEP-IP framework transforms pairwise GOI-DFG module relationships into actionable cell subpopulations, each with different biology and trajectories.**
   
 ---
 
@@ -131,7 +131,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
  
 - Download or fork the repository and run `renv::restore()` to install the identical package versions used in this study. Note that renv creates an isolated library and will not modify a system's existing R packages and setup.
  
-- For manual or selected package installation, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
+- For manual or selected package installation as desired by end users, a simplified `r_packages_info.json` file is provided with the package names, versions, and sources (CRAN, Bioconductor, or GitHub).
 
 ---
 
