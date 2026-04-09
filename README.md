@@ -106,24 +106,24 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 | No | Script File | Description |
 |------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1 | `Part_1_scRNAseq_preprocessing_` <br> `and_UMAP_clusters.r` | Preprocesses scRNA-seq data (PCa, MTG, GBM). Includes QC (gene/ribosomal/mitochondrial filtering, cell-cycle regression, doublet removal, batch correction) and UMAP clustering. |
-| 2 | `Part_2_UMAP_Heatmap_Spearman-` <br> `Kendall's-matrix.r` | Visualizes GOI expression in UMAPs and computes Spearman–Kendall dual-filter correlation matrices for GOI–DFG identification. |
+| 2 | `Part_2_UMAP_Heatmap_Spearman-` <br> `Kendall's-matrix.r` | Visualizes GOI expression in UMAPs and computes Spearman-Kendall dual-filter correlation matrices for GOI-DFG identification. |
 | 3 | `Part_3.01_Mean_Expression_` <br> `Justifications.r` | Assesses internal reliability of gene sets (Cronbach's α, McDonald's ω, KMO) for downstream averaging into composite scores. |
 | 4 | `Part_3.02_Family_Distribution_` <br> `Analysis.r` | Performs GAM family diagnostics and selects optimal distribution. |
-| 5 | `Part_3.03_GAM_REML_PRSS_` <br> `Setup.r` | Sets up PRSS–REML optimization pipeline for GOI–DFG modeling. |
+| 5 | `Part_3.03_GAM_REML_PRSS_` <br> `Setup.r` | Sets up PRSS-REML optimization pipeline for GOI-DFG modeling. |
 | 6 | `Part_3.04_GAM_REML_PRSS_` <br> `Analysis.r` | Runs full GAM-REML-PRSS optimization across samples and gene sets. |
 | 7 | `Part_3.05_REML_Extraction_` <br> `and_Convergence.r` | Extracts detailed REML convergence metrics, gradients, and Hessian values. |
 | 8 | `Part_3.06_REML_PRSS_Plots_` <br> `and_EDF_Analysis.r` | Generates PRSS/REML convergence plots and effective degrees-of-freedom reports (FDR-corrected). |
 | 9 | `Part_3.07_Validation_of_` <br> `k_and_Lambda_Selection.r` | Validates optimal k and λ choices through refitting and robustness checks. |
 | 10 | `Part_3.08_Visualize_TPRS_` <br> `and_GAM_Components.r` | Visualizes thin-plate regression spline basis functions, knots, and model component contributions. |
-| 11 | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r` | Extracts null deviance, model deviance, and deviance explained for each GOI–DFG model. |
-| 12 | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r` | Computes cell-level explanatory power (EP) for the _TRPM4_–Ribo module. |
+| 11 | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r` | Extracts null deviance, model deviance, and deviance explained for each GOI-DFG model. |
+| 12 | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r` | Computes cell-level explanatory power (EP) for the _TRPM4_-Ribo module. |
 | 13 | `Part_3.11_CEP-IP_MCCV_of_` <br> `CEP_Classification.r` | Monte Carlo cross-validation (MCCV) of CEP classification (TREP vs non-TREP) with random and leverage-based controls. |
-| 14 | `Part_3.12_CEP-IP_GAM_Plots.r` | Generates GOI–DFG GAM scatter plots highlighting TREP (purple) vs non-TREP (gray) cells. |
+| 14 | `Part_3.12_CEP-IP_GAM_Plots.r` | Generates GOI-DFG GAM scatter plots highlighting TREP (purple) vs non-TREP (gray) cells. |
 | 15 | `Part_3.13_CEP-IP_Mosaic_and_` <br> `Raincloud_Plots.r` | Creates mosaic plots (TREP distribution above/below GAM curve) and raincloud plots for pre-IP vs post-IP regions. |
 | 16 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | Performs differential expression (TREP vs non-TREP) within pre-IP and post-IP regions. |
 | 17 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Runs Monocle3 trajectory analysis and quantitative UMAP1 distribution comparisons for the four CEP-IP subpopulations. |
-| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | Full CEP-IP pipeline on Allen MTG dataset (_CARM1P1_–DFG module). |
-| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Full CEP-IP pipeline on Neftel GBM dataset (_FOXM1_–DFG module). |
+| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | Full CEP-IP pipeline on Allen MTG dataset (_CARM1P1_-DFG module). |
+| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Full CEP-IP pipeline on Neftel GBM dataset (_FOXM1_-DFG module). |
 
 
 ## 🛠️Packages and Dependencies
@@ -190,11 +190,11 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 - Refer to these tables to understand the results without running the full pipeline, or to validate your own results
  
 **Contents organized by analysis stage:**
-- **QC & Clustering** (Supp. Tables 1–2): Cell filtering metrics, cluster statistics
-- **GOI–DFG Module Selection** (Supp. Tables 3–5): DFG identification, composite reliability metrics, correlation matrices, GO enrichment
-- **GAM Modeling & Optimization** (Supp. Tables 6–10): Model parameters, REML convergence, DE metrics, k- and λ-optimization
-- **CEP-IP Classification & GO Enrichment** (Supp. Tables 11–14): MCCV results, HVG analysis, CEP-IP quadrant cell counts, DEG analysis and GO enrichment per subpopulation
-- **IP Reliability & Validation** (Supp. Tables 15–17): IPRS scores for all datasets; GAM metrics and GO enrichment for Allen MTG (_CARM1P1_–DFG) and Neftel GBM (_FOXM1_–DFG) validations; GBM GOI screening and within-positive monotonicity results
+- **QC & Clustering** (Supp. Tables 1-2): Cell filtering metrics, cluster statistics
+- **GOI-DFG Module Selection** (Supp. Tables 3-5): DFG identification, composite reliability metrics, correlation matrices, GO enrichment
+- **GAM Modeling & Optimization** (Supp. Tables 6-10): Model parameters, REML convergence, DE metrics, k- and λ-optimization
+- **CEP-IP Classification & GO Enrichment** (Supp. Tables 11-14): MCCV results, HVG analysis, CEP-IP quadrant cell counts, DEG analysis and GO enrichment per subpopulation
+- **IP Reliability & Validation** (Supp. Tables 15-17): IPRS scores for all datasets; GAM metrics and GO enrichment for Allen MTG (_CARM1P1_-DFG) and Neftel GBM (_FOXM1_-DFG) validations; GBM GOI screening and within-positive monotonicity results
 
 ---
 
