@@ -28,7 +28,7 @@
 
 **Three GOI-DFG modules were tested by CEP-IP in this study:**
 1. **Prostate cancer (PCa) dataset** - *TRPM4*-Ribo module (7 dual-filtered ribosomal genes averaged as “Ribo”).
-2. **Allen Human Middle Temporal Gyrus (MTG) dataset** - *CARM1P1*-DFG module (validation).
+2. **Allen human middle temporal gyrus (MTG) dataset** - *CARM1P1*-DFG module (validation).
 3. **Neftel glioblastoma multiforme (GBM) dataset** - *FOXM1*-DFG module (validation).
 
 ---
