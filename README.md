@@ -139,9 +139,9 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 1. Download repository (ZIP or git clone)
 2. Optional: Install dependencies with `renv::restore()` or selected packages according to `r_packages_info.json`
 3. Download all three processed Seurat objects from [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main):
-   - `GSE185344_Seurat_processed.RData` (9.52 GB) — for the main PCa analysis
-   - `AllenMTG_Seurat_processed.RData` (8.22 GB) — for the Allen MTG validation
-   - `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` (4.02 GB) — for the Neftel GBM validation
+   - `GSE185344_Seurat_processed.RData` (9.52 GB) - for the main PCa analysis
+   - `AllenMTG_Seurat_processed.RData` (8.22 GB) - for the Allen MTG validation
+   - `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` (4.02 GB) - for the Neftel GBM validation
 4. Run scripts `Part_3.01` through `Part_3.15` using `GSE185344_Seurat_processed.RData` for the main PCa analysis (_TRPM4_-Ribo GOI-DFG module)
 5. Run `Part_3.16` using `AllenMTG_Seurat_processed.RData` for CEP-IP validation with the _CARM1P1_-DFG module in the Allen MTG dataset
 6. Run `Part_3.17` using `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` for CEP-IP validation with the _FOXM1_-DFG module in the Neftel GBM dataset
