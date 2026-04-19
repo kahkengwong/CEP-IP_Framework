@@ -167,9 +167,9 @@ Three processed Seurat objects are required to reproduce all analyses and are av
  
 5. **Download Data**:
    - Obtain all three processed Seurat objects from [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main):
-     - `GSE185344_Seurat_processed.RData` (9.52 GB) — PCa dataset for the _TRPM4_-Ribo GOI-DFG module analysis.
-     - `AllenMTG_Seurat_processed.RData` (8.22 GB) — Allen Human MTG dataset for the _CARM1P1_-DFG module validation.
-     - `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` (4.02 GB) — Neftel GBM dataset for the _FOXM1_-DFG module validation.
+     - `GSE185344_Seurat_processed.RData` (9.52 GB) - PCa dataset for the _TRPM4_-Ribo GOI-DFG module analysis.
+     - `AllenMTG_Seurat_processed.RData` (8.22 GB) - Allen Human MTG dataset for the _CARM1P1_-DFG module validation.
+     - `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` (4.02 GB) - Neftel GBM dataset for the _FOXM1_-DFG module validation.
  
 6. **Place Data File**:
    - Save the downloaded `.RData` file in the repository root directory (same folder as the scripts).
