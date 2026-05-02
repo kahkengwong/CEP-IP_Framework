@@ -18,7 +18,7 @@
 </div>
 
 <details>
-<summary><strong>🧬 Abstract (Wong KK, CMPB 2026)</strong></summary>
+<summary><strong>🧬 Abstract (K.K. Wong., CMPB 2026)</strong></summary>
 
 **Background and objective:** Single-cell RNA sequencing (scRNA-seq) frameworks lack explainable approaches for identifying cell subpopulations harboring strong pairwise monotonic gene-module relationships between a gene of interest (GOI) and its co-expressed genes. In this study, CEP-IP is introduced as a novel explainable machine learning framework to address this gap.
 
@@ -28,7 +28,7 @@
 
 **Conclusions:** CEP-IP identifies biologically distinct cell subpopulations in three independent scRNA-seq datasets. The framework may generalize to other pairwise GOI-DFG module in single-cell transcriptomics beyond the datasets investigated in this study.
 
-> Wong KK (2026). *Computer Methods and Programs in Biomedicine*, 282, 109372. https://doi.org/10.1016/j.cmpb.2026.109372
+> K.K. Wong (2026). *Computer Methods and Programs in Biomedicine*, 282, 109372. https://doi.org/10.1016/j.cmpb.2026.109372
 
 </details>
 
