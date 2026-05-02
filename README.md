@@ -18,9 +18,9 @@
 </div>
 
 <details>
-<summary><strong>🧬 **Abstract** **(click to expand)**</strong></summary>
+<summary>🧬 &nbsp;<strong>Abstract</strong> &nbsp;(click to expand)</summary>
 
-**Background and objective:** Single-cell RNA sequencing (scRNA-seq) frameworks lack explainable approaches for identifying cell subpopulations harboring strong pairwise monotonic gene-module relationships between a gene of interest (GOI) and its co-expressed genes. In this study, CEP-IP is introduced as a novel explainable machine learning framework to address this gap.
+ **Background and objective:** Single-cell RNA sequencing (scRNA-seq) frameworks lack explainable approaches for identifying cell subpopulations harboring strong pairwise monotonic gene-module relationships between a gene of interest (GOI) and its co-expressed genes. In this study, CEP-IP is introduced as a novel explainable machine learning framework to address this gap.
 
 **Methods:** Prostate cancer (PCa) scRNA-seq dataset was used as the initial dataset, whereby _TRPM4_ served as the GOI and its co-expressed ribosomal genes (Ribo) were identified via Spearman-Kendall dual-filter (i.e., dual-filtered genes, DFG). Next, generalized additive modeling quantified the strength of _TRPM4_-Ribo relationship, represented by deviance explained (DE). _TRPM4_-Ribo’s DE was then assigned to individual cells via cell explanatory power (CEP) classification, identifying cells harboring the _TRPM4_-Ribo module [i.e., top-ranked explanatory power (TREP) cells]. _TRPM4_-Ribo transcriptional space was then stratified into pre-IP and post-IP regions using inflection point (IP) analysis, producing four distinct cell subpopulations per patient for pathway analysis. Validation was performed in the Allen middle temporal gyrus (MTG) and Neftel glioblastoma multiforme (GBM) transcriptomically heterogeneous datasets.
 
