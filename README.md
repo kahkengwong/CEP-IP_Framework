@@ -7,10 +7,10 @@
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/CEP-IP_Framework)
-![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/GAM_PCa_Project)
-![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=R&logoColor=486FBA)
-![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
-[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-B08C00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
+[![GitHub languages](https://img.shields.io/github/languages/count/kahkengwong/CEP-IP_Framework)](https://github.com/kahkengwong/CEP-IP_Framework)
+[![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/CEP-IP_Framework?logo=R&logoColor=486FBA)](https://github.com/kahkengwong/CEP-IP_Framework)
+[![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/CEP-IP_Framework)](https://github.com/kahkengwong/CEP-IP_Framework)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-B08C00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework)
 [![Paper](https://img.shields.io/badge/Paper-CMPB-blue?logo=elsevier&logoColor=white)](https://doi.org/10.1016/j.cmpb.2026.109372)
 
 **Author:** **Kah** **Keng** **Wong**  
@@ -222,7 +222,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 ---
 
 ## 🧾License
-This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE) file in this repository.
+This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/CEP-IP_Framework/blob/main/LICENSE) file in this repository.
 
 
 ---
