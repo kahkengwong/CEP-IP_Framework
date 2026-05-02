@@ -222,7 +222,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 ---
 
 ## 🧾License
-This project is licensed under the [MIT License](https://github.com/kahkengwong/GAM_PCa_Project/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/CEP-IP_Framework/blob/main/LICENSE) file in this repository.
+This project is licensed under the [MIT License](https://github.com/kahkengwong/CEP-IP_Framework/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/CEP-IP_Framework/blob/main/LICENSE) file in this repository.
 
 
 ---
