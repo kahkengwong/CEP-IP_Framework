@@ -246,7 +246,7 @@ I'll review and may ask questions before merging. **Or simply:** [Open an issue]
 ---
 
 ## 📚 Citation
-If you found this study useful, please cite the preprint:
+If you found this study useful, please cite:
 
 **BibTeX:**
 ```bibtex
