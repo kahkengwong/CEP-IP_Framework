@@ -18,7 +18,7 @@
 </div>
 
 <details>
-<summary><strong>🧬 Abstract </strong></summary>
+<summary><strong>🧬 Abstract (click to expand) </strong></summary>
 
 **Background and objective:** Single-cell RNA sequencing (scRNA-seq) frameworks lack explainable approaches for identifying cell subpopulations harboring strong pairwise monotonic gene-module relationships between a gene of interest (GOI) and its co-expressed genes. In this study, CEP-IP is introduced as a novel explainable machine learning framework to address this gap.
 
