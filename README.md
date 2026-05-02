@@ -17,6 +17,21 @@
 
 </div>
 
+<details>
+<summary><strong>🧬 Abstract (Wong KK, CMPB 2026)</strong></summary>
+
+**Background and objective:** Single-cell RNA sequencing (scRNA-seq) frameworks lack explainable approaches for identifying cell subpopulations harboring strong pairwise monotonic gene-module relationships between a gene of interest (GOI) and its co-expressed genes. In this study, CEP-IP is introduced as a novel explainable machine learning framework to address this gap.
+
+**Methods:** Prostate cancer (PCa) scRNA-seq dataset was used as the initial dataset, whereby _TRPM4_ served as the GOI and its co-expressed ribosomal genes (Ribo) were identified via Spearman-Kendall dual-filter (i.e., dual-filtered genes, DFG). Next, generalized additive modeling quantified the strength of _TRPM4_-Ribo relationship, represented by deviance explained (DE). _TRPM4_-Ribo’s DE was then assigned to individual cells via cell explanatory power (CEP) classification, identifying cells harboring the _TRPM4_-Ribo module [i.e., top-ranked explanatory power (TREP) cells]. _TRPM4_-Ribo transcriptional space was then stratified into pre-IP and post-IP regions using inflection point (IP) analysis, producing four distinct cell subpopulations per patient for pathway analysis. Validation was performed in the Allen middle temporal gyrus (MTG) and Neftel glioblastoma multiforme (GBM) transcriptomically heterogeneous datasets.
+
+**Results:** _TRPM4_-Ribo modeling outperformed alternative gene set modules (FDR<0.05). In each PCa patient, CEP-IP yielded four cell subpopulations, where pre-IP TREP cells showed enrichment of immune-related processes, and post-IP TREP cells were enriched for ribosomal, translation, and cell adhesion pathways. In the MTG validation dataset (_CARM1P1_-DFG module), post-IP TREP cells showed enrichment of neuron projection ontologies. In the GBM dataset, _FOXM1_ was the sole GOI yielding mesenchymal-state DFG, with _FOXM1_-DFG post-IP TREP cells enriched for cell division and microtubule pathways; 3D trajectory analysis demonstrated continuous trajectories of TREP cells that were obscured in 2D embeddings.
+
+**Conclusions:** CEP-IP identifies biologically distinct cell subpopulations in three independent scRNA-seq datasets. The framework may generalize to other pairwise GOI-DFG module in single-cell transcriptomics beyond the datasets investigated in this study.
+
+> Wong KK (2026). *Computer Methods and Programs in Biomedicine*, 282, 109372. https://doi.org/10.1016/j.cmpb.2026.109372
+
+</details>
+
 ---
 
 ## 📋Overview
