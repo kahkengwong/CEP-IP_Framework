@@ -100,6 +100,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 
 ## 📊scRNA-seq Analysis and GAM Modeling Scripts
 All scripts are located in the `scripts/` folder of the repository.
+
 Three processed Seurat objects are required to reproduce all analyses and are available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main):
  
 | Seurat Object | Size | Dataset | GOI-DFG Module |
