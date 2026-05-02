@@ -11,7 +11,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/kahkengwong/GAM_PCa_Project?logo=R&logoColor=486FBA)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/GAM_PCa_Project)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-B08C00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/GAM_PCa_Project)
-[![Paper](https://img.shields.io/badge/Paper-arXiv-red?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.12073)
+[![Paper](https://img.shields.io/badge/Paper-CMPB-blue?logo=elsevier&logoColor=white)](https://doi.org/10.1016/j.cmpb.2026.109372)
 
 **Author:** **Kah** **Keng** **Wong**  
 
@@ -250,19 +250,20 @@ If you found this study useful, please cite the preprint:
 
 **BibTeX:**
 ```bibtex
-@misc{wong2025cep-ip,
-      title={CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics}, 
+@article{wong2026cep-ip,
+      title={CEP-IP: An explainable framework for cell subpopulation identification in single-cell transcriptomics}, 
       author={Kah Keng Wong},
-      year={2025},
-      eprint={2509.12073},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.GN},
-      url={https://arxiv.org/abs/2509.12073}, 
+      year={2026},
+      journal={Computer Methods and Programs in Biomedicine},
+      volume={282},
+      pages={109372},
+      doi={10.1016/j.cmpb.2026.109372},
+      url={https://doi.org/10.1016/j.cmpb.2026.109372}
 }
 ```
-K.K. Wong. CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics. arXiv preprint arXiv:2509.12073. (2025) https://arxiv.org/abs/2509.12073
+K.K. Wong. CEP-IP: An explainable framework for cell subpopulation identification in single-cell transcriptomics. *Computer Methods and Programs in Biomedicine*, 282 (2026) 109372. https://doi.org/10.1016/j.cmpb.2026.109372
 
-Please also cite the source dataset:
+Please also cite the source datasets:
 
 H.Y. Wong, Q. Sheng, A.B. Hesterberg, S. Croessmann, B.L. Rios, et al., Single cell analysis of cribriform prostate cancer reveals cell intrinsic and tumor microenvironmental pathways of aggressive disease, Nat Commun, 13 (2022) 6036. https://doi.org/10.1038/s41467-022-33780-1
 
