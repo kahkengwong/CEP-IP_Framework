@@ -12,6 +12,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/kahkengwong/CEP-IP_Framework)](https://github.com/kahkengwong/CEP-IP_Framework)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-B08C00?logo=huggingface&logoColor=F3D34E)](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework)
 [![Paper](https://img.shields.io/badge/Paper-CMPB-blue?logo=elsevier&logoColor=white)](https://doi.org/10.1016/j.cmpb.2026.109372)
+[![R package](https://img.shields.io/badge/R%20package-cepip-276DC3?logo=r&logoColor=white)](https://github.com/kahkengwong/cepip)
 
 **Author:** **Kah** **Keng** **Wong**  
 
@@ -96,6 +97,13 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 
 - **The CEP-IP framework transforms pairwise GOI-DFG module relationships into actionable cell subpopulations, each with different biology and trajectories.**
   
+---
+
+## 📦 R Package
+- The CEP-IP framework is available as the R package [`cepip`](https://github.com/kahkengwong/cepip), which also includes the SKCS and CMRF extensions developed in the SEA-AD study ([CEP-IP_and_CMRF_in_SEA-AD](https://github.com/kahkengwong/CEP-IP_and_CMRF_in_SEA-AD)).
+- The package reproduces the PCa analysis of this repository. Its script `reproduce_cmpb_pca.R` checks 133 published values from Supplementary Tables 10 and 15 (cell counts, EDF, DE, TREP cells, the IP with its 95% CI, and the IPRS with its five components) and all of them agree.
+- Install with `remotes::install_github("kahkengwong/cepip")`.
+
 ---
 
 ## 📊scRNA-seq Analysis and GAM Modeling Scripts
