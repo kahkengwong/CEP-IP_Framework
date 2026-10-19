@@ -133,14 +133,15 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 | 9 | `Part_3.07_Validation_of_` <br> `k_and_Lambda_Selection.r` | Validates optimal k and λ choices through refitting and robustness checks. |
 | 10 | `Part_3.08_Visualize_TPRS_` <br> `and_GAM_Components.r` | Visualizes thin-plate regression spline basis functions, knots, and model component contributions. |
 | 11 | `Part_3.09_Extract_GAM's_` <br> `ND_MD_DE.r` | Extracts null deviance, model deviance, and deviance explained for each GOI-DFG model. |
-| 12 | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r` | Computes cell-level explanatory power (EP) for the _TRPM4_-Ribo module. |
-| 13 | `Part_3.11_CEP-IP_MCCV_of_` <br> `CEP_Classification.r` | Monte Carlo cross-validation (MCCV) of CEP classification (TREP vs non-TREP) with random and leverage-based controls. |
-| 14 | `Part_3.12_CEP-IP_GAM_Plots.r` | Generates GOI-DFG GAM scatter plots highlighting TREP (purple) vs non-TREP (gray) cells. |
-| 15 | `Part_3.13_CEP-IP_Mosaic_and_` <br> `Raincloud_Plots.r` | Creates mosaic plots (TREP distribution above/below GAM curve) and raincloud plots for pre-IP vs post-IP regions. |
-| 16 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | Performs differential expression (TREP vs non-TREP) within pre-IP and post-IP regions. |
-| 17 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Runs Monocle3 trajectory analysis and quantitative UMAP1 distribution comparisons for the four CEP-IP subpopulations. |
-| 18 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | Full CEP-IP pipeline on Allen MTG dataset (_CARM1P1_-DFG module). |
-| 19 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Full CEP-IP pipeline on Neftel GBM dataset (_FOXM1_-DFG module). |
+| 12 | `Part_3.09b_CEP-IP_Automated_` <br> `IP_Detection.r` | Detects the IP of each tumor sample as the first negative-to-positive zero crossing of the residual GAM R(x), with a Brent 95% CI, and computes the IP reliability score (IPRS). Creates `ip_values` and `inflection_points` for Parts 3.10 to 3.15. |
+| 13 | `Part_3.10_Extract_TRPM4-` <br> `Ribo_EP.r` | Computes cell-level explanatory power (EP) for the _TRPM4_-Ribo module. |
+| 14 | `Part_3.11_CEP-IP_MCCV_of_` <br> `CEP_Classification.r` | Monte Carlo cross-validation (MCCV) of CEP classification (TREP vs non-TREP) with random and leverage-based controls. |
+| 15 | `Part_3.12_CEP-IP_GAM_Plots.r` | Generates GOI-DFG GAM scatter plots highlighting TREP (purple) vs non-TREP (gray) cells. |
+| 16 | `Part_3.13_CEP-IP_Mosaic_and_` <br> `Raincloud_Plots.r` | Creates mosaic plots (TREP distribution above/below GAM curve) and raincloud plots for pre-IP vs post-IP regions. |
+| 17 | `Part_3.14_CEP-IP_DEGs_Analysis.r` | Performs differential expression (TREP vs non-TREP) within pre-IP and post-IP regions. |
+| 18 | `Part_3.15_CEP-IP_in_` <br> `Monocle3_Trajectory.r` | Runs Monocle3 trajectory analysis and quantitative UMAP1 distribution comparisons for the four CEP-IP subpopulations. |
+| 19 | `Part_3.16_CEP-IP_Validation_` <br> `Allen_MTG_dataset.r` | Full CEP-IP pipeline on Allen MTG dataset (_CARM1P1_-DFG module). |
+| 20 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Full CEP-IP pipeline on Neftel GBM dataset (_FOXM1_-DFG module). |
 
 
 ## 🛠️Packages and Dependencies
