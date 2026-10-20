@@ -1,9 +1,9 @@
 <div align="center">
 
-# 🧬 CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics
-### ✨ **CEP-IP** is a novel explainable AI framework that identifies cell subpopulations harboring strong pairwise monotonic **gene-of-interest (GOI)** and **dual-filtered gene (DFG)** module relationships in scRNA-seq data.
-### ✨ Strength of the **GOI-DFG module** is quantified by generalized additive model (GAM), and individual cells harboring strong GOI-DFG module are mapped by the **CEP-IP framework**.
-### ✨ First demonstrated with the *TRPM4*-Ribo module in prostate cancer, then validated with the *CARM1P1*-DFG module in Allen brain MTG and *FOXM1*-DFG module in Neftel GBM datasets. 
+# CEP-IP: An Explainable Framework for Cell Subpopulation Identification in Single-cell Transcriptomics
+### **CEP-IP** is a novel explainable AI framework that identifies cell subpopulations harboring strong pairwise monotonic **gene-of-interest (GOI)** and **dual-filtered gene (DFG)** module relationships in scRNA-seq data.
+### Strength of the **GOI-DFG module** is quantified by generalized additive model (GAM), and individual cells harboring strong GOI-DFG module are mapped by the **CEP-IP framework**.
+### First demonstrated with the *TRPM4*-Ribo module in prostate cancer, then validated with the *CARM1P1*-DFG module in Allen brain MTG and *FOXM1*-DFG module in Neftel GBM datasets. 
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen?logo=check&logoColor=white)
 [![Project Page](https://img.shields.io/badge/Code-GitHub-4E81BE?logo=github&logoColor=white)](https://github.com/kahkengwong/CEP-IP_Framework)
@@ -19,7 +19,7 @@
 </div>
 
 <details>
-<summary>🧬 &nbsp;<strong>Abstract (click to expand)</strong></summary>
+<summary><strong>Abstract (click to expand)</strong></summary>
  
  **Background and objective:** Single-cell RNA sequencing (scRNA-seq) frameworks lack explainable approaches for identifying cell subpopulations harboring strong pairwise monotonic gene-module relationships between a gene of interest (GOI) and its co-expressed genes. In this study, CEP-IP is introduced as a novel explainable machine learning framework to address this gap.
 
@@ -35,7 +35,7 @@
 
 ---
 
-## 📋Overview
+## Overview
 - Analysis of multiple scRNA-seq datasets using the **Seurat** package, followed by modeling of pairwise monotonic **GOI-DFGs** relationships via **generalized additive models (GAMs)** implemented in the **mgcv** package.
 
 - The strength of each **GOI-DFGs module** relationship is quantified by **deviance explained (DE)**. This overall DE is then mapped to individual cells via **cell explanatory power (CEP)** classification, identifying **top-ranked explanatory power (TREP)** cells that strongly harbor the GOI-DFG signal.
@@ -49,7 +49,7 @@
 
 ---
 
-## 🎯Aims of the Project
+## Aims of the Project
 The project objectives are:
 1. To optimize and explain GAM modeling (including *k*, λ, and γ optimization, PRSS/REML convergence, and visualization of GAM splines).
 2. To quantify how much a **GOI** explains variability in its monotonically co-expressed **DFGs** via deviance explained (DE).
@@ -61,7 +61,7 @@ The project objectives are:
 
 ---
  
-### 📂 Datasets Used
+### Datasets Used
  
 The datasets used in this study are based on publicly available data as follows:
  
@@ -76,7 +76,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 
 ---
 
-## 🔀Workflow of the Project
+## Workflow of the Project
 ![Workflow](https://raw.githubusercontent.com/kahkengwong/CEP-IP_Framework/main/Project_Workflow.jpg)
 
 - The workflow begins with identification of the **GOI** and its monotonically co-expressed **DFGs** via Spearman-Kendall dual-filtering, establishing the GOI-DFG module.
@@ -91,7 +91,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 
 ---
 
-## ⭐Project Key Findings 
+## Project Key Findings 
 ![Project Key Findings](https://raw.githubusercontent.com/kahkengwong/GAM_PCa_Project/main/Project_Key_Findings.jpg)
 
 
@@ -99,14 +99,14 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
   
 ---
 
-## 📦 R Package
+## R Package
 - The CEP-IP framework is available as the R package [`cepip`](https://github.com/kahkengwong/cepip), which also includes the SKCS and CMRF extensions developed in the SEA-AD study ([CEP-IP_with_CMRF_in_SEA-AD](https://github.com/kahkengwong/CEP-IP_with_CMRF_in_SEA-AD)).
 - The package reproduces the PCa analysis of this repository. Its script `reproduce_cmpb_pca.R` checks 133 published values from Supplementary Tables 10 and 15 (cell counts, EDF, DE, TREP cells, the IP with its 95% CI, and the IPRS with its five components) and all of them agree.
 - Install with `remotes::install_github("kahkengwong/cepip")`.
 
 ---
 
-## 📊scRNA-seq Analysis and GAM Modeling Scripts
+## scRNA-seq Analysis and GAM Modeling Scripts
 All scripts are located in the `scripts/` folder of the repository.
 
 Three processed Seurat objects are required to reproduce all analyses and are available on [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main):
@@ -127,7 +127,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
  
 - For the complete workflow, the scripts should be used in the following sequence, corresponding to the flow of the main project/manuscript:
  
-## 📜 Descriptions of the Scripts
+## Descriptions of the Scripts
 | No | Script File | Description |
 |------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1 | `Part_1_scRNAseq_preprocessing_` <br> `and_UMAP_clusters.r` | Preprocesses scRNA-seq data (PCa, MTG, GBM). Includes QC (gene/ribosomal/mitochondrial filtering, cell-cycle regression, doublet removal, batch correction) and UMAP clustering. |
@@ -152,7 +152,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 | 20 | `Part_3.17_CEP-IP_Validation_` <br> `Neftel_GBM_dataset.r` | Full CEP-IP pipeline on Neftel GBM dataset (_FOXM1_-DFG module). |
 
 
-## 🛠️Packages and Dependencies
+## Packages and Dependencies
 - The R packages and versions used in this study were saved in the `renv.lock` file included in the GitHub repository. This lockfile contains version information for all 37 packages used with their dependencies.
  
 - Download or fork the repository and run `renv::restore()` to install the identical package versions used in this study. Note that renv creates an isolated library and will not modify a system's existing R packages and setup.
@@ -161,7 +161,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 1. Download repository (ZIP or git clone)
 2. Optional: Install dependencies with `renv::restore()` or selected packages according to `r_packages_info.json`
 3. Download all three processed Seurat objects from [HuggingFace](https://huggingface.co/datasets/kahkengwong/CEP-IP_Framework/tree/main):
@@ -173,9 +173,9 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 6. Run `Part_3.17` using `NeftelGBM_SS2_AdultMalignant_Seurat_processed.RData` for CEP-IP validation with the _FOXM1_-DFG module in the Neftel GBM dataset
 
 
-## 🔬 Detailed Setup Instructions (Optional)
+## Detailed Setup Instructions (Optional)
 <details>
-<summary><strong>📜 Click to view all the setup descriptions (7 steps)</strong></summary>
+<summary><strong>Click to view all the setup descriptions (7 steps)</strong></summary>
 
 1. **Get the Repository**:
    - **Option A (most users)**: Click the green "<> Code" button, select "Download ZIP", and extract to a folder (e.g., `C:/Users/YourName/CEP-IP_Framework`).
@@ -209,7 +209,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 </details>
 
 
-## 📋 Supplementary Tables & Results (Zenodo)
+## Supplementary Tables & Results (Zenodo)
 **Contents on Zenodo and aims:**
 - 17 Supplementary Tables (Excel format) available from [Zenodo](https://zenodo.org/records/17114394)
 - Detailed tabular results from analyses conducted in the study
@@ -224,7 +224,7 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 
 ---
 
-## 💻 Requirements
+## Requirements
 ### Software Requirements
 - **R:** ≥ 4.0.0 (tested with R 4.4.2 "Pile of Leaves")
 - **RStudio:** Recommended (tested with RStudio 2025.05.0 Build 496)
@@ -243,23 +243,23 @@ Three processed Seurat objects are required to reproduce all analyses and are av
 - GAM modeling with [mgcv](https://cran.r-project.org/web/packages/mgcv/index.html) is computationally efficient and does not require high-end specs
 - Understanding the algorithms and mathematical principles is key; minimum specs are sufficient for GAM analysis using the processed Seurat object
 > [!NOTE]
-> 💡**To students and young researchers:** Limited computational resources should never prevent one from learning the key methodologies and mathematical principles in machine learning; understanding them matters more than hardware specs.
+> **To students and young researchers:** Limited computational resources should never prevent one from learning the key methodologies and mathematical principles in machine learning; understanding them matters more than hardware specs.
 
 ---
 
-## 🧾License
+## License
 This project is licensed under the [MIT License](https://github.com/kahkengwong/CEP-IP_Framework/blob/main/LICENSE), an open-source license to encourage collaboration and reuse, while ensuring proper attribution to the original author(s). For the full details, please refer to the [LICENSE](https://github.com/kahkengwong/CEP-IP_Framework/blob/main/LICENSE) file in this repository.
 
 
 ---
 
-## 🤝🏻 Contributing
+## Contributing
 Contributions, issues, and feature requests are welcome!
 
-### 🐛 Found a Bug?
+### Found a Bug?
 [Open an issue](https://github.com/kahkengwong/CEP-IP_Framework/issues) describing the problem, including your error message, R version, and operating system.
 
-### 💡 Want to Contribute Improvements?
+### Want to Contribute Improvements?
 If you've made enhancements you'd like to share with others, you can contribute back via a **pull request** (i.e., a way to propose merging your improvements back into the main repository so others can benefit).
 
 **How to submit:**
@@ -271,7 +271,7 @@ I'll review and may ask questions before merging. **Or simply:** [Open an issue]
 
 ---
 
-## 📚 Citation
+## Citation
 If you found this study useful, please cite:
 
 **BibTeX:**
@@ -299,7 +299,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 
 ---
 
-## 📩Contact
+## Contact
 All analyses, modeling, and interpretations were conducted by Kah Keng Wong: [kahkeng@usm.my](mailto:kahkeng@usm.my)
 
 ---

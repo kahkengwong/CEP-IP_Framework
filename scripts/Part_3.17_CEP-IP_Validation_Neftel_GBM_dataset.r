@@ -8689,6 +8689,6 @@ save_html(
 # Open it automatically
 browseURL(output_file)
 
-cat("✅ SUCCESS!\n")
+cat("SUCCESS!\n")
 cat("Standalone file created:\n")
 cat(basename(output_file), "\n")
