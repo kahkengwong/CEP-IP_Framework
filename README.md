@@ -100,7 +100,7 @@ C. Neftel, J. Laffy, M.G. Filbin, T. Hara, M.E. Shore, et al., An Integrative Mo
 ---
 
 ## 📦 R Package
-- The CEP-IP framework is available as the R package [`cepip`](https://github.com/kahkengwong/cepip), which also includes the SKCS and CMRF extensions developed in the SEA-AD study ([CEP-IP_and_CMRF_in_SEA-AD](https://github.com/kahkengwong/CEP-IP_and_CMRF_in_SEA-AD)).
+- The CEP-IP framework is available as the R package [`cepip`](https://github.com/kahkengwong/cepip), which also includes the SKCS and CMRF extensions developed in the SEA-AD study ([CEP-IP_with_CMRF_in_SEA-AD](https://github.com/kahkengwong/CEP-IP_with_CMRF_in_SEA-AD)).
 - The package reproduces the PCa analysis of this repository. Its script `reproduce_cmpb_pca.R` checks 133 published values from Supplementary Tables 10 and 15 (cell counts, EDF, DE, TREP cells, the IP with its 95% CI, and the IPRS with its five components) and all of them agree.
 - Install with `remotes::install_github("kahkengwong/cepip")`.
 
